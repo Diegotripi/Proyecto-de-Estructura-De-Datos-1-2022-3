@@ -14,6 +14,9 @@ Mouse,2;
 Almacen E:
 Microfono,7
 Audifonos,10;
+Almacen F:
+Microfono,100
+Audifonos,10;
 Rutas;
 A,B,10
 A,C,20
@@ -23,5 +26,5 @@ C,D,4
 C,E,13
 D,E,3
 E,A,25
-E,B,21
+e,b,21
 
