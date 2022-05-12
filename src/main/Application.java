@@ -14,8 +14,10 @@ public class Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        
         /*Recomiendo que este main pase a ser una clase con metodos que permita la extraccion de 
-        Informacion asi como armar el grafo
+        Informacion asi como armar el grafoooos
          */
         int v = 0;
         String direccion = "C:\\Users\\mdetd\\Documents\\NetBeansProjects\\PracticaGrafos\\src\\Direccion Archivo\\Almacenes.txt";
