@@ -22,7 +22,7 @@ public class Application {
         Informacion asi como armar el grafoooos
          */
         int v = 0;
-        String direccion = "C:\\Users\\mdetd\\Documents\\NetBeansProjects\\PracticaGrafos\\src\\Direccion Archivo\\Almacenes.txt";
+        String direccion = "C:\\Users\\mdetd\\Documents\\NetBeansProjects\\Proyecto-de-Estructura-De-Datos-1-2022-3\\src\\Direccion Archivo\\Almacenes.txt"; //Se debe colocar mientras la direccion a mano
         Archivo a = new Archivo();
         String arInfo = a.leerArchivo(direccion);
         /*
@@ -54,11 +54,21 @@ public class Application {
     }
 
     public static Graph extraerDatos(String arInfo, AdjMatrixGraph am) {
+        
+        
 
         Graph g1 = new Graph(am);
 
         String[] arrayInfo = arInfo.split(";");
         for (int i = 0; i < arrayInfo.length; i++) {
+            
+            String prueba = arrayInfo[i];
+            
+            if(prueba.length()>7){
+                prueba = prueba.substring(0,7);
+            }
+            
+            
             if (arrayInfo[i].equalsIgnoreCase("Rutas")) {
                 String cadena = arrayInfo[i + 1];
                 int kar = 0;
@@ -107,10 +117,11 @@ public class Application {
                 break;
             } else if (arrayInfo[i].equalsIgnoreCase("Almacenes")) {
 
-            } else {
+            } else if(prueba.equalsIgnoreCase("Almacen")){
                 ListaInv l1 = new ListaInv();
                 String[] arrayInvent = arrayInfo[i].split(":");
                 String oracion = arrayInvent[1];
+                //System.out.println(arrayInfo[i]);
                 String nombre = arrayInvent[0];
 
 //                System.out.println("\n");
