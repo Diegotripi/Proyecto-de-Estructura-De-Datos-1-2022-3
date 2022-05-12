@@ -15,6 +15,8 @@ public class Application {
      */
     public static void main(String[] args) {
         
+        System.out.println("This is a test");
+        
         
         /*Recomiendo que este main pase a ser una clase con metodos que permita la extraccion de 
         Informacion asi como armar el grafoooos
