@@ -11,69 +11,118 @@ package main;
 public class Graph {
 
     private AdjMatrixGraph matrix;
-    private ListaAlmacen almacen;
-    private int contador;
+    private ListStorage storage;
+    private int counter;
+    /**
+     * Constructor Method
+     * @param matrix 
+     */
 
     public Graph(AdjMatrixGraph matrix) {
         this.matrix = matrix;
-        this.almacen = null;
+        this.storage = null;
     }
+    
+    /**
+     * Getter Method
+     * @return matrix
+     */
 
     public AdjMatrixGraph getMatrix() {
         return matrix;
     }
+    
+    /**
+     * Getter Method
+     * @return storage
+     */
 
-    public ListaAlmacen getAlmacen() {
-        return almacen;
+    public ListStorage getStorage() {
+        return storage;
     }
+    
+    /**
+     * Setter Method
+     * @param matrix
+     */
 
     public void setMatrix(AdjMatrixGraph matrix) {
         this.matrix = matrix;
     }
+    
+    /**
+     * Setter Method
+     * @param storage
+     */
 
-    public void setAlmacen(ListaAlmacen almacen) {
-        this.almacen = almacen;
+    public void setStorage(ListStorage storage) {
+        this.storage = storage;
     }
+    
+    /**
+     * Print Storage's inventory
+     * @param index
+     */
 
-    public void obtenerInventario(int n) {
-        almacen.obtenerIndice(n).getElemento().getInventario().imprimirInventario();
+    public void getInventory(int index) {
+        storage.getIndex(index).getStorage().getInventory().printInventory();
     }
+    
+    /**
+     * Print Storage's name
+     * @param n
+     */
 
-    public void nombreAlmacen(int n) {
-        System.out.println("\n" + almacen.obtenerIndice(n).getElemento().getNombre());
+    public void nameStorage(int n) {
+        System.out.println("\n" + storage.getIndex(n).getStorage().getName());
     }
+    
+    /**
+     * Create a new Storage 
+     * @param i
+     * @param n
+     */
 
-    public void almacen(ListaInv i, String n) {
-        Almacen a = new Almacen(i, n);
-        if (almacen.getLargo() == 0) {
-            almacen.insertarCabeza(a);
+    public void createStorage(ListInv i, String n) {
+        Storage a = new Storage(i, n);
+        if (storage.getLenght() == 0) {
+            storage.addHead(a);
         }else{
-            almacen.insertarFinal(a);
+            storage.addEnd(a);
         }
         
-        contador++;
+        counter++;
     }
+    
+    /**
+     * Create a new Storage 
+     * @param name
+     * @param quantity
+     * @return Product
+     */
 
-    public Producto producto(String nombre, int can) {
-        Producto p1 = new Producto(can, nombre);
+    public Product product(String name, int quantity ) {
+        Product p1 = new Product(quantity, name);
         return p1;
     }
+    
+    /**
+     * Create a new Storage 
+     * @param letter
+     * @return storageNumber
+     */
 
-    public int buscarNumeroAlmacen(String letra) {
+    public int getStorageNumber(String letter) {
         int num = 0;
-        for (int i = 0; i < almacen.getLargo(); i++) {
-            String ultimaLetra = almacen.obtenerIndice(i).getElemento().getNombre().substring(almacen.obtenerIndice(i).getElemento().getNombre().length() - 1);
-            if (letra.equalsIgnoreCase(ultimaLetra)) {
+        for (int i = 0; i < storage.getLenght(); i++) {
+            String ultimaLetra = storage.getIndex(i).getStorage().getName().substring(storage.getIndex(i).getStorage().getName().length() - 1);
+            if (letter.equalsIgnoreCase(ultimaLetra)) {
                 num = i;
                 break;
             }
         }
 
         return num;
-    }
-
-    public void agregarNuevoAlmacen(String nombre) {
-
     }
 
 }
