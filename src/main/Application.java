@@ -16,7 +16,7 @@ public class Application {
     public static void main(String[] args) {
          
         int v = 0;
-        String direccion = "C:\\Users\\mdetd\\Documents\\NetBeansProjects\\Proyecto-de-Estructura-De-Datos-1-2022-3\\src\\Direccion Archivo\\Almacenes.txt"; //Se debe colocar mientras la direccion a mano
+        String direccion = "src\\Direccion Archivo\\Almacenes.txt"; //Se debe colocar mientras la direccion a mano
         File a = new File();
         String arInfo = a.readFile(direccion);
         
