@@ -13,13 +13,19 @@ import java.io.FileReader;
  *
  * @author mdetd
  */
-public class Archivo {
+public class File {
     
-    public String leerArchivo(String direccion){
-        String texto = "";
+    /**
+     * Read the file.txt
+     * @param direction
+     * @return text
+     */
+    
+    public String readFile(String direction){
+        String text = "";
         
         try{
-            BufferedReader bf = new BufferedReader(new FileReader(direccion));
+            BufferedReader bf = new BufferedReader(new FileReader(direction));
             String temp = "";
             String bfRead;
             while((bfRead = bf.readLine())!= null){
@@ -27,17 +33,19 @@ public class Archivo {
             temp = temp + bfRead;
             
         }
-            texto = temp;
+            text = temp;
         }catch(Exception e){
             System.err.println("No existe");
             
         }
         
-        return texto;
+        return text;
     }
-    /*
-        Cuenta el numero de vertices en el grafo
-         */
+    /**
+     * Get vertice's number
+     * @param arInfo
+     * @return number of vertices
+     */
     public int numVertices(String arInfo) {
         int v = 0;
         String[] arrayInfo = arInfo.split(";");
@@ -56,49 +64,54 @@ public class Archivo {
     }
     
     
-        
+    /**
+     * Extract the txt information; Storage and routes
+     * @param arInfo
+     * @param am
+     * @return graph
+     */    
     
     
-     public Graph extraerDatos(String arInfo, AdjMatrixGraph am){
+     public Graph getInfo(String arInfo, AdjMatrixGraph am){
         
         Graph g1 = new Graph(am);
-        ListaAlmacen l2 = new ListaAlmacen();
-        g1.setAlmacen(l2);
+        ListStorage l2 = new ListStorage();
+        g1.setStorage(l2);
 
         String[] arrayInfo = arInfo.split(";");
         for (int i = 0; i < arrayInfo.length; i++) {
             
-            String prueba = arrayInfo[i];
+            String auxiliar = arrayInfo[i];
             
-            if(prueba.length()>7){
-                prueba = prueba.substring(0,7);
+            if(auxiliar.length()>7){
+                auxiliar = auxiliar.substring(0,7);
             }
             
             
             if (arrayInfo[i].equalsIgnoreCase("Rutas")) {
-                String cadena = arrayInfo[i + 1];
+                String chain = arrayInfo[i + 1];
                 int kar = 0;
-                String origen = "";
-                String destino = "";
+                String from = "";
+                String to = "";
                 int ll = 0;
-                for (int j = 0; j < cadena.length(); j++) {
-                    if (cadena.charAt(j) == ',') {
-                        origen = cadena.substring(0, j);
+                for (int j = 0; j < chain.length(); j++) {
+                    if (chain.charAt(j) == ',') {
+                        from = chain.substring(0, j);
 
-                        for (int l = j + 1; l < cadena.length(); l++) {
+                        for (int l = j + 1; l < chain.length(); l++) {
 
-                            if (cadena.charAt(l) == ',') {
-                                destino = cadena.substring(j + 1, l);
+                            if (chain.charAt(l) == ',') {
+                                to = chain.substring(j + 1, l);
 
                                 ll = l;
                                 break;
                             }
                         }
 
-                        for (int k = ll; k < cadena.length() - j; k++) {
+                        for (int k = ll; k < chain.length() - j; k++) {
 
                             try {
-                                Integer.parseInt(Character.toString(cadena.charAt(j + k + 1)));
+                                Integer.parseInt(Character.toString(chain.charAt(j + k + 1)));
                             } catch (Exception e) {
                                 kar = ll + k;
                                 break;
@@ -106,30 +119,30 @@ public class Archivo {
                             }
 
                         }
-                        int coste = Integer.parseInt(cadena.substring(ll + 1, kar - 1));
+                        int coste = Integer.parseInt(chain.substring(ll + 1, kar - 1));
 
-                        cadena = cadena.substring(kar - 1);
+                        chain = chain.substring(kar - 1);
 
                         j = 0;
                         kar = 0;
                         ll = 0;
-//                        System.out.println(origen + " " + destino + " " + coste);
-                        int numeroOrigen = g1.buscarNumeroAlmacen(origen);
-                        int numeroDestino = g1.buscarNumeroAlmacen(destino);
-                        am.addedge(numeroOrigen, numeroDestino, coste);
+//                        System.out.println(from + " " + to + " " + coste);
+                        int numerofrom = g1.getStorageNumber(from);
+                        int numeroto = g1.getStorageNumber(to);
+                        am.addEdge(numerofrom, numeroto, coste);
                     }
 
                 }
                 break;
             } else if (arrayInfo[i].equalsIgnoreCase("Almacenes")) {
 
-            } else if(prueba.equalsIgnoreCase("Almacen")){
-                ListaInv l1 = new ListaInv();
+            } else if(auxiliar.equalsIgnoreCase("Almacen")){
+                ListInv l1 = new ListInv();
                 
                 String[] arrayInvent = arrayInfo[i].split(":");
                 String oracion = arrayInvent[1];
                 //System.out.println(arrayInfo[i]);
-                String nombre = arrayInvent[0];
+                String name = arrayInvent[0];
 
 //                System.out.println("\n");
                 int kar = 0;
@@ -152,13 +165,13 @@ public class Archivo {
                         kar = 0;
 
 //                        System.out.println(product + " " + amount);
-                        Producto p1 = new Producto(amount, product);
-                        l1.insertarCabeza(p1);
+                        Product p1 = new Product(amount, product);
+                        l1.addHead(p1);
 
                     }
                 }
                 
-                g1.almacen(l1, nombre);
+                g1.createStorage(l1, name);
 
             }
         }
