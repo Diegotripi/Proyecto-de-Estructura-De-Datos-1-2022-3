@@ -13,30 +13,65 @@ public class AdjMatrixGraph {
     
     
     
+    /**
+     * Constructor Method
+     * @param numVertices 
+     */ 
     public AdjMatrixGraph(int numVertices) {
         this.numVertices = numVertices;
         matrix = new int[numVertices][numVertices];    
     }
+    
+    /**
+     * Getter Method
+     * @return numVertices
+     */
 
     public int getNumVertices() {
         return numVertices;
     }
+    
+    /**
+     * Getter Method
+     * @return matrix
+     */
 
     public int[][] getMatrix() {
         return matrix;
     }
+    
+    /**
+     * Setter Method
+     * @param numVertices 
+     */
 
     public void setNumVertices(int numVertices) {
         this.numVertices = numVertices;
     }
+    
+    /**
+     * Setter Method
+     * @param matrix 
+     */
 
     public void setMatrix(int[][] matrix) {
         this.matrix = matrix;
     }
     
-    public void addedge(int origen, int destino, int costo){
-        matrix[origen][destino] = costo;       
+    /**
+     * Add a new edge in the graph
+     * @param from 
+     * @param to
+     * @param cost
+     */
+    
+    public void addEdge(int from, int to, int cost){
+        matrix[from][to] = cost;       
     }
+    
+    /**
+     * Print graph
+     */
     
     public void printGraph(){
         for (int i = 0; i < numVertices; i++) {
@@ -47,13 +82,17 @@ public class AdjMatrixGraph {
         }
     }
     
-    public void obtenerEdge(){
+    /**
+     * Gett Edges of the graph
+     */
+    
+    public void getEdge(){
         int origen =0;
         int destino=1;
         int costo = 1;
         
         for (int i = 0; i < numVertices; i++) {
-            addedge(origen,destino,costo);
+            addEdge(origen,destino,costo);
             origen +=1;
             if(origen == (numVertices-1)){
                 destino = 0;
@@ -61,31 +100,6 @@ public class AdjMatrixGraph {
               destino+=1;  
             }
             costo+=2;
-        }
-    }
-    
-    public void armarMatriz(){
-        boolean aux = true;
-        int origen;
-        int destino;
-        int costo;
-        String opcion;
-        
-        while(aux){
-            System.out.println("Ingrese vertice origen: ");
-            origen = sc.nextInt();
-            System.out.println("Ingrese vertice destino: ");
-            destino = sc.nextInt();
-            System.out.println("Ingrese el costo: ");
-            costo = sc.nextInt();
-            addedge(origen,destino,costo);
-            System.out.println("Desea introducir una nueva arista (s/n): ");
-            opcion = sc.nextLine();
-            if (opcion.equalsIgnoreCase("s")) {
-                aux = true;
-            }else{
-                aux = false;
-            }
         }
     }
     
