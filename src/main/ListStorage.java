@@ -13,68 +13,73 @@ public class ListStorage {
     private NodeStorage head;
     private NodeStorage end;
     private int lenght;
-/**
- * Constructor Method
- */
+
+    /**
+     * Constructor Method
+     */
     public ListStorage() {
         this.head = null;
         this.end = null;
         this.lenght = 0;
     }
-/**
- * Getter Method
- * @return head
- */
+
+    /**
+     * Getter Method
+     *
+     * @return head
+     */
     public NodeStorage getHead() {
         return head;
     }
-    
-    /**
-    * Getter Method
-    * @return end
-    */
 
+    /**
+     * Getter Method
+     *
+     * @return end
+     */
     public NodeStorage getEnd() {
         return end;
     }
-    /**
-    * Getter Method
-    * @return lenght
-    */
 
+    /**
+     * Getter Method
+     *
+     * @return lenght
+     */
     public int getLenght() {
         return lenght;
     }
-    
+
     /**
      * Setter Method
-     * @param head 
+     *
+     * @param head
      */
-
     public void setHead(NodeStorage head) {
         this.head = head;
     }
-    
+
     /**
      * Setter Method
-     * @param end 
+     *
+     * @param end
      */
-
     public void setEnd(NodeStorage end) {
         this.end = end;
     }
+
     /**
      * Setter Method
-     * @param lenght 
+     *
+     * @param lenght
      */
-    
-
     public void setLenght(int lenght) {
         this.lenght = lenght;
     }
 
     /**
      * Determinate if the list has not nodes
+     *
      * @return boolean
      */
     public boolean isEmpty() {
@@ -83,7 +88,8 @@ public class ListStorage {
 
     /**
      * Add a head
-     * @param head 
+     *
+     * @param head
      */
     public void addHead(Storage head) {
         NodeStorage nodito = new NodeStorage(head);
@@ -102,7 +108,8 @@ public class ListStorage {
 
     /**
      * Add a end
-     * @param end 
+     *
+     * @param end
      */
     public void addEnd(Storage end) {
         NodeStorage nodito = new NodeStorage(end);
@@ -113,7 +120,7 @@ public class ListStorage {
         } else {
             NodeStorage aux = this.head;
             for (int i = 0; i < lenght; i++) {
-                if (aux.getNext()== null) {
+                if (aux.getNext() == null) {
                     aux.setNext(nodito);
                     this.end = nodito;
                 } else {
@@ -127,8 +134,9 @@ public class ListStorage {
 
     /**
      * Add index
+     *
      * @param pos
-     * @param medio 
+     * @param medio
      */
     public void addIndex(int pos, Storage medio) {
         NodeStorage nodito = new NodeStorage(medio);
@@ -161,11 +169,10 @@ public class ListStorage {
      */
     public void deleteHead() {
         NodeStorage aux = head;
-        if (lenght ==1) {
+        if (lenght == 1) {
             setHead(null);
             lenght--;
-        }
-        else if (!isEmpty()) {
+        } else if (!isEmpty()) {
             aux = head.getNext();
             setHead(aux);
             this.head = aux;
@@ -196,16 +203,16 @@ public class ListStorage {
 
     /**
      * Delete index
-     * @param pos 
+     *
+     * @param pos
      */
     public void eliminarIndice(int pos) {
         int cont = 0;
         if (lenght == 1) {
             deleteHead();
-        }else if(lenght <= (pos+1)){
+        } else if (lenght <= (pos + 1)) {
             deleteEnd();
-        }
-        else if (!isEmpty()) {
+        } else if (!isEmpty()) {
             NodeStorage aux = head;
             while (cont < pos && aux.getNext() != null) {
                 aux = aux.getNext();
@@ -213,13 +220,12 @@ public class ListStorage {
             }
             aux.setNext(aux.getNext().getNext());
 
-
             lenght--;
         }
 
     }
-    
-    public NodeStorage getIndex(int ind){
+
+    public NodeStorage getIndex(int ind) {
         NodeStorage aux = getHead();
         for (int i = 0; i < ind; i++) {
             aux = aux.getNext();

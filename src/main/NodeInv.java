@@ -9,46 +9,54 @@ package main;
  * Class Node Inv
  */
 public class NodeInv {
-    
+
     private Product product;
     private NodeInv next;
-/**
- * Class Constructor 
- * @param product
- */
+
+    /**
+     * Class Constructor
+     *
+     * @param product
+     */
     public NodeInv(Product product) {
         this.product = product;
         this.next = null;
     }
-/**
- * Getter Method
- * @return product
- */
+
+    /**
+     * Getter Method
+     *
+     * @return product
+     */
     public Product getProduct() {
         return product;
     }
-/**
- * Getter Method
- * @return next 
- */
+
+    /**
+     * Getter Method
+     *
+     * @return next
+     */
     public NodeInv getNext() {
         return next;
     }
-/**
- * Setter Method
- * @param product
- */
+
+    /**
+     * Setter Method
+     *
+     * @param product
+     */
     public void setProduct(Product product) {
         this.product = product;
     }
-/**
- * Setter Method
- * @param next
- */
+
+    /**
+     * Setter Method
+     *
+     * @param next
+     */
     public void setNext(NodeInv next) {
         this.next = next;
     }
-    
-    
-    
+
 }

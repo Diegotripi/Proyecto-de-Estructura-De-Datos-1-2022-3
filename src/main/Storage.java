@@ -9,55 +9,57 @@ package main;
  * @author mdetd
  */
 public class Storage {
-    
+
     private ListInv inventory;
     private String name;
-    
+
     /**
      * Constructor Method
+     *
      * @param inventory
-     * @param name 
+     * @param name
      */
-
     public Storage(ListInv inventory, String name) {
         this.inventory = inventory;
         this.name = name;
     }
-    
+
     /**
      * Getter Method
+     *
      * @return inventory
      */
-
     public ListInv getInventory() {
         return inventory;
     }
+
     /**
      * Getter Method
+     *
      * @return name
      */
 
     public String getName() {
         return name;
     }
-    
+
     /**
      * Setter Method
-     * @param inventory 
+     *
+     * @param inventory
      */
-
     public void setInventory(ListInv inventory) {
         this.inventory = inventory;
     }
+
     /**
      * Setter Method
-     * @param name 
+     *
+     * @param name
      */
 
     public void setName(String name) {
         this.name = name;
     }
-    
-    
-    
+
 }

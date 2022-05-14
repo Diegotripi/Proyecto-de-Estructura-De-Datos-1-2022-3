@@ -45,7 +45,7 @@ public class ListInv {
      * @return lenght
      */
 
-    public int getLengt() {
+    public int getLenght() {
         return lenght;
     }
     

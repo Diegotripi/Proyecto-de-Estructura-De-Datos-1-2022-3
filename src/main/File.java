@@ -1,6 +1,5 @@
 package main;
 
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 
@@ -8,41 +7,42 @@ import java.io.FileReader;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author mdetd
  */
 public class File {
-    
+
     /**
      * Read the file.txt
+     *
      * @param direction
      * @return text
      */
-    
-    public String readFile(String direction){
+    public String readFile(String direction) {
         String text = "";
-        
-        try{
+
+        try {
             BufferedReader bf = new BufferedReader(new FileReader(direction));
             String temp = "";
             String bfRead;
-            while((bfRead = bf.readLine())!= null){
-            
-            temp = temp + bfRead;
-            
-        }
+            while ((bfRead = bf.readLine()) != null) {
+
+                temp = temp + bfRead;
+
+            }
             text = temp;
-        }catch(Exception e){
+        } catch (Exception e) {
             System.err.println("No existe");
-            
+
         }
-        
+
         return text;
     }
+
     /**
      * Get vertice's number
+     *
      * @param arInfo
      * @return number of vertices
      */
@@ -62,32 +62,29 @@ public class File {
         }
         return v;
     }
-    
-    
+
     /**
      * Extract the txt information; Storage and routes
+     *
      * @param arInfo
      * @param am
      * @return graph
-     */    
-    
-    
-     public Graph getInfo(String arInfo, AdjMatrixGraph am){
-        
+     */
+    public Graph getInfo(String arInfo, AdjMatrixGraph am) {
+
         Graph g1 = new Graph(am);
         ListStorage l2 = new ListStorage();
         g1.setStorage(l2);
 
         String[] arrayInfo = arInfo.split(";");
         for (int i = 0; i < arrayInfo.length; i++) {
-            
+
             String auxiliar = arrayInfo[i];
-            
-            if(auxiliar.length()>7){
-                auxiliar = auxiliar.substring(0,7);
+
+            if (auxiliar.length() > 7) {
+                auxiliar = auxiliar.substring(0, 7);
             }
-            
-            
+
             if (arrayInfo[i].equalsIgnoreCase("Rutas")) {
                 String chain = arrayInfo[i + 1];
                 int kar = 0;
@@ -136,9 +133,9 @@ public class File {
                 break;
             } else if (arrayInfo[i].equalsIgnoreCase("Almacenes")) {
 
-            } else if(auxiliar.equalsIgnoreCase("Almacen")){
+            } else if (auxiliar.equalsIgnoreCase("Almacen")) {
                 ListInv l1 = new ListInv();
-                
+
                 String[] arrayInvent = arrayInfo[i].split(":");
                 String oracion = arrayInvent[1];
                 //System.out.println(arrayInfo[i]);
@@ -170,7 +167,7 @@ public class File {
 
                     }
                 }
-                
+
                 g1.createStorage(l1, name);
 
             }
@@ -179,7 +176,5 @@ public class File {
         return g1;
 
     }
-    
-    
-    
+
 }

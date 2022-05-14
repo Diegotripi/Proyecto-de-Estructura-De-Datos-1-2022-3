@@ -4,6 +4,8 @@
  */
 package main;
 
+import Interface.GlobalUI;
+
 /**
  *
  * @author mdetd
@@ -11,15 +13,26 @@ package main;
 public class Application {
 
     /**
+     * Main app method
+     *
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-         
+        initializeApp();
+        GlobalUI.openMainPage();
+
+    }
+
+    /**
+     * Starts the data flow for the proyect
+     */
+    public static void initializeApp() {
+
         int v = 0;
-        String direccion = "src\\Direccion Archivo\\Almacenes.txt"; //Se debe colocar mientras la direccion a mano
+        String direccion = "src\\Direccion Archivo\\Almacenes.txt";
         File a = new File();
         String arInfo = a.readFile(direccion);
-        
+
         v = a.numVertices(arInfo);
         AdjMatrixGraph am = new AdjMatrixGraph(v);
 
@@ -47,7 +60,4 @@ public class Application {
         g1.getInventory(5);
     }
 
-   
-
-    
 }
