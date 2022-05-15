@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Interface;
+import main.Graph;
 
 /**
  *
@@ -13,6 +14,7 @@ public class GlobalUI {
 
     private static final MainPage mainPage = new MainPage();
     private static final NewStoragePage newStoragePage = new NewStoragePage();
+    private static Graph graph = new Graph();
 
     /**
      *
@@ -42,4 +44,14 @@ public class GlobalUI {
         // so we can recycle this method for every page
         GlobalUI.newStoragePage.setVisible(false);
     }
+
+    public static Graph getGraph() {
+        return graph;
+    }
+
+    public static void setGraph(Graph grap) {
+        GlobalUI.graph = grap;
+    }
+    
+    
 }

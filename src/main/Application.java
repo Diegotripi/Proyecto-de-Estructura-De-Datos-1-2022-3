@@ -5,6 +5,7 @@
 package main;
 
 import Interface.GlobalUI;
+import java.util.Arrays;
 
 /**
  *
@@ -19,6 +20,10 @@ public class Application {
      */
     public static void main(String[] args) {
         initializeApp();
+        for (int i = 0; i < GlobalUI.getGraph().getCounter(); i++) {
+            System.out.println(GlobalUI.getGraph().namenOnAString()[i]);
+            
+        }
         GlobalUI.openMainPage();
 
     }
@@ -41,6 +46,7 @@ public class Application {
         Puede hacerse mas eficiente
          */
         Graph g1 = a.getInfo(arInfo, am);
+        GlobalUI.setGraph(g1);
 
 //      Probar como se imprime la matriz
         g1.getMatrix().printGraph();
