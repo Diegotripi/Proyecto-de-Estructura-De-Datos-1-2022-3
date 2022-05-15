@@ -24,6 +24,14 @@ public class Graph {
     }
     
     /**
+     * Constructor whiout param
+     */
+    
+    public Graph() {
+        
+    }
+    
+    /**
      * Getter Method
      * @return matrix
      */
@@ -124,5 +132,33 @@ public class Graph {
 
         return num;
     }
+    
+    /**
+     * 
+     * @return counter
+     */
+
+    public int getCounter() {
+        return counter;
+    }
+    
+    
+    /**
+     * 
+     * @return chain 
+     */
+    public String[] namenOnAString(){
+        String[] chain;
+        chain = new String[counter];
+        for (int i = 0; i < counter; i++) {
+            chain[i] = storage.getIndex(i).getStorage().getName();
+            
+        }
+        
+        return chain;
+        
+    }
+    
+    
 
 }
