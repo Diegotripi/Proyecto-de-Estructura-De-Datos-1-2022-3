@@ -103,7 +103,7 @@ public class Graph {
     }
     
     /**
-     * Create a new Storage 
+     * Create a new Product 
      * @param name
      * @param quantity
      * @return Product
@@ -115,7 +115,7 @@ public class Graph {
     }
     
     /**
-     * Create a new Storage 
+     * Gets storage Number
      * @param letter
      * @return storageNumber
      */

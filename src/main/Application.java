@@ -5,7 +5,6 @@
 package main;
 
 import Interface.GlobalUI;
-import java.util.Arrays;
 
 /**
  *
@@ -34,22 +33,23 @@ public class Application {
     public static void initializeApp() {
 
         int v = 0;
+        // remember at the end to change the file to their original values 
         String direccion = "src\\Direccion Archivo\\Almacenes.txt";
-        File a = new File();
-        String arInfo = a.readFile(direccion);
+        File dataFile = new File();
+        String arInfo = dataFile.readFile(direccion);
 
-        v = a.numVertices(arInfo);
+        v = dataFile.numVertices(arInfo);
         AdjMatrixGraph am = new AdjMatrixGraph(v);
 
         /*
         La funcion extraer se configuro tal que si son mas o menos almacenes esta lo detecte
         Puede hacerse mas eficiente
          */
-        Graph g1 = a.getInfo(arInfo, am);
+        Graph g1 = dataFile.getInfo(arInfo, am);
         GlobalUI.setGraph(g1);
 
 //      Probar como se imprime la matriz
-        g1.getMatrix().printGraph();
+        g1.getMatrix().printMatrix();
 
 //        Probar la impresion de los almacenes y sus inventarios
         g1.nameStorage(0);

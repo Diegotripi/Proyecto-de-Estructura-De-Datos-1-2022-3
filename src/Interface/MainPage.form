@@ -123,6 +123,9 @@
         <Component class="javax.swing.JButton" name="saveDataButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar Datos"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveDataButtonActionPerformed"/>
@@ -136,6 +139,9 @@
         <Component class="javax.swing.JButton" name="newStorageButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Crear Nuevo Almac&#xe9;n"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newStorageButtonActionPerformed"/>
@@ -149,7 +155,13 @@
         <Component class="javax.swing.JButton" name="invReportButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Reporte de inventario"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="invReportButtonActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="530" y="260" width="200" height="120"/>
@@ -159,6 +171,9 @@
         <Component class="javax.swing.JButton" name="invManagementButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Gesti&#xf3;n de Inventario"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="invManagementButtonActionPerformed"/>
@@ -172,6 +187,9 @@
         <Component class="javax.swing.JButton" name="newOrderButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nuevo Pedido"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newOrderButtonActionPerformed"/>
@@ -185,6 +203,9 @@
         <Component class="javax.swing.JButton" name="storageMapButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Mapa de Almacenes"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -195,6 +216,9 @@
         <Component class="javax.swing.JButton" name="uploadDataButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cargar Datos"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="uploadDataButtonActionPerformed"/>

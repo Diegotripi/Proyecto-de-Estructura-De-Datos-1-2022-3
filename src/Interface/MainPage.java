@@ -88,6 +88,7 @@ public class MainPage extends javax.swing.JFrame {
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 70));
 
         saveDataButton.setText("Guardar Datos");
+        saveDataButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         saveDataButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveDataButtonActionPerformed(evt);
@@ -96,6 +97,7 @@ public class MainPage extends javax.swing.JFrame {
         jPanel3.add(saveDataButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 200, 120));
 
         newStorageButton.setText("Crear Nuevo Almacén");
+        newStorageButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         newStorageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newStorageButtonActionPerformed(evt);
@@ -104,9 +106,16 @@ public class MainPage extends javax.swing.JFrame {
         jPanel3.add(newStorageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 190, 120));
 
         invReportButton.setText("Reporte de inventario");
+        invReportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        invReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                invReportButtonActionPerformed(evt);
+            }
+        });
         jPanel3.add(invReportButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, 200, 120));
 
         invManagementButton.setText("Gestión de Inventario");
+        invManagementButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         invManagementButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 invManagementButtonActionPerformed(evt);
@@ -115,6 +124,7 @@ public class MainPage extends javax.swing.JFrame {
         jPanel3.add(invManagementButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 190, 120));
 
         newOrderButton.setText("Nuevo Pedido");
+        newOrderButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         newOrderButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newOrderButtonActionPerformed(evt);
@@ -123,9 +133,11 @@ public class MainPage extends javax.swing.JFrame {
         jPanel3.add(newOrderButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 200, 120));
 
         storageMapButton.setText("Mapa de Almacenes");
+        storageMapButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel3.add(storageMapButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 420, 200, 120));
 
         uploadDataButton.setText("Cargar Datos");
+        uploadDataButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         uploadDataButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 uploadDataButtonActionPerformed(evt);
@@ -167,6 +179,11 @@ public class MainPage extends javax.swing.JFrame {
     private void uploadDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadDataButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_uploadDataButtonActionPerformed
+
+    private void invReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invReportButtonActionPerformed
+        // TODO add your handling code here:
+        GlobalUI.openShowInvPage();
+    }//GEN-LAST:event_invReportButtonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -73,7 +73,7 @@ public class AdjMatrixGraph {
      * Print graph
      */
     
-    public void printGraph(){
+    public void printMatrix(){
         for (int i = 0; i < numVertices; i++) {
             for (int j = 0; j < numVertices; j++) {
                 System.out.print(matrix[i][j]+" ");

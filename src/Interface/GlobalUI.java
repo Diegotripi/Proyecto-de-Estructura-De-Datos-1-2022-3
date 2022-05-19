@@ -14,6 +14,7 @@ public class GlobalUI {
 
     private static final MainPage mainPage = new MainPage();
     private static final NewStoragePage newStoragePage = new NewStoragePage();
+    private static final ShowInvPage showInvPage = new ShowInvPage();
     private static Graph graph = new Graph();
 
     /**
@@ -32,6 +33,14 @@ public class GlobalUI {
         GlobalUI.newStoragePage.setVisible(true);
         GlobalUI.mainPage.setVisible(false);
     }
+    /**
+     *
+     * opens showInvPage not closing the main one
+     */
+    public static void openShowInvPage(){
+        GlobalUI.showInvPage.setVisible(true);
+        InterfaceFunctions.initShowInvPage();
+    }
 
     /**
      *
@@ -43,7 +52,14 @@ public class GlobalUI {
         // in here we will be adding every page to setVisible(false)
         // so we can recycle this method for every page
         GlobalUI.newStoragePage.setVisible(false);
+        GlobalUI.showInvPage.setVisible(false);
     }
+
+    public static MainPage getMainPage() {
+        return mainPage;
+    }
+    
+    
 
     public static Graph getGraph() {
         return graph;
