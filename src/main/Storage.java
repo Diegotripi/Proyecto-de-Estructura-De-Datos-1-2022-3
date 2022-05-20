@@ -61,5 +61,10 @@ public class Storage {
     public void setName(String name) {
         this.name = name;
     }
+    
+    public void printInv(){
+        System.out.println("Almacén: "+getName());
+        getInventory().printInventory();
+    }
 
 }

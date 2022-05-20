@@ -201,7 +201,7 @@ public class ListInv {
      * delete a index in the list
      * @param pos 
      */
-    public void eliminarIndice(int pos) {
+    public void deleteInIndex(int pos) {
         int cont = 0;
         if (lenght == 1) {
             deleteHead();
@@ -259,6 +259,28 @@ public class ListInv {
                 aux = aux.getNext();
             }
         }
+    }
+        /**
+     * Returns the element in the specified index
+     *
+     * @author isaac
+     * @param pos (int)
+     * @return Product 
+     */
+        public Product getElementInIndex(int pos) {
+        if (!isEmpty()) {
+            NodeInv pointer = getHead();
+            for (int i = 0; i < pos; i++) {
+                if (pointer.getNext() == null) {
+                    break;
+                }
+                pointer = pointer.getNext();
+            }
+            return pointer.getProduct();
+        } else {
+            return null;
+        }
+
     }
 
 }

@@ -19,10 +19,10 @@ public class Application {
      */
     public static void main(String[] args) {
         initializeApp();
-        for (int i = 0; i < GlobalUI.getGraph().getCounter(); i++) {
-            System.out.println(GlobalUI.getGraph().namenOnAString()[i]);
-            
-        }
+//        for (int i = 0; i < GlobalUI.getGraph().getCounter(); i++) {
+//            System.out.println(GlobalUI.getGraph().namenOnAString()[i]);
+//            
+//        }
         GlobalUI.openMainPage();
 
     }
@@ -49,21 +49,21 @@ public class Application {
         GlobalUI.setGraph(g1);
 
 //      Probar como se imprime la matriz
-        g1.getMatrix().printMatrix();
+//        g1.getAdjMatrix().printMatrix();
 
 //        Probar la impresion de los almacenes y sus inventarios
-        g1.nameStorage(0);
-        g1.getInventory(0);
-        g1.nameStorage(1);
-        g1.getInventory(1);
-        g1.nameStorage(2);
-        g1.getInventory(2);
-        g1.nameStorage(3);
-        g1.getInventory(3);
-        g1.nameStorage(4);
-        g1.getInventory(4);
-        g1.nameStorage(5);
-        g1.getInventory(5);
+//        g1.printStorageName(0);
+//        g1.printInventory(0);
+//        g1.printStorageName(1);
+//        g1.printInventory(1);
+//        g1.printStorageName(2);
+//        g1.printInventory(2);
+//        g1.printStorageName(3);
+//        g1.printInventory(3);
+//        g1.printStorageName(4);
+//        g1.printInventory(4);
+//        g1.printStorageName(5);
+//        g1.printInventory(5);
     }
 
 }

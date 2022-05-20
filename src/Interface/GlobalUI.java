@@ -55,12 +55,43 @@ public class GlobalUI {
         GlobalUI.showInvPage.setVisible(false);
     }
 
+    /**
+     *
+     * Getter for MainPage
+     * @return MainPage
+     */
     public static MainPage getMainPage() {
         return mainPage;
     }
-    
-    
 
+    
+    /**
+     *
+     * Getter for NewStoragePage
+     * @return NewStoragePage
+     */
+    public static NewStoragePage getNewStoragePage() {
+        return newStoragePage;
+    }
+
+        
+    /**
+     *
+     * Getter for ShowInvPage
+     * @return ShowInvPage
+     */
+    public static ShowInvPage getShowInvPage() {
+        return showInvPage;
+    }
+    
+    
+    
+    
+    /**
+     *
+     * Getter for Graph
+     * @return Graph
+     */
     public static Graph getGraph() {
         return graph;
     }

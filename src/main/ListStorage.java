@@ -46,7 +46,7 @@ public class ListStorage {
      *
      * @return lenght
      */
-    public int getLenght() {
+    public int getLength() {
         return lenght;
     }
 
@@ -206,7 +206,7 @@ public class ListStorage {
      *
      * @param pos
      */
-    public void eliminarIndice(int pos) {
+    public void deleteIndex(int pos) {
         int cont = 0;
         if (lenght == 1) {
             deleteHead();
@@ -225,12 +225,25 @@ public class ListStorage {
 
     }
 
-    public NodeStorage getIndex(int ind) {
+    public NodeStorage getStorageNodeByIndex(int ind) {
         NodeStorage aux = getHead();
         for (int i = 0; i < ind; i++) {
             aux = aux.getNext();
         }
         return aux;
+    }
+    
+        public void printStorageList() {
+        if (!isEmpty()) {
+            NodeStorage pointer = getHead();
+            while (pointer != null) {
+                System.out.println(pointer.getStorage().getName());
+                pointer = pointer.getNext();
+            }
+        } else {
+            System.out.println("Sin elementos");
+        }
+
     }
 
 }
