@@ -5,7 +5,7 @@
  */
 package Interface;
 
-import javax.swing.JOptionPane;
+
 import main.Graph;
 
 /**
@@ -180,14 +180,15 @@ public class NewStoragePage extends javax.swing.JFrame {
         InterfaceFunctions.createStorageButton( transmitter,  receiver,  receiverCost,  transmitterCost, nameArray,  name );
         GlobalUI.getGraph().getAdjMatrix().addEdge(GlobalUI.getGraph().getStorageNumberWithName(transmitter), GlobalUI.getGraph().getCounter()-1, Integer.parseInt(transmitterCost));
         GlobalUI.getGraph().getAdjMatrix().addEdge(GlobalUI.getGraph().getCounter()-1,GlobalUI.getGraph().getStorageNumberWithName(receiver), Integer.parseInt(receiverCost));
-        System.out.println("\n");
-        GlobalUI.getGraph().getAdjMatrix().printMatrix();
+        //Print matrix
+//        System.out.println("\n");
+//        GlobalUI.getGraph().getAdjMatrix().printMatrix();
 
 
         nameField.setText("");
         transmitterCostField.setText("");
         receiverCostField.setText("");
-        //Se debe de optimizar codigo y terminar con la matriz de adyacencia
+        
         
         
         

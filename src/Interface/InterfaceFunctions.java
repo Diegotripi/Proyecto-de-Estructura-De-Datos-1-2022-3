@@ -166,7 +166,7 @@ public class InterfaceFunctions {
         }
         
         GlobalUI.getGraph().setMatrix(newMatrix);
-        GlobalUI.getGraph().getAdjMatrix().printMatrix();
+        
         
 
     }
