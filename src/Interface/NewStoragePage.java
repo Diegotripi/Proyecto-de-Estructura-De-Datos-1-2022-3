@@ -178,8 +178,7 @@ public class NewStoragePage extends javax.swing.JFrame {
         String[] nameArray = name.split(" ");
         
         InterfaceFunctions.createStorageButton( transmitter,  receiver,  receiverCost,  transmitterCost, nameArray,  name );
-        GlobalUI.getGraph().getAdjMatrix().addEdge(GlobalUI.getGraph().getStorageNumberWithName(transmitter), GlobalUI.getGraph().getCounter()-1, Integer.parseInt(transmitterCost));
-        GlobalUI.getGraph().getAdjMatrix().addEdge(GlobalUI.getGraph().getCounter()-1,GlobalUI.getGraph().getStorageNumberWithName(receiver), Integer.parseInt(receiverCost));
+        
         //Print matrix
 //        System.out.println("\n");
 //        GlobalUI.getGraph().getAdjMatrix().printMatrix();

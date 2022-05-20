@@ -143,34 +143,33 @@ public class InterfaceFunctions {
                         JOptionPane.showMessageDialog(null, "Ya existe el almacén");
                     } else {
                         GlobalUI.getGraph().insertNewStorage(name);
+                        createNewMatrixWithAnother(GlobalUI.getGraph().getAdjMatrix(), GlobalUI.getGraph().getCounter());
+                        GlobalUI.getGraph().getAdjMatrix().addEdge(GlobalUI.getGraph().getStorageNumberWithName(transmitter), GlobalUI.getGraph().getCounter() - 1, Integer.parseInt(transmitterCost));
+                        GlobalUI.getGraph().getAdjMatrix().addEdge(GlobalUI.getGraph().getCounter() - 1, GlobalUI.getGraph().getStorageNumberWithName(receiver), Integer.parseInt(receiverCost));
+                        //GlobalUI.getGraph().getAdjMatrix().printMatrix();
                         JOptionPane.showMessageDialog(null, "Almacén creado con éxito");
                     }
                 }
             }
         }
-        
-        createNewMatrixWithAnother(GlobalUI.getGraph().getAdjMatrix(), GlobalUI.getGraph().getCounter());
+
     }
-    
+
     /**
      * Create a new matrix and copy the previos data from another one
+     *
      * @param am
-     * @param v 
+     * @param v
      */
-
     public static void createNewMatrixWithAnother(AdjMatrixGraph am, int v) {
         AdjMatrixGraph newMatrix = new AdjMatrixGraph(v);
         for (int j = 0; j < am.getNumVertices(); j++) {
             System.arraycopy(am.getMatrix()[j], 0, newMatrix.getMatrix()[j], 0, am.getNumVertices());
 
         }
-        
+
         GlobalUI.getGraph().setMatrix(newMatrix);
-        
-        
 
     }
 
 }
-
-
