@@ -5,8 +5,8 @@
  */
 package Interface;
 
-import javax.swing.DefaultListModel;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
+import main.Graph;
 
 /**
  *
@@ -14,19 +14,35 @@ import javax.swing.table.DefaultTableModel;
  */
 public class NewStoragePage extends javax.swing.JFrame {
 
-    DefaultTableModel model;
-    DefaultListModel modelo = new DefaultListModel();
-    
+    public static Graph g1 = new Graph();
+
     public NewStoragePage() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        model = new DefaultTableModel();
-        this.jTable1.setModel(model);
-        
-       
-        
-        
+
+    }
+
+    public void fillTransmitterCombo(Graph g1) {
+        transmitterComboBox.removeAllItems();
+        String[] storage = g1.namenOnAString();
+        for (int i = 0; i < storage.length; i++) {
+            transmitterComboBox.addItem(storage[i]);
+        }
+    }
+
+    public void fillReceiverCombo(Graph g1) {
+        receiverComboBox.removeAllItems();
+        String[] storage = g1.namenOnAString();
+        for (int i = 0; i < storage.length; i++) {
+            receiverComboBox.addItem(storage[i]);
+        }
+    }
+
+    public void createGprah(Graph graph) {
+        g1 = graph;
+        fillReceiverCombo(g1);
+        fillTransmitterCombo(g1);
     }
 
     /**
@@ -38,125 +54,152 @@ public class NewStoragePage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        backToMainButton = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        logoLabel = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        Background = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        receiverCostLabel = new javax.swing.JLabel();
+        writeNameLabel = new javax.swing.JLabel();
+        chooseTransmitterLabel = new javax.swing.JLabel();
+        transmitterCostLabel = new javax.swing.JLabel();
+        chooseReceiverLabel = new javax.swing.JLabel();
+        nameField = new javax.swing.JTextField();
+        transmitterComboBox = new javax.swing.JComboBox<>();
+        receiverCostField = new javax.swing.JTextField();
+        receiverComboBox = new javax.swing.JComboBox<>();
+        transmitterCostField = new javax.swing.JTextField();
+        createStorageButton = new javax.swing.JToggleButton();
+        BackToTheMenuButton = new javax.swing.JToggleButton();
+        blueBackground = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton2.setText("Crear almacen");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 550, 130, 40));
-
-        jButton1.setText("Actualizar tabla");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 550, 130, 40));
-
-        backToMainButton.setText("Regresar al menú");
-        backToMainButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backToMainButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(backToMainButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 550, 130, 40));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("Indique las rutas del almacen. ");
-        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 240, 30));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setText("Ingrese nombre del almacen:");
-        jLabel5.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 240, 30));
-
-        jFormattedTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 160, -1));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 410, 350));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Assets/Amazon-Logo-Transparent-PNG (1).png"))); // NOI18N
-        logoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        logoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                logoLabelMouseClicked(evt);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Assets/Amazon-Logo-Transparent-PNG (1).png"))); // NOI18N
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 50, -1));
+
+        jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Crear nuevo almacen:");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 280, 40));
+
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 70));
+
+        receiverCostLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        receiverCostLabel.setForeground(new java.awt.Color(255, 255, 255));
+        receiverCostLabel.setText("Indique distancia en Km:");
+        jPanel2.add(receiverCostLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, -1));
+
+        writeNameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        writeNameLabel.setForeground(new java.awt.Color(255, 255, 255));
+        writeNameLabel.setText("Ingrese nombre del almacen:");
+        jPanel2.add(writeNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
+
+        chooseTransmitterLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        chooseTransmitterLabel.setForeground(new java.awt.Color(255, 255, 255));
+        chooseTransmitterLabel.setText("Seleccione almacen emisor:");
+        jPanel2.add(chooseTransmitterLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
+
+        transmitterCostLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        transmitterCostLabel.setForeground(new java.awt.Color(255, 255, 255));
+        transmitterCostLabel.setText("Indique distancia en Km:");
+        jPanel2.add(transmitterCostLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
+
+        chooseReceiverLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        chooseReceiverLabel.setForeground(new java.awt.Color(255, 255, 255));
+        chooseReceiverLabel.setText("Seleccione almacen receptor:");
+        jPanel2.add(chooseReceiverLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, -1));
+
+        nameField.setBackground(new java.awt.Color(255, 255, 255));
+        nameField.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 160, -1));
+
+        transmitterComboBox.setBackground(new java.awt.Color(255, 255, 255));
+        transmitterComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(transmitterComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 160, -1));
+
+        receiverCostField.setBackground(new java.awt.Color(255, 255, 255));
+        receiverCostField.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(receiverCostField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 160, -1));
+
+        receiverComboBox.setBackground(new java.awt.Color(255, 255, 255));
+        receiverComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(receiverComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 160, -1));
+
+        transmitterCostField.setBackground(new java.awt.Color(255, 255, 255));
+        transmitterCostField.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(transmitterCostField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, 160, -1));
+
+        createStorageButton.setBackground(new java.awt.Color(255, 255, 255));
+        createStorageButton.setForeground(new java.awt.Color(0, 0, 0));
+        createStorageButton.setText("Crear almacen");
+        createStorageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createStorageButtonActionPerformed(evt);
             }
         });
-        jPanel4.add(logoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, -1, -1));
+        jPanel2.add(createStorageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 160, 50));
 
-        jLabel4.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Crear nuevo almacen:");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 10, 280, 40));
+        BackToTheMenuButton.setBackground(new java.awt.Color(255, 255, 255));
+        BackToTheMenuButton.setForeground(new java.awt.Color(0, 0, 0));
+        BackToTheMenuButton.setText("Regresar al menu");
+        BackToTheMenuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackToTheMenuButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(BackToTheMenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 160, 50));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 70));
+        blueBackground.setBackground(new java.awt.Color(21, 110, 180));
+        blueBackground.setForeground(new java.awt.Color(8, 43, 71));
+        jPanel2.add(blueBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 250, 190));
 
-        Background.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Assets/output-onlinepngtools.png"))); // NOI18N
-        Background.setText("jLabel4");
-        Background.setFocusable(false);
-        jPanel1.add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 960, 540));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Assets/output-onlinepngtools.png"))); // NOI18N
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 550, 290));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 610));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 360));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    /**
-     * Gets back to main Page on press
-     */
-    private void backToMainButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMainButtonActionPerformed
+
+    private void createStorageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createStorageButtonActionPerformed
+        
+        String name = nameField.getText();
+        String transmitter = transmitterComboBox.getSelectedItem().toString();
+        String transmitterCost = transmitterCostField.getText();
+        String receiver = receiverComboBox.getSelectedItem().toString();
+        String receiverCost = receiverCostField.getText();
+        String[] nameArray = name.split(" ");
+        
+        InterfaceFunctions.createStorageButton( transmitter,  receiver,  receiverCost,  transmitterCost, nameArray,  name );
+        GlobalUI.getGraph().getAdjMatrix().addEdge(GlobalUI.getGraph().getStorageNumberWithName(transmitter), GlobalUI.getGraph().getCounter()-1, Integer.parseInt(transmitterCost));
+        GlobalUI.getGraph().getAdjMatrix().addEdge(GlobalUI.getGraph().getCounter()-1,GlobalUI.getGraph().getStorageNumberWithName(receiver), Integer.parseInt(receiverCost));
+        System.out.println("\n");
+        GlobalUI.getGraph().getAdjMatrix().printMatrix();
+
+
+        nameField.setText("");
+        transmitterCostField.setText("");
+        receiverCostField.setText("");
+        //Se debe de optimizar codigo y terminar con la matriz de adyacencia
+        
+        
+        
+
+        fillReceiverCombo(GlobalUI.getGraph());
+        fillTransmitterCombo(GlobalUI.getGraph());
+
+    }//GEN-LAST:event_createStorageButtonActionPerformed
+
+    private void BackToTheMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToTheMenuButtonActionPerformed
         GlobalUI.getBakToMainPage();
-    }//GEN-LAST:event_backToMainButtonActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String[] chain;
-        chain = GlobalUI.getGraph().namenOnAString();
-        model.addColumn("Almacen", chain);
-        model.addColumn("Distancia en Km");
-        model.addColumn("Emisor o Receptor (E/R)");
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void logoLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoLabelMouseClicked
-       GlobalUI.getBakToMainPage();
-    }//GEN-LAST:event_logoLabelMouseClicked
+    }//GEN-LAST:event_BackToTheMenuButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,18 +238,23 @@ public class NewStoragePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Background;
-    private javax.swing.JButton backToMainButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JToggleButton BackToTheMenuButton;
+    private javax.swing.JPanel blueBackground;
+    private javax.swing.JLabel chooseReceiverLabel;
+    private javax.swing.JLabel chooseTransmitterLabel;
+    private javax.swing.JToggleButton createStorageButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel logoLabel;
+    private javax.swing.JTextField nameField;
+    private javax.swing.JComboBox<String> receiverComboBox;
+    private javax.swing.JTextField receiverCostField;
+    private javax.swing.JLabel receiverCostLabel;
+    private javax.swing.JComboBox<String> transmitterComboBox;
+    private javax.swing.JTextField transmitterCostField;
+    private javax.swing.JLabel transmitterCostLabel;
+    private javax.swing.JLabel writeNameLabel;
     // End of variables declaration//GEN-END:variables
 }

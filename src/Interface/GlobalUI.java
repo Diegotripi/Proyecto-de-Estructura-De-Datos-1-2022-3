@@ -32,6 +32,7 @@ public class GlobalUI {
     public static void openNewStoragePage() {
         GlobalUI.newStoragePage.setVisible(true);
         GlobalUI.mainPage.setVisible(false);
+        GlobalUI.newStoragePage.createGprah(graph);
     }
     /**
      *
