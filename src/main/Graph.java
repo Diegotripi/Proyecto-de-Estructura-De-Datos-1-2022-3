@@ -132,6 +132,19 @@ public class Graph {
 
         return num;
     }
+    
+    public int getStorageNumberWithName(String name){
+        int num = 0;
+        for (int i = 0; i < storageList.getLength(); i++) {
+            String storageName = storageList.getStorageNodeByIndex(i).getStorage().getName();
+            if (storageName.equalsIgnoreCase(name)) {
+                num = i;
+                break;
+            }
+            
+        }
+        return num;
+    }
 
     /**
      *
@@ -296,5 +309,16 @@ public class Graph {
 //        }
         return traveledNodes;
 
+    }
+    
+    /**
+     * Create a new storage whiout an invent
+     * @param name 
+     */
+    public void insertNewStorage(String name){
+        Storage storag = new Storage(name);
+        this.storageList.addEnd(storag);
+        counter++;
+        
     }
 }

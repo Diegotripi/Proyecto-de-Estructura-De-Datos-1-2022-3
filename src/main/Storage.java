@@ -23,6 +23,16 @@ public class Storage {
         this.inventory = inventory;
         this.name = name;
     }
+    
+    /**
+     * Constructor Method
+
+     * @param name
+     */
+    public Storage( String name) {
+        
+        this.name = name;
+    }
 
     /**
      * Getter Method
