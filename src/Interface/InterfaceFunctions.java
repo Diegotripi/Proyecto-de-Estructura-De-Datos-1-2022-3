@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import main.AdjMatrixGraph;
 import main.Graph;
 import main.ListInv;
+import main.ListStorage;
 import main.ObjectList;
 import main.ObjectNode;
 import main.Product;
@@ -21,7 +22,7 @@ import main.Storage;
 public class InterfaceFunctions {
 
     /**
-     * initializates the data needed for ShowInvPage
+     * initializes the data needed for ShowInvPage
      *
      */
     public static void initShowInvPage() {
@@ -34,6 +35,114 @@ public class InterfaceFunctions {
         GlobalUI.getShowInvPage().getTextFieldDFS().setText(buildStringTotalInv(storagesDFS));
         GlobalUI.getShowInvPage().getTextFieldBFS().setText(buildStringTotalInv(storagesBFS));
 
+    }
+
+    /**
+     * initializes the data needed for NewOrderPage
+     */
+    public static void initNewOrderPage() {
+        Graph graph = GlobalUI.getGraph();
+        ObjectList storagesObject = graph.getStoragesByDFS();
+        ListStorage storages = graph.getStorageList();
+        String[] storagesName = graph.namenOnAString();
+        GlobalUI.getNewOrderPage().getInvTextField().setText(buildStringTotalInv(storagesObject));
+
+        for (String item : storagesName) {
+
+            if (storages.getStorageByName(item).getInventory() != null) {
+                GlobalUI.getNewOrderPage().getStorageComboBox().removeItem(item);
+                GlobalUI.getNewOrderPage().getStorageComboBox().addItem(item);
+            }
+
+        }
+    }
+
+    /**
+     * in NewOrderPage, updates the storages products in productComboBox
+     *
+     * @param storageName
+     */
+    public static void setAvailableProducts(String storageName) {
+        GlobalUI.getNewOrderPage().getProductComboBox().removeAllItems();
+
+        Graph graph = GlobalUI.getGraph();
+        Storage selectedStorage = graph.getStorageList().getStorageByName(storageName);
+        String[] productsNames = selectedStorage.getInventory().getInvStringArray();
+
+        for (String item : productsNames) {
+            GlobalUI.getNewOrderPage().getProductComboBox().addItem(item);
+        }
+
+    }
+
+    /**
+     * in NewOrderPage, updates the order texfield when the users adds a product
+     * and its qty productComboBox
+     *
+     * @param currentOrder
+     */
+    public static void updateOrderDisplay(String currentOrder) {
+        String qtyString = GlobalUI.getNewOrderPage().getProductQtyTextField().getText();
+        if (isANumber(qtyString)) {
+            String product = GlobalUI.getNewOrderPage().getProductComboBox().getSelectedItem().toString();
+            currentOrder += product + ": " + qtyString + "\n";
+            GlobalUI.getNewOrderPage().getOrderTextArea().setText(currentOrder);
+        } else {
+            JOptionPane.showMessageDialog(null, "Número de cantidad inválido, por favor intente de nuevo");
+        }
+    }
+
+    /**
+     * in NewOrderPage, resets every component used to build the newOrder
+     *
+     */
+    public static void resetOrder() {
+        GlobalUI.getNewOrderPage().getStorageComboBox().setEnabled(true);
+        setAvailableProducts(GlobalUI.getNewOrderPage().getStorageComboBox().getSelectedItem().toString());
+        GlobalUI.getNewOrderPage().getOrderTextArea().setText("");
+    }
+
+    /**
+     * in NewOrderPage, Completes the order if the stock is available, if not,
+     * starts searching products in other storages to build the newOrder
+     *
+     * @param order
+     */
+    public static void completeOrder(String order) {
+        Graph graph = GlobalUI.getGraph();
+        ListStorage storages = graph.getStorageList();
+        Storage selectedStorage = storages.getStorageByName(GlobalUI.getNewOrderPage().getStorageComboBox().getSelectedItem().toString());
+        String[] orderSplit = order.split("\n");
+
+        boolean isStockAvailable = true;
+
+        for (String productString : orderSplit) {
+            String[] productAux = productString.split(":");
+            String productName = productAux[0];
+            int productQty = Integer.parseInt(productAux[1].replace(" ", ""));
+            if (selectedStorage.getInventory().getProductByName(productName).getQuantity() < productQty) {
+                isStockAvailable = false;
+            }
+
+        }
+
+        if (isStockAvailable) {
+            for (String productString : orderSplit) {
+                String[] productAux = productString.split(":");
+                String productName = productAux[0];
+                int productQty = Integer.parseInt(productAux[1].replace(" ", ""));
+                int originalQty = selectedStorage.getInventory().getProductByName(productName).getQuantity();
+                selectedStorage.getInventory().getProductByName(productName).setQuantity(originalQty-productQty);
+
+            }
+            
+            JOptionPane.showMessageDialog(null, "Pedido agregado con éxito");
+            initNewOrderPage();
+            resetOrder();
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Trigger para pedir a otro almacén");
+        }
     }
 
     /**
@@ -53,10 +162,15 @@ public class InterfaceFunctions {
             msg += currentStorage.getName() + ":\n";
             ListInv currentInv = currentStorage.getInventory();
 
-            for (int i = 0; i < currentInv.getLenght(); i++) {
-                Product currentProduct = currentInv.getElementInIndex(i);
-                msg += currentProduct.getName() + ": " + currentProduct.getQuantity() + "\n";
+            if (currentInv != null) {
+                for (int i = 0; i < currentInv.getLength(); i++) {
+                    Product currentProduct = currentInv.getElementInIndex(i);
+                    msg += currentProduct.getName() + ": " + currentProduct.getQuantity() + "\n";
+                }
+            } else {
+                msg += "Sin inventario\n";
             }
+
             msg += "\n";
 
             pointer = pointer.getNext();
@@ -156,7 +270,7 @@ public class InterfaceFunctions {
     }
 
     /**
-     * Create a new matrix and copy the previos data from another one
+     * Create a new matrix and copy the previous data from another one
      *
      * @param am
      * @param v

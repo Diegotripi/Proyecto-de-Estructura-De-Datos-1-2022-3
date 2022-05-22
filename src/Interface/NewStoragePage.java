@@ -122,6 +122,11 @@ public class NewStoragePage extends javax.swing.JFrame {
 
         transmitterComboBox.setBackground(new java.awt.Color(255, 255, 255));
         transmitterComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        transmitterComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transmitterComboBoxActionPerformed(evt);
+            }
+        });
         jPanel2.add(transmitterComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 160, -1));
 
         receiverCostField.setBackground(new java.awt.Color(255, 255, 255));
@@ -198,8 +203,12 @@ public class NewStoragePage extends javax.swing.JFrame {
     }//GEN-LAST:event_createStorageButtonActionPerformed
 
     private void BackToTheMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToTheMenuButtonActionPerformed
-        GlobalUI.getBakToMainPage();
+        GlobalUI.getBackToMainPage();
     }//GEN-LAST:event_BackToTheMenuButtonActionPerformed
+
+    private void transmitterComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transmitterComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_transmitterComboBoxActionPerformed
 
     /**
      * @param args the command line arguments

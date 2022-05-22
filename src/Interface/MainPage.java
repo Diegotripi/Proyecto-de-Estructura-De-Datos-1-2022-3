@@ -173,7 +173,7 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_saveDataButtonActionPerformed
 
     private void newOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newOrderButtonActionPerformed
-        // TODO add your handling code here:
+        GlobalUI.openNewOrderPage();
     }//GEN-LAST:event_newOrderButtonActionPerformed
 
     private void uploadDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadDataButtonActionPerformed

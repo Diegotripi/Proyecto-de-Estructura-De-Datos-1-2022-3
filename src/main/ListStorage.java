@@ -71,10 +71,10 @@ public class ListStorage {
     /**
      * Setter Method
      *
-     * @param lenght
+     * @param length
      */
-    public void setLenght(int lenght) {
-        this.lenght = lenght;
+    public void setLength(int length) {
+        this.lenght = length;
     }
 
     /**
@@ -232,8 +232,8 @@ public class ListStorage {
         }
         return aux;
     }
-    
-        public void printStorageList() {
+
+    public void printStorageList() {
         if (!isEmpty()) {
             NodeStorage pointer = getHead();
             while (pointer != null) {
@@ -246,4 +246,28 @@ public class ListStorage {
 
     }
 
+    /**
+     * returns the storage matching the name
+     *
+     * @param storageName
+     * @return Storage
+     */
+    public Storage getStorageByName(String storageName) {
+        NodeStorage pointer = getHead();
+        Storage wantedStorage = null;
+        
+        while(pointer != null) {
+            if (storageName.equals(pointer.getStorage().getName())) {
+                wantedStorage = pointer.getStorage();
+                break;
+            }
+            
+            pointer = pointer.getNext();
+        }
+        
+        return wantedStorage;
+
+    }
+    
+ 
 }

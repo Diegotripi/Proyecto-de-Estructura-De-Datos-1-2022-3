@@ -88,9 +88,9 @@ public class ShowInvPage extends javax.swing.JFrame {
         jPanel17 = new javax.swing.JPanel();
         logoLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jPanel18 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         textFieldBFS = new javax.swing.JTextArea();
-        jPanel18 = new javax.swing.JPanel();
         Background = new javax.swing.JLabel();
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 255));
@@ -306,7 +306,7 @@ public class ShowInvPage extends javax.swing.JFrame {
         textFieldDFS.setText("no text");
         jScrollPane4.setViewportView(textFieldDFS);
 
-        jPanel12.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 220, 260));
+        jPanel12.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 220, 280));
 
         getContentPane().add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 240, 300));
 
@@ -329,6 +329,9 @@ public class ShowInvPage extends javax.swing.JFrame {
 
         getContentPane().add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 230, 40));
 
+        jPanel18.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel18.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jScrollPane5.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         textFieldBFS.setEditable(false);
@@ -340,31 +343,29 @@ public class ShowInvPage extends javax.swing.JFrame {
         textFieldBFS.setText("no text");
         jScrollPane5.setViewportView(textFieldBFS);
 
-        getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, 220, 260));
+        jPanel18.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 220, 280));
 
-        jPanel18.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel18.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 240, 300));
 
         Background.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Assets/output-onlinepngtools.png"))); // NOI18N
         Background.setText("jLabel4");
         Background.setFocusable(false);
-        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-210, 60, 780, 540));
+        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-190, 60, 760, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoLabelMouseClicked
-        GlobalUI.getBakToMainPage();
+        GlobalUI.getBackToMainPage();
     }//GEN-LAST:event_logoLabelMouseClicked
 
     private void logoLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoLabel1MouseClicked
-        GlobalUI.getBakToMainPage();
+        GlobalUI.getBackToMainPage();
     }//GEN-LAST:event_logoLabel1MouseClicked
 
     private void backToMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMenuButtonActionPerformed
-       GlobalUI.getBakToMainPage();
+       GlobalUI.getBackToMainPage();
     }//GEN-LAST:event_backToMenuButtonActionPerformed
 
     private void logoLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoLabel2MouseClicked
