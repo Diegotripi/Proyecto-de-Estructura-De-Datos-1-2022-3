@@ -2,6 +2,8 @@ package main;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.PrintWriter;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -174,6 +176,61 @@ public class File {
         }
 
         return g1;
+
+    }
+    
+    /**
+     * Save the graph information on a .txt document
+     * @param graph
+     * @param direction 
+     */
+    
+    public void writeFile(Graph g,String direction){
+        String info = "Almacenes;";
+        NodeStorage aux = g.getStorageList().getHead();
+        String[] storage = new String[g.getCounter()];
+        for (int i = 0; i < g.getCounter(); i++) {
+            info += "\n"+aux.getStorage().getName()+":";
+            String[] arrayAux = aux.getStorage().getName().split(" ");
+            storage[i] = arrayAux[1];
+            for (int j = 0; j < aux.getStorage().getInventory().getLenght(); j++) {
+                info += "\n"+aux.getStorage().getInventory().getElementInIndex(j).getName()+","+aux.getStorage().getInventory().getElementInIndex(j).getQuantity();
+                if (j ==aux.getStorage().getInventory().getLenght()-1 ) {
+                    info += ";";
+                    
+                }
+            }
+            aux = aux.getNext();
+            
+        }
+        
+        info += "\nRutas;";
+        int[][] matrix = g.getAdjMatrix().getMatrix();
+        
+        for (int i = 0; i < storage.length; i++) {
+            for (int j = 0; j < storage.length; j++) {
+                if (matrix[i][j] !=0) {
+                    info += "\n"+storage[i]+","+storage[j]+","+matrix[i][j];
+                }
+                
+                
+            }
+            //System.out.println(storage[i]);
+        }
+       
+
+
+
+//        System.out.println(info);
+        
+        try{
+            PrintWriter pw = new PrintWriter(direction);
+            pw.print(info);
+            pw.close();
+            JOptionPane.showMessageDialog(null, "Guardado exitoso");      
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
 
     }
 

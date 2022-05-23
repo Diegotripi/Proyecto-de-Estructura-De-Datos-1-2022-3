@@ -16,6 +16,7 @@ public class GlobalUI {
     private static final NewStoragePage newStoragePage = new NewStoragePage();
     private static final ShowInvPage showInvPage = new ShowInvPage();
     private static Graph graph = new Graph();
+    private static String direction;
 
     /**
      *
@@ -101,5 +102,23 @@ public class GlobalUI {
         GlobalUI.graph = grap;
     }
     
+    /**
+     * 
+     * @return file direction
+     */
+
+    public static String getDirection() {
+        return direction;
+    }
+    
+    /**
+     * 
+     * @param direction 
+     */
+
+    public static void setDirection(String direction) {
+        GlobalUI.direction = direction;
+    }
+
     
 }

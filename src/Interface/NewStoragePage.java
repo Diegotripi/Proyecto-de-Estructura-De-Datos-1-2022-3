@@ -98,12 +98,12 @@ public class NewStoragePage extends javax.swing.JFrame {
 
         writeNameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         writeNameLabel.setForeground(new java.awt.Color(255, 255, 255));
-        writeNameLabel.setText("Ingrese nombre del almacen:");
+        writeNameLabel.setText("Ingrese nombre del almacén:");
         jPanel2.add(writeNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
 
         chooseTransmitterLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         chooseTransmitterLabel.setForeground(new java.awt.Color(255, 255, 255));
-        chooseTransmitterLabel.setText("Seleccione almacen emisor:");
+        chooseTransmitterLabel.setText("Seleccione almacén emisor:");
         jPanel2.add(chooseTransmitterLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
 
         transmitterCostLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -113,7 +113,7 @@ public class NewStoragePage extends javax.swing.JFrame {
 
         chooseReceiverLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         chooseReceiverLabel.setForeground(new java.awt.Color(255, 255, 255));
-        chooseReceiverLabel.setText("Seleccione almacen receptor:");
+        chooseReceiverLabel.setText("Seleccione almacén receptor:");
         jPanel2.add(chooseReceiverLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, -1));
 
         nameField.setBackground(new java.awt.Color(255, 255, 255));
@@ -138,7 +138,7 @@ public class NewStoragePage extends javax.swing.JFrame {
 
         createStorageButton.setBackground(new java.awt.Color(255, 255, 255));
         createStorageButton.setForeground(new java.awt.Color(0, 0, 0));
-        createStorageButton.setText("Crear almacen");
+        createStorageButton.setText("Crear almacén");
         createStorageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createStorageButtonActionPerformed(evt);
@@ -148,7 +148,7 @@ public class NewStoragePage extends javax.swing.JFrame {
 
         BackToTheMenuButton.setBackground(new java.awt.Color(255, 255, 255));
         BackToTheMenuButton.setForeground(new java.awt.Color(0, 0, 0));
-        BackToTheMenuButton.setText("Regresar al menu");
+        BackToTheMenuButton.setText("Regresar al menú");
         BackToTheMenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BackToTheMenuButtonActionPerformed(evt);

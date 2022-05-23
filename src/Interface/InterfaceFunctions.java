@@ -14,6 +14,7 @@ import main.ObjectNode;
 import main.Product;
 import main.Storage;
 
+
 /**
  *
  * @author isaac
@@ -103,7 +104,7 @@ public class InterfaceFunctions {
     }
 
     /**
-     *
+     *Validate if a storage´s name already exists
      * @param name
      * @return boolean
      */
@@ -136,7 +137,7 @@ public class InterfaceFunctions {
                 JOptionPane.showMessageDialog(null, "Debe ingresar las distancias con números");
             } else {
                 if (!InterfaceFunctions.isAStorage(nameArray)) {
-                    JOptionPane.showMessageDialog(null, "El nombre del almacén debe de empezar con 'Almacén'");
+                    JOptionPane.showMessageDialog(null, "El nombre del almacén debe de empezar con 'Almacen'");
 
                 } else {
                     if (InterfaceFunctions.alreadyExistStorage(name)) {
@@ -146,6 +147,11 @@ public class InterfaceFunctions {
                         createNewMatrixWithAnother(GlobalUI.getGraph().getAdjMatrix(), GlobalUI.getGraph().getCounter());
                         GlobalUI.getGraph().getAdjMatrix().addEdge(GlobalUI.getGraph().getStorageNumberWithName(transmitter), GlobalUI.getGraph().getCounter() - 1, Integer.parseInt(transmitterCost));
                         GlobalUI.getGraph().getAdjMatrix().addEdge(GlobalUI.getGraph().getCounter() - 1, GlobalUI.getGraph().getStorageNumberWithName(receiver), Integer.parseInt(receiverCost));
+                        Product element = new Product(0, "Placa");
+                        ListInv inventory = new ListInv();
+                        inventory.addHead(element);
+                        
+                        GlobalUI.getGraph().getStorageList().getStorageNodeByIndex(GlobalUI.getGraph().getStorageList().getLength()-1).getStorage().setInventory(inventory);
                         //GlobalUI.getGraph().getAdjMatrix().printMatrix();
                         JOptionPane.showMessageDialog(null, "Almacén creado con éxito");
                     }
