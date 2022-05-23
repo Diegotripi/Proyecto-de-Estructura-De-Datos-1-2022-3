@@ -43,6 +43,7 @@ public class Application {
         AdjMatrixGraph am = new AdjMatrixGraph(v);
 
         /*
+        s
         La funcion extraer se configuro tal que si son mas o menos almacenes esta lo detecte
         Puede hacerse mas eficiente
          */
