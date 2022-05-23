@@ -137,6 +137,11 @@ public class MainPage extends javax.swing.JFrame {
 
         storageMapButton.setText("Mapa de Almacenes");
         storageMapButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        storageMapButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                storageMapButtonActionPerformed(evt);
+            }
+        });
         jPanel3.add(storageMapButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 420, 200, 120));
 
         uploadDataButton.setText("Cargar Datos");
@@ -188,7 +193,7 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_saveDataButtonActionPerformed
 
     private void newOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newOrderButtonActionPerformed
-        // TODO add your handling code here:
+        GlobalUI.openNewOrderPage();
     }//GEN-LAST:event_newOrderButtonActionPerformed
 
     private void uploadDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadDataButtonActionPerformed
@@ -199,6 +204,10 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         GlobalUI.openShowInvPage();
     }//GEN-LAST:event_invReportButtonActionPerformed
+
+    private void storageMapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_storageMapButtonActionPerformed
+        GlobalUI.showGraphMap();
+    }//GEN-LAST:event_storageMapButtonActionPerformed
 
     /**
      * @param args the command line arguments

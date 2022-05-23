@@ -25,7 +25,10 @@ public class Application {
 //        }
         GlobalUI.openMainPage();
 
+
     }
+
+
 
     /**
      * Starts the data flow for the proyect
@@ -52,7 +55,6 @@ public class Application {
 
 //      Probar como se imprime la matriz
 //        g1.getAdjMatrix().printMatrix();
-
 //        Probar la impresion de los almacenes y sus inventarios
 //        g1.printStorageName(0);
 //        g1.printInventory(0);

@@ -155,8 +155,8 @@ public class Graph {
     }
 
     /**
-     *
-     * @return chain
+     * Returns an String array with the name of all storages
+     * @return chain (String[])
      */
     public String[] namenOnAString() {
         String[] chain;
@@ -219,7 +219,7 @@ public class Graph {
             boolean validRoute = false;
 
             if (!traveledNodes.isObjectInList(currentNode.getStorage())) {
-                System.out.println(currentNode.getStorage().getName());
+//                System.out.println(currentNode.getStorage().getName());
                 traveledNodes.addEnd(currentNode.getStorage());
                 traveledIndexes.addStart(currentIndex);
             }
