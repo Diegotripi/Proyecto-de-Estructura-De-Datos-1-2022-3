@@ -80,7 +80,7 @@ public class GlobalUI {
      * Shows the graphic for the main graph 
      */
     public static void showGraphMap(){
-//       InterfaceFunctions.createGraphMap();
+       InterfaceFunctions.createGraphMap();
     }
 
     /**

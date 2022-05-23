@@ -10,15 +10,18 @@ import main.AdjMatrixGraph;
 import main.Graph;
 import main.ListInv;
 import main.ListStorage;
+import main.NodeStorage;
 import main.ObjectList;
 import main.ObjectNode;
 import main.Product;
 import main.Storage;
+import org.graphstream.graph.Edge;
 
-//import org.graphstream.graph.Node;
-//import org.graphstream.graph.implementations.MultiGraph;
-//import org.graphstream.ui.spriteManager.Sprite;
-//import org.graphstream.ui.spriteManager.SpriteManager;
+import org.graphstream.graph.Node;
+import org.graphstream.graph.implementations.MultiGraph;
+import org.graphstream.ui.spriteManager.Sprite;
+import org.graphstream.ui.spriteManager.SpriteManager;
+import org.graphstream.ui.view.Viewer;
 
 /**
  *
@@ -137,10 +140,10 @@ public class InterfaceFunctions {
                 String productName = productAux[0];
                 int productQty = Integer.parseInt(productAux[1].replace(" ", ""));
                 int originalQty = selectedStorage.getInventory().getProductByName(productName).getQuantity();
-                selectedStorage.getInventory().getProductByName(productName).setQuantity(originalQty-productQty);
+                selectedStorage.getInventory().getProductByName(productName).setQuantity(originalQty - productQty);
 
             }
-            
+
             JOptionPane.showMessageDialog(null, "Pedido agregado con éxito");
             initNewOrderPage();
             resetOrder();
@@ -290,21 +293,52 @@ public class InterfaceFunctions {
         GlobalUI.getGraph().setMatrix(newMatrix);
 
     }
+
     
-//        public static void createGraphMap() {
-//        MultiGraph graph = new MultiGraph("Tutorial 1");
-//        SpriteManager sman = new SpriteManager(graph);
-//        Sprite s = sman.addSprite("S1");
-//        s.attachToNode("A");
-//        Node n = graph.addNode("A");
-//        n.setAttribute("ui.label", "AAAAAAAAAAAAAAAA");
-//        graph.addNode("B");
-//        graph.addNode("C");
-//        graph.addEdge("AB", "A", "B");
-//        graph.addEdge("BC", "B", "C");
-//        graph.addEdge("CA", "C", "A");
-//        System.setProperty("org.graphstream.ui", "swing");
-//        graph.display();
-//    }
+    
+    /**
+     * Create a library graph and shows it to the user 
+     */
+    public static void createGraphMap() {
+        MultiGraph multiGraph = new MultiGraph("GraphMap");
+        Graph originalGraph = GlobalUI.getGraph();
+        AdjMatrixGraph adjMatrix = originalGraph.getAdjMatrix();
+        ListStorage storages = originalGraph.getStorageList();
+
+        //add all Nodes
+        NodeStorage pointer = storages.getHead();
+        while (pointer != null) {
+            Node n = multiGraph.addNode(pointer.getStorage().getName());
+            String storageName = pointer.getStorage().getName();
+            n.setAttribute("ui.label", storageName + "\n");
+
+
+            pointer = pointer.getNext();
+        }
+
+        for (int i = 0; i < adjMatrix.getMatrix().length; i++) {
+
+            for (int j = 0; j < adjMatrix.getMatrix()[i].length; j++) {
+
+                if (adjMatrix.getMatrix()[i][j] != 0) {
+                    String storage1 = storages.getStorageNodeByIndex(i).getStorage().getName();
+                    String storage2 = storages.getStorageNodeByIndex(j).getStorage().getName();
+                    String edgeName = storage1 + " " + storage2;
+                    multiGraph.addEdge(edgeName, storage1, storage2, true);
+                    Edge ed = multiGraph.getEdge(edgeName);
+                    ed.setAttribute("ui.label", adjMatrix.getMatrix()[i][j]);
+                }
+
+            }
+        }
+
+        String graphCss = "node { text-offset: 0px, -10px; size: 20px; text-size: 12; fill-color: blue, aquamarine; fill-mode: gradient-horizontal; text-alignment: above; text-color: #222; text-background-mode: plain; text-background-color: white; } edge { size: 2px; fill-color: #444; text-alignment: above; text-size: 20; arrow-size: 12; text-color: blue; text-offset: 10px, -20px;}";
+        multiGraph.setAttribute("ui.stylesheet", graphCss);
+
+        System.setProperty("org.graphstream.ui", "swing");
+
+        Viewer viewer = multiGraph.display();
+        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
+    }
 
 }
