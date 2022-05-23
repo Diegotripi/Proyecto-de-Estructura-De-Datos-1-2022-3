@@ -19,6 +19,7 @@ public class GlobalUI {
     private static final ShowInvPage showInvPage = new ShowInvPage();
     private static final NewOrderPage newOrderPage = new NewOrderPage();
     private static Graph graph = new Graph();
+    private static String direction;
 
     /**
      *
@@ -142,5 +143,17 @@ public class GlobalUI {
     public static NewOrderPage getNewOrderPage() {
         return newOrderPage;
     }
+
+    public static String getDirection() {
+        return direction;
+    }
+
+    public static void setDirection(String direction) {
+        GlobalUI.direction = direction;
+    }
+
+    
+    
+    
 
 }
