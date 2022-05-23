@@ -15,6 +15,11 @@ import main.ObjectNode;
 import main.Product;
 import main.Storage;
 
+//import org.graphstream.graph.Node;
+//import org.graphstream.graph.implementations.MultiGraph;
+//import org.graphstream.ui.spriteManager.Sprite;
+//import org.graphstream.ui.spriteManager.SpriteManager;
+
 /**
  *
  * @author isaac
@@ -285,5 +290,21 @@ public class InterfaceFunctions {
         GlobalUI.getGraph().setMatrix(newMatrix);
 
     }
+    
+//        public static void createGraphMap() {
+//        MultiGraph graph = new MultiGraph("Tutorial 1");
+//        SpriteManager sman = new SpriteManager(graph);
+//        Sprite s = sman.addSprite("S1");
+//        s.attachToNode("A");
+//        Node n = graph.addNode("A");
+//        n.setAttribute("ui.label", "AAAAAAAAAAAAAAAA");
+//        graph.addNode("B");
+//        graph.addNode("C");
+//        graph.addEdge("AB", "A", "B");
+//        graph.addEdge("BC", "B", "C");
+//        graph.addEdge("CA", "C", "A");
+//        System.setProperty("org.graphstream.ui", "swing");
+//        graph.display();
+//    }
 
 }

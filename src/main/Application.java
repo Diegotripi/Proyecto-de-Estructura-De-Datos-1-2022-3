@@ -5,7 +5,6 @@
 package main;
 
 import Interface.GlobalUI;
-import org.graphstream.graph.implementations.*;
 
 /**
  *
@@ -25,21 +24,11 @@ public class Application {
 //            
 //        }
         GlobalUI.openMainPage();
-        testGraph();
+
 
     }
 
-    public static void testGraph() {
-        SingleGraph graph = new SingleGraph("Tutorial 1");
-        graph.addNode("A");
-        graph.addNode("B");
-        graph.addNode("C");
-        graph.addEdge("AB", "A", "B");
-        graph.addEdge("BC", "B", "C");
-        graph.addEdge("CA", "C", "A");
-        System.setProperty("org.graphstream.ui", "swing");
-        graph.display();
-    }
+
 
     /**
      * Starts the data flow for the proyect

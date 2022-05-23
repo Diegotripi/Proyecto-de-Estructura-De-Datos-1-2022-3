@@ -5,6 +5,7 @@
  */
 package Interface;
 
+import main.Application;
 import main.Graph;
 
 /**
@@ -40,7 +41,7 @@ public class GlobalUI {
 
     /**
      *
-     * opens showInvPage not closing the main one
+     * opens showInvPage 
      */
     public static void openShowInvPage() {
         getShowInvPage().setVisible(true);
@@ -64,11 +65,22 @@ public class GlobalUI {
         getNewOrderPage().setVisible(false);
 
     }
-
+    /**
+     *
+     * opens NewOrderPage 
+     */
     public static void openNewOrderPage() {
         getMainPage().setVisible(false);
         InterfaceFunctions.initNewOrderPage();
         getNewOrderPage().setVisible(true);
+    }
+    
+    
+    /**
+     * Shows the graphic for the main graph 
+     */
+    public static void showGraphMap(){
+       InterfaceFunctions.createGraphMap();
     }
 
     /**
