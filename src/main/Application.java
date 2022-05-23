@@ -38,6 +38,7 @@ public class Application {
         int v = 0;
         // remember at the end to change the file to their original values 
         String direccion = "src\\Direccion Archivo\\Almacenes.txt";
+        GlobalUI.setDirection(direccion);
         File dataFile = new File();
         String arInfo = dataFile.readFile(direccion);
 

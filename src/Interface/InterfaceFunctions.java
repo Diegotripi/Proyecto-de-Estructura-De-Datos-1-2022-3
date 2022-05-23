@@ -262,6 +262,13 @@ public class InterfaceFunctions {
                         JOptionPane.showMessageDialog(null, "Ya existe el almacén");
                     } else {
                         GlobalUI.getGraph().insertNewStorage(name);
+                        Product element = new Product(0, "Placa");
+                        ListInv inventory = new ListInv();
+                        inventory.addHead(element);
+                        
+                        GlobalUI.getGraph().getStorageList().getStorageNodeByIndex(GlobalUI.getGraph().getStorageList().getLength()-1).getStorage().setInventory(inventory);
+                        //GlobalUI.getGraph().getAdjMatrix().printMatrix();
+                        JOptionPane.showMessageDialog(null, "Almacén creado con éxito");
                         createNewMatrixWithAnother(GlobalUI.getGraph().getAdjMatrix(), GlobalUI.getGraph().getCounter());
                         GlobalUI.getGraph().getAdjMatrix().addEdge(GlobalUI.getGraph().getStorageNumberWithName(transmitter), GlobalUI.getGraph().getCounter() - 1, Integer.parseInt(transmitterCost));
                         GlobalUI.getGraph().getAdjMatrix().addEdge(GlobalUI.getGraph().getCounter() - 1, GlobalUI.getGraph().getStorageNumberWithName(receiver), Integer.parseInt(receiverCost));
