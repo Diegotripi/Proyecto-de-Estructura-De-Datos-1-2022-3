@@ -5,6 +5,8 @@
 package main;
 
 import Interface.GlobalUI;
+import org.graphstream.graph.*;
+import org.graphstream.graph.implementations.*;
 
 /**
  *
@@ -24,7 +26,20 @@ public class Application {
 //            
 //        }
         GlobalUI.openMainPage();
+        testGraph();
 
+    }
+
+    public static void testGraph() {
+        SingleGraph graph = new SingleGraph("Tutorial 1");
+        graph.addNode("A");
+        graph.addNode("B");
+        graph.addNode("C");
+        graph.addEdge("AB", "A", "B");
+        graph.addEdge("BC", "B", "C");
+        graph.addEdge("CA", "C", "A");
+        System.setProperty("org.graphstream.ui", "swing");
+        graph.display();
     }
 
     /**
@@ -50,7 +65,6 @@ public class Application {
 
 //      Probar como se imprime la matriz
 //        g1.getAdjMatrix().printMatrix();
-
 //        Probar la impresion de los almacenes y sus inventarios
 //        g1.printStorageName(0);
 //        g1.printInventory(0);
