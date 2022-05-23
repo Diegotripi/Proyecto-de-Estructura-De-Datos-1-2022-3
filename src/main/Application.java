@@ -5,7 +5,6 @@
 package main;
 
 import Interface.GlobalUI;
-import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
 
 /**
