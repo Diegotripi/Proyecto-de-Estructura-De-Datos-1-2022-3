@@ -17,9 +17,15 @@ Audifonos,10;
 Rutas;
 A,B,10
 A,C,20
-A,E,1
+B,C,5
 B,D,8
 C,D,4
 C,E,13
 D,E,3
 E,A,25
+
+
+
+
+
+
