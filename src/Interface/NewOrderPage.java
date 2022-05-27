@@ -255,7 +255,7 @@ public class NewOrderPage extends javax.swing.JFrame {
                 backToMenuButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(backToMenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, -1, -1));
+        getContentPane().add(backToMenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 480, -1, -1));
 
         jPanel7.setBackground(new java.awt.Color(204, 204, 255));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -384,7 +384,7 @@ public class NewOrderPage extends javax.swing.JFrame {
         jLabel38.setText("Inventario Disponible");
         jPanel12.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 160, 40));
 
-        getContentPane().add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 170, 40));
+        getContentPane().add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 170, 40));
 
         jPanel24.setBackground(new java.awt.Color(204, 204, 255));
         jPanel24.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -402,7 +402,7 @@ public class NewOrderPage extends javax.swing.JFrame {
 
         jPanel24.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 150, 280));
 
-        getContentPane().add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 170, 300));
+        getContentPane().add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 170, 310));
 
         jPanel1.setBackground(new java.awt.Color(247, 209, 109));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -467,7 +467,7 @@ public class NewOrderPage extends javax.swing.JFrame {
         });
         jPanel1.add(addProductButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 170, 350));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 170, 350));
 
         restartOrderButton.setText("Reiniciar pedido");
         restartOrderButton.addActionListener(new java.awt.event.ActionListener() {
@@ -475,7 +475,7 @@ public class NewOrderPage extends javax.swing.JFrame {
                 restartOrderButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(restartOrderButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 490, 170, -1));
+        getContentPane().add(restartOrderButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, 170, -1));
 
         completeOrderButton.setText("Completar Pedido");
         completeOrderButton.addActionListener(new java.awt.event.ActionListener() {
@@ -483,7 +483,7 @@ public class NewOrderPage extends javax.swing.JFrame {
                 completeOrderButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(completeOrderButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 450, 170, -1));
+        getContentPane().add(completeOrderButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 450, 170, -1));
 
         Background.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Assets/output-onlinepngtools.png"))); // NOI18N

@@ -155,8 +155,20 @@ public class InterfaceFunctions {
             resetOrder();
 
         } else {
-            JOptionPane.showMessageDialog(null, "Trigger para pedir a otro almacén");
+
 //            missingStock.printInventory();
+            for (String orderString : orderSplit) {
+                String productName = orderString.split(":")[0];
+
+                if (missingStock.getProductByName(productName) != null) {
+                    selectedStorage.getInventory().getProductByName(productName).setQuantity(0);
+                } else {
+                    int qtyToReduce = Integer.parseInt(orderString.split(":")[1].replace(" ", ""));
+                    Product productToReduce = selectedStorage.getInventory().getProductByName(productName);
+                    productToReduce.setQuantity(productToReduce.getQuantity() - qtyToReduce);
+                }
+            }
+
             askStockInOtherStorage(missingStock, storageName);
         }
     }
@@ -203,13 +215,73 @@ public class InterfaceFunctions {
         if (storageWithStock.getLength() <= 0) {
             JOptionPane.showMessageDialog(null, "Alerta no existe la cantidad de stock especificada en ninguno de los almacenes de la red");
         } else {
-            // ya aqui tengo los posibles almacenes
-            // ahora es buscar todas las rutas posibles, encontrar la más corta, descontar de ese almacen y completar pedido again
-            System.out.println("aqui");
-            storageWithStock.printStorageList();
             String shortestRoute = getShortestRoute(storageWithStock, originalStorage);
+            String[] shortestRouteSplit = shortestRoute.split(";");
+            Storage storageToGiveProducts = allStorages.getStorageByName(shortestRouteSplit[1].split(",")[0]);
+            String userReport = "El pedido tiene los siguientes productos faltantes de stock:\n";
+
+            for (int i = 0; i < missingStock.getLength(); i++) {
+                Product productToReduce = storageToGiveProducts.getInventory().getProductByName(missingStock.getElementInIndex(i).getName());
+                productToReduce.setQuantity(productToReduce.getQuantity() - missingStock.getElementInIndex(i).getQuantity());
+
+                userReport += "- " + missingStock.getElementInIndex(i).getName() + ": " + missingStock.getElementInIndex(i).getQuantity() + "\n";
+            }
+            //report to user
+            userReport += "Así que se solicitaron los productos a: " + storageToGiveProducts.getName() + "\n";
+            userReport += "Siguiendo la ruta más corta " + "(" + shortestRouteSplit[0] + "Km)" + ": ";
+            userReport += shortestRouteSplit[1].replace(",", " --> ");
+
+            JOptionPane.showMessageDialog(null, userReport);
+            createShortestRouteGraph(shortestRouteSplit[1]);
+
+            initNewOrderPage();
+            resetOrder();
+
         }
 
+    }
+
+    public static void createShortestRouteGraph(String route) {
+        MultiGraph multiGraph = new MultiGraph("GraphMap");
+        Graph originalGraph = GlobalUI.getGraph();
+        AdjMatrixGraph adjMatrix = originalGraph.getAdjMatrix();
+        ListStorage storages = originalGraph.getStorageList();
+        String[] routeSplit = route.split(",");
+
+        for (String storage : routeSplit) {
+            System.out.println(storage);
+            Node n  = multiGraph.addNode(storage);
+            n.setAttribute("ui.label", storage);
+        }
+
+        int forAux;
+        if (routeSplit.length <= 2) {
+            forAux = 1;
+        } else {
+            forAux = routeSplit.length - 1;
+        }
+        
+        for (int i = 0; i < forAux; i++) {
+            String emitter = routeSplit[i];
+            String receiver = routeSplit[i+1];
+            int emitterIndex = storages.getIndexByElement(emitter);
+            int receiverIndex = storages.getIndexByElement(receiver);
+            String routeValue = String.valueOf(adjMatrix.getMatrix()[emitterIndex][receiverIndex]);
+             //multiGraph.addEdge(edgeName, storage1, storage2, true);
+            String edgeId = emitter+"-"+receiver;
+            Edge ed = multiGraph.addEdge(edgeId, emitter, receiver, true);
+            
+            ed.setAttribute("ui.label", routeValue);
+            
+        }
+
+        String graphCss = "node { text-offset: 0px, -10px; size: 20px; text-size: 12; fill-color: blue, aquamarine; fill-mode: gradient-horizontal; text-alignment: above; text-color: #222; text-background-mode: plain; text-background-color: white; } edge { size: 2px; fill-color: #444; text-alignment: above; text-size: 20; arrow-size: 12; text-color: blue; text-offset: 10px, -20px;}";
+        multiGraph.setAttribute("ui.stylesheet", graphCss);
+
+        System.setProperty("org.graphstream.ui", "swing");
+
+        Viewer viewer = multiGraph.display();
+        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
     }
 
     /**
@@ -298,21 +370,70 @@ public class InterfaceFunctions {
 
                 visitedNodes.addEnd(lowestUnvisitedNode);
 
-//                break;
             }
-// end of Dijkstra
-//          
-            System.out.println("Almacen origen:" + currentStorageWithStock);
-            for (int k = 0; k < routesMatrix.length; k++) {
-                for (int j = 0; j < routesMatrix[0].length; j++) {
-                    System.out.print(routesMatrix[k][j] + " ");
+            // end of Dijkstra        
+
+            int currentIndex = allStorages.getIndexByElement(originalStorage);
+            String finalRoute = String.valueOf((int) routesMatrix[currentIndex][1]) + ";" + originalStorage + ",";
+            boolean isRouteIncomplete = true;
+
+            while (isRouteIncomplete) {
+                if (routesMatrix[currentIndex][2] == null) {
+                    isRouteIncomplete = false;
+                } else {
+                    finalRoute += ((String) routesMatrix[currentIndex][2]) + ",";
+                    currentIndex = allStorages.getIndexByElement(routesMatrix[currentIndex][2].toString());
                 }
-                System.out.println();
             }
-            System.out.println("------\n");
+
+            shortestRoutes.addEnd(finalRoute);
+
+            //print Dijkstra matrix
+//             System.out.println("Ruta sin invertir:" + finalRoute);
+//            System.out.println("Almacen origen:" + currentStorageWithStock);
+//            for (int k = 0; k < routesMatrix.length; k++) {
+//                for (int j = 0; j < routesMatrix[0].length; j++) {
+//                    System.out.print(routesMatrix[k][j] + " ");
+//                }
+//                System.out.println();
+//            }
+//            System.out.println("------\n");
         }
 
-        return "";
+        String lowestRoute = shortestRoutes.getHead().getElement().toString();
+        for (int i = 0; i < shortestRoutes.getLength(); i++) {
+            int currentValue = Integer.parseInt(((String) shortestRoutes.getElementInIndex(i)).split(";")[0]);
+            int lowestValue = Integer.parseInt(lowestRoute.split(";")[0]);
+
+            if (currentValue < lowestValue) {
+                lowestRoute = (String) shortestRoutes.getElementInIndex(i);
+            }
+        }
+//        System.out.println("original");
+//        System.out.println(lowestRoute);
+
+        String correctedLowestRoute = lowestRoute.split(";")[0] + ";" + invertRoute(lowestRoute.split(";")[1]);
+//        System.out.println("inverted");
+//        System.out.println(correctedLowestRoute);
+
+        return correctedLowestRoute;
+    }
+
+    /**
+     *
+     * Inverts the storage secuence given
+     *
+     * @param original
+     * @return String
+     */
+    public static String invertRoute(String original) {
+        String inverted = "";
+        String[] originalSplit = original.split(",");
+        for (int i = originalSplit.length - 1; i >= 0; i--) {
+            inverted += originalSplit[i] + ",";
+        }
+
+        return inverted.substring(0, inverted.length() - 1);
     }
 
     /**
