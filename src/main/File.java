@@ -33,6 +33,7 @@ public class File {
                 temp = temp + bfRead;
 
             }
+            
             text = temp;
         } catch (Exception e) {
             System.err.println("No existe");
@@ -80,7 +81,7 @@ public class File {
 
         String[] arrayInfo = arInfo.split(";");
         for (int i = 0; i < arrayInfo.length; i++) {
-
+            
             String auxiliar = arrayInfo[i];
 
             if (auxiliar.length() > 7) {
@@ -117,7 +118,7 @@ public class File {
 
                             }
 
-                        }
+                        }       
                         int coste = Integer.parseInt(chain.substring(ll + 1, kar - 1));
 
                         chain = chain.substring(kar - 1);

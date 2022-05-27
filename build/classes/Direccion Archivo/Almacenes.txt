@@ -8,10 +8,13 @@ Pantalla,3
 Grafica,5;
 Almacen C:
 Placa,7
+Pantalla,10
 Teclado,8;
 Almacen D:
+Pantalla,11
 Mouse,2;
 Almacen E:
+Pantalla,4
 Microfono,7
 Audifonos,10;
 Rutas;
@@ -23,9 +26,3 @@ C,D,4
 C,E,13
 D,E,3
 E,A,25
-
-
-
-
-
-

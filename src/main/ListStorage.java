@@ -255,19 +255,39 @@ public class ListStorage {
     public Storage getStorageByName(String storageName) {
         NodeStorage pointer = getHead();
         Storage wantedStorage = null;
-        
-        while(pointer != null) {
+
+        while (pointer != null) {
             if (storageName.equals(pointer.getStorage().getName())) {
                 wantedStorage = pointer.getStorage();
                 break;
             }
-            
+
             pointer = pointer.getNext();
         }
-        
+
         return wantedStorage;
 
     }
-    
- 
+
+    /**
+     * returns the list index of the given storage name
+     *
+     * @author isaac
+     * @param element
+     * @return boolean
+     */
+    public int getIndexByElement(String element) {
+        NodeStorage pointer = getHead();
+        int index = -1;
+
+        for (int i = 0; i < getLength(); i++) {
+            if (pointer.getStorage().getName().equals(element)) {
+                index = i;
+                break;
+            }
+            pointer = pointer.getNext();
+        }
+        return index;
+    }
+
 }

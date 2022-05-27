@@ -520,12 +520,17 @@ public class NewOrderPage extends javax.swing.JFrame {
     private void addProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProductButtonActionPerformed
 
         if ((getProductComboBox().getSelectedItem() != null)) {
-            if (InterfaceFunctions.isANumber(getProductQtyTextField().getText()))  {
-                InterfaceFunctions.updateOrderDisplay(getOrderTextArea().getText());
-                getStorageComboBox().setEnabled(false);
-                getProductComboBox().removeItem(getProductComboBox().getSelectedItem());
+            if (InterfaceFunctions.isANumber(getProductQtyTextField().getText())) {
+                if (Integer.parseInt(getProductQtyTextField().getText()) > 0) {
+                    InterfaceFunctions.updateOrderDisplay(getOrderTextArea().getText());
+                    getStorageComboBox().setEnabled(false);
+                    getProductComboBox().removeItem(getProductComboBox().getSelectedItem());
+                } else {
+                    JOptionPane.showMessageDialog(null, "Alerta, la cantidad de producto no puede ser 0 o menor");
+                }
+
             } else {
-                 JOptionPane.showMessageDialog(null, "Número de cantidad inválido, por favor intente de nuevo");
+                JOptionPane.showMessageDialog(null, "Número de cantidad inválido, por favor intente de nuevo");
             }
 
         } else {
@@ -536,7 +541,7 @@ public class NewOrderPage extends javax.swing.JFrame {
     }//GEN-LAST:event_addProductButtonActionPerformed
 
     private void completeOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completeOrderButtonActionPerformed
-        InterfaceFunctions.completeOrder(getOrderTextArea().getText());
+        InterfaceFunctions.completeOrder(getOrderTextArea().getText(), getStorageComboBox().getSelectedItem().toString());
     }//GEN-LAST:event_completeOrderButtonActionPerformed
 
     /**

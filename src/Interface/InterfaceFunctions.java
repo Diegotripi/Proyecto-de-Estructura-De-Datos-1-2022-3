@@ -115,21 +115,27 @@ public class InterfaceFunctions {
      * starts searching products in other storages to build the newOrder
      *
      * @param order
+     * @param storageName
      */
-    public static void completeOrder(String order) {
+    public static void completeOrder(String order, String storageName) {
         Graph graph = GlobalUI.getGraph();
         ListStorage storages = graph.getStorageList();
-        Storage selectedStorage = storages.getStorageByName(GlobalUI.getNewOrderPage().getStorageComboBox().getSelectedItem().toString());
+        Storage selectedStorage = storages.getStorageByName(storageName);
         String[] orderSplit = order.split("\n");
 
         boolean isStockAvailable = true;
+        ListInv missingStock = new ListInv();
 
         for (String productString : orderSplit) {
             String[] productAux = productString.split(":");
             String productName = productAux[0];
             int productQty = Integer.parseInt(productAux[1].replace(" ", ""));
-            if (selectedStorage.getInventory().getProductByName(productName).getQuantity() < productQty) {
+            int currentStock = selectedStorage.getInventory().getProductByName(productName).getQuantity();
+
+            if (currentStock < productQty) {
                 isStockAvailable = false;
+                Product missingProduct = new Product((productQty - currentStock), productName);
+                missingStock.addEnd(missingProduct);
             }
 
         }
@@ -150,7 +156,163 @@ public class InterfaceFunctions {
 
         } else {
             JOptionPane.showMessageDialog(null, "Trigger para pedir a otro almacén");
+//            missingStock.printInventory();
+            askStockInOtherStorage(missingStock, storageName);
         }
+    }
+
+    /**
+     *
+     * Finds the missing stock in other storages, evaluates the shortest route,
+     * updates the inventory and notifies the user in storages
+     *
+     * @param missingStock
+     * @param originalStorage
+     */
+    public static void askStockInOtherStorage(ListInv missingStock, String originalStorage) {
+        ListStorage storageWithStock = new ListStorage();
+        ListStorage allStorages = GlobalUI.getGraph().getStorageList();
+
+        // get storages that can provide the stock
+        for (int i = 0; i < allStorages.getLength(); i++) {
+
+            if (!allStorages.getStorageNodeByIndex(i).getStorage().getName().equals(originalStorage)) {
+                boolean isStockAvailable = true;
+                ListInv currentInv = allStorages.getStorageNodeByIndex(i).getStorage().getInventory();
+
+                for (int j = 0; j < missingStock.getLength(); j++) {
+                    Product currentMissingProduct = missingStock.getElementInIndex(j);
+                    Product productInStorage = currentInv.getProductByName(currentMissingProduct.getName());
+                    if (productInStorage == null) {
+                        isStockAvailable = false;
+                        break;
+                    } else if (productInStorage.getQuantity() < currentMissingProduct.getQuantity()) {
+                        isStockAvailable = false;
+                        break;
+                    }
+
+                }
+
+                if (isStockAvailable) {
+                    storageWithStock.addEnd(allStorages.getStorageNodeByIndex(i).getStorage());
+                }
+            }
+
+        }
+
+        if (storageWithStock.getLength() <= 0) {
+            JOptionPane.showMessageDialog(null, "Alerta no existe la cantidad de stock especificada en ninguno de los almacenes de la red");
+        } else {
+            // ya aqui tengo los posibles almacenes
+            // ahora es buscar todas las rutas posibles, encontrar la más corta, descontar de ese almacen y completar pedido again
+            System.out.println("aqui");
+            storageWithStock.printStorageList();
+            String shortestRoute = getShortestRoute(storageWithStock, originalStorage);
+        }
+
+    }
+
+    /**
+     *
+     * Gets shortest route using Dijkstra
+     *
+     *
+     * @param storagesWithStock
+     * @param originalStorage
+     * @return string
+     */
+    public static String getShortestRoute(ListStorage storagesWithStock, String originalStorage) {
+        ObjectList shortestRoutes = new ObjectList();
+        ListStorage allStorages = GlobalUI.getGraph().getStorageList();
+        int[][] adjMatrix = GlobalUI.getGraph().getAdjMatrix().getMatrix();
+//        adjMatrix.printMatrix();
+
+        for (int i = 0; i < storagesWithStock.getLength(); i++) {
+            String currentStorageWithStock = storagesWithStock.getStorageNodeByIndex(i).getStorage().getName();
+
+            ObjectList visitedNodes = new ObjectList();
+//            ObjectList unVisitedNodes = new ObjectList();
+
+            Object[][] routesMatrix = new Object[adjMatrix.length][3];
+
+            //fill columns [0] storages names, [1] shortest distance, [2] previous node
+            for (int j = 0; j < allStorages.getLength(); j++) {
+                routesMatrix[j][0] = allStorages.getStorageNodeByIndex(j).getStorage().getName();
+                routesMatrix[j][1] = Integer.MAX_VALUE;
+
+//                unVisitedNodes.addEnd(allStorages.getStorageNodeByIndex(j).getStorage().getName());
+                if (routesMatrix[j][0].equals(currentStorageWithStock)) {
+                    routesMatrix[j][1] = 0;
+                }
+            }
+
+            //Dijkstra
+            while (visitedNodes.getLength() != allStorages.getLength()) {
+
+                //identify the lowest distance unvisited node
+                String lowestUnvisitedNode = "default";
+                for (int j = 0; j < allStorages.getLength(); j++) {
+                    String currentStorageName = allStorages.getStorageNodeByIndex(j).getStorage().getName();
+
+                    if (!visitedNodes.isObjectInList(currentStorageName)) {
+
+                        if (lowestUnvisitedNode.equals("default")) {
+                            lowestUnvisitedNode = currentStorageName;
+                        } else {
+                            int lowestUnvisitedRow = allStorages.getIndexByElement(lowestUnvisitedNode);
+                            int currentRow = allStorages.getIndexByElement(currentStorageName);
+
+                            int lowestRouteValue = (int) routesMatrix[lowestUnvisitedRow][1];
+                            int currentRouteValue = (int) routesMatrix[currentRow][1];
+
+                            if (currentRouteValue < lowestRouteValue) {
+                                lowestUnvisitedNode = currentStorageName;
+                            }
+                        }
+
+                    }
+
+                }
+                // examine unvisited neighbours
+
+                int lowestIUnvisitedIndex = allStorages.getIndexByElement(lowestUnvisitedNode);
+
+                for (int j = 0; j < adjMatrix[lowestIUnvisitedIndex].length; j++) {
+                    int currentRoute = adjMatrix[lowestIUnvisitedIndex][j];
+                    if (currentRoute != 0) {
+                        String currentNeighbour = (String) routesMatrix[j][0];
+
+                        if (!visitedNodes.isObjectInList(currentNeighbour)) {
+                            int newDistance = currentRoute + ((int) routesMatrix[lowestIUnvisitedIndex][1]);
+                            int oldDistance = (int) routesMatrix[j][1];
+
+                            if (newDistance < oldDistance) {
+                                //update new lowest route and previous node
+                                routesMatrix[j][1] = newDistance;
+                                routesMatrix[j][2] = lowestUnvisitedNode;
+                            }
+
+                        }
+                    }
+                }
+
+                visitedNodes.addEnd(lowestUnvisitedNode);
+
+//                break;
+            }
+// end of Dijkstra
+//          
+            System.out.println("Almacen origen:" + currentStorageWithStock);
+            for (int k = 0; k < routesMatrix.length; k++) {
+                for (int j = 0; j < routesMatrix[0].length; j++) {
+                    System.out.print(routesMatrix[k][j] + " ");
+                }
+                System.out.println();
+            }
+            System.out.println("------\n");
+        }
+
+        return "";
     }
 
     /**
@@ -268,8 +430,8 @@ public class InterfaceFunctions {
                         Product element = new Product(0, "Placa");
                         ListInv inventory = new ListInv();
                         inventory.addHead(element);
-                        
-                        GlobalUI.getGraph().getStorageList().getStorageNodeByIndex(GlobalUI.getGraph().getStorageList().getLength()-1).getStorage().setInventory(inventory);
+
+                        GlobalUI.getGraph().getStorageList().getStorageNodeByIndex(GlobalUI.getGraph().getStorageList().getLength() - 1).getStorage().setInventory(inventory);
                         //GlobalUI.getGraph().getAdjMatrix().printMatrix();
                         JOptionPane.showMessageDialog(null, "Almacén creado con éxito");
                         createNewMatrixWithAnother(GlobalUI.getGraph().getAdjMatrix(), GlobalUI.getGraph().getCounter());
@@ -301,10 +463,8 @@ public class InterfaceFunctions {
 
     }
 
-    
-    
     /**
-     * Create a library graph and shows it to the user 
+     * Create a library graph and shows it to the user
      */
     public static void createGraphMap() {
         MultiGraph multiGraph = new MultiGraph("GraphMap");
@@ -318,7 +478,6 @@ public class InterfaceFunctions {
             Node n = multiGraph.addNode(pointer.getStorage().getName());
             String storageName = pointer.getStorage().getName();
             n.setAttribute("ui.label", storageName + "\n");
-
 
             pointer = pointer.getNext();
         }

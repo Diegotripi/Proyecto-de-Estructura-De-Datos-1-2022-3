@@ -163,11 +163,11 @@ public class ObjectList {
         }
     }
 
-        /**
-     * Prints  all elements in the list
+    /**
+     * Prints all elements in the list
      *
      * @author isaac
-     * 
+     *
      */
     public void printList() {
         if (!isEmpty()) {
@@ -182,12 +182,12 @@ public class ObjectList {
 
     }
 
-        /**
+    /**
      * Returns the element in the specified index
      *
      * @author isaac
      * @param pos (int)
-     * @return Object 
+     * @return Object
      */
     public Object getElementInIndex(int pos) {
         if (!isEmpty()) {
@@ -204,26 +204,29 @@ public class ObjectList {
         }
 
     }
+
     /**
      * getter for head
      *
      * @author isaac
      * @return ObjectNode
-     * 
+     *
      */
     public ObjectNode getHead() {
         return head;
     }
+
     /**
      * setter for head
      *
      * @author isaac
      * @param head
-     * 
+     *
      */
     public void setHead(ObjectNode head) {
         this.head = head;
     }
+
     /**
      * getter for length
      *
@@ -233,6 +236,7 @@ public class ObjectList {
     public int getLength() {
         return length;
     }
+
     /**
      * getter for length
      *
@@ -242,6 +246,7 @@ public class ObjectList {
     public void setLength(int length) {
         this.length = length;
     }
+
     /**
      * Checks if the list is empty
      *
@@ -252,13 +257,12 @@ public class ObjectList {
         return getHead() == null;
     }
 
-        /**
+    /**
      * deletes the element given by parameter
      *
      * @author isaac
-     * @param element 
+     * @param element
      */
-    
     public void deleteByElement(Object element) {
         if (!isEmpty()) {
             ObjectNode pointer = getHead();
@@ -287,12 +291,12 @@ public class ObjectList {
         }
     }
 
-        /**
+    /**
      * gets node by Index in the list
      *
      * @author isaac
      * @param pos (int)
-     * @return ObjectNode 
+     * @return ObjectNode
      */
     public ObjectNode getNodeByIndex(int pos) {
         if (!isEmpty()) {
@@ -309,11 +313,12 @@ public class ObjectList {
         }
 
     }
+
     /**
      * Orders the list in ascendig order
      *
      * @author isaac
-     * 
+     *
      */
     public void reorderListToAscending() {
         int originalLength = getLength();
@@ -323,15 +328,14 @@ public class ObjectList {
             addInIndex(i, lowestElementNode.getElement());
         }
     }
-    
-        /**
+
+    /**
      * returns the lowest value node in list
      *
      * @author isaac
      * @param auxHead (Head to start looping)
      * @return ObjectNode
      */
-
     public ObjectNode getLowestValueNode(ObjectNode auxHead) {
         ObjectNode pointer = auxHead;
         ObjectNode lowestElementNode = pointer;
@@ -346,20 +350,19 @@ public class ObjectList {
         return lowestElementNode;
 
     }
-    
-        /**
+
+    /**
      * checks if the given element is in list, returns boolean
      *
      * @author isaac
      * @param element
      * @return boolean
      */
-
     public boolean isObjectInList(Object element) {
         ObjectNode pointer = getHead();
         boolean found = false;
         while (pointer != null) {
-            if (pointer.getElement() == element) {
+            if (pointer.getElement().equals(element)) {
                 found = true;
                 break;
             }
@@ -367,5 +370,7 @@ public class ObjectList {
         }
         return found;
     }
+
+
 
 }
