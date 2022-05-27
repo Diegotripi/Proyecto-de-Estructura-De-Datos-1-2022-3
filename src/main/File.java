@@ -1,5 +1,6 @@
 package main;
 
+import Interface.GlobalUI;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.PrintWriter;
@@ -33,10 +34,11 @@ public class File {
                 temp = temp + bfRead;
 
             }
-            
+
             text = temp;
         } catch (Exception e) {
-            System.err.println("No existe");
+            text = "";
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo");
 
         }
 
@@ -51,18 +53,27 @@ public class File {
      */
     public int numVertices(String arInfo) {
         int v = 0;
-        String[] arrayInfo = arInfo.split(";");
-        for (int i = 0; i < arrayInfo.length; i++) {
-            if (arrayInfo[i].equalsIgnoreCase("Rutas")) {
-                break;
-            } else if (arrayInfo[i].equalsIgnoreCase("Almacenes")) {
+        if (arInfo.equals("")) {
+            return -1;
+        }
 
-            } else {
-                v = i;
+        try {
+            String[] arrayInfo = arInfo.split(";");
+            for (int i = 0; i < arrayInfo.length; i++) {
+                if (arrayInfo[i].equalsIgnoreCase("Rutas")) {
+                    break;
+                } else if (arrayInfo[i].equalsIgnoreCase("Almacenes")) {
+
+                } else {
+                    v = i;
+
+                }
 
             }
-
+        } catch (Exception e) {
+            v = -1;
         }
+
         return v;
     }
 
@@ -81,7 +92,7 @@ public class File {
 
         String[] arrayInfo = arInfo.split(";");
         for (int i = 0; i < arrayInfo.length; i++) {
-            
+
             String auxiliar = arrayInfo[i];
 
             if (auxiliar.length() > 7) {
@@ -118,7 +129,7 @@ public class File {
 
                             }
 
-                        }       
+                        }
                         int coste = Integer.parseInt(chain.substring(ll + 1, kar - 1));
 
                         chain = chain.substring(kar - 1);
@@ -179,52 +190,46 @@ public class File {
         return g1;
 
     }
-    
 
-    public void writeFile(Graph g,String direction){
+    public void writeFile(Graph g, String direction) {
         String info = "Almacenes;";
         NodeStorage aux = g.getStorageList().getHead();
         String[] storage = new String[g.getCounter()];
         for (int i = 0; i < g.getCounter(); i++) {
-            info += "\n"+aux.getStorage().getName()+":";
+            info += "\n" + aux.getStorage().getName() + ":";
             String[] arrayAux = aux.getStorage().getName().split(" ");
             storage[i] = arrayAux[1];
             for (int j = 0; j < aux.getStorage().getInventory().getLength(); j++) {
-                info += "\n"+aux.getStorage().getInventory().getElementInIndex(j).getName()+","+aux.getStorage().getInventory().getElementInIndex(j).getQuantity();
-                if (j ==aux.getStorage().getInventory().getLength()-1 ) {
+                info += "\n" + aux.getStorage().getInventory().getElementInIndex(j).getName() + "," + aux.getStorage().getInventory().getElementInIndex(j).getQuantity();
+                if (j == aux.getStorage().getInventory().getLength() - 1) {
                     info += ";";
-                    
+
                 }
             }
             aux = aux.getNext();
-            
+
         }
-        
+
         info += "\nRutas;";
         int[][] matrix = g.getAdjMatrix().getMatrix();
-        
+
         for (int i = 0; i < storage.length; i++) {
             for (int j = 0; j < storage.length; j++) {
-                if (matrix[i][j] !=0) {
-                    info += "\n"+storage[i]+","+storage[j]+","+matrix[i][j];
+                if (matrix[i][j] != 0) {
+                    info += "\n" + storage[i] + "," + storage[j] + "," + matrix[i][j];
                 }
-                
-                
+
             }
             //System.out.println(storage[i]);
         }
-       
-
-
 
 //        System.out.println(info);
-        
-        try{
+        try {
             PrintWriter pw = new PrintWriter(direction);
             pw.print(info);
             pw.close();
-            JOptionPane.showMessageDialog(null, "Guardado exitoso");      
-        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Guardado exitoso!", "Éxito", 1);
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
 

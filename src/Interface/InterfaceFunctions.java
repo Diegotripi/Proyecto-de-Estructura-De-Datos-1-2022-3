@@ -5,8 +5,10 @@
  */
 package Interface;
 
+import java.io.File;
 import javax.swing.JOptionPane;
 import main.AdjMatrixGraph;
+import main.Application;
 import main.Graph;
 import main.ListInv;
 import main.ListStorage;
@@ -19,8 +21,6 @@ import org.graphstream.graph.Edge;
 
 import org.graphstream.graph.Node;
 import org.graphstream.graph.implementations.MultiGraph;
-import org.graphstream.ui.spriteManager.Sprite;
-import org.graphstream.ui.spriteManager.SpriteManager;
 import org.graphstream.ui.view.Viewer;
 
 /**
@@ -241,10 +241,9 @@ public class InterfaceFunctions {
 
     }
 
-      /**
+    /**
      *
-     * Creates and show the shortest route
-     * corresponding graph
+     * Creates and show the shortest route corresponding graph
      *
      * @param route
      */
@@ -257,7 +256,7 @@ public class InterfaceFunctions {
 
         for (String storage : routeSplit) {
             System.out.println(storage);
-            Node n  = multiGraph.addNode(storage);
+            Node n = multiGraph.addNode(storage);
             n.setAttribute("ui.label", storage);
         }
 
@@ -267,19 +266,19 @@ public class InterfaceFunctions {
         } else {
             forAux = routeSplit.length - 1;
         }
-        
+
         for (int i = 0; i < forAux; i++) {
             String emitter = routeSplit[i];
-            String receiver = routeSplit[i+1];
+            String receiver = routeSplit[i + 1];
             int emitterIndex = storages.getIndexByElement(emitter);
             int receiverIndex = storages.getIndexByElement(receiver);
             String routeValue = String.valueOf(adjMatrix.getMatrix()[emitterIndex][receiverIndex]);
-             //multiGraph.addEdge(edgeName, storage1, storage2, true);
-            String edgeId = emitter+"-"+receiver;
+            //multiGraph.addEdge(edgeName, storage1, storage2, true);
+            String edgeId = emitter + "-" + receiver;
             Edge ed = multiGraph.addEdge(edgeId, emitter, receiver, true);
-            
+
             ed.setAttribute("ui.label", routeValue);
-            
+
         }
 
         String graphCss = "node { text-offset: 0px, -10px; size: 20px; text-size: 12; fill-color: blue, aquamarine; fill-mode: gradient-horizontal; text-alignment: above; text-color: #222; text-background-mode: plain; text-background-color: white; } edge { size: 2px; fill-color: #444; text-alignment: above; text-size: 20; arrow-size: 12; text-color: blue; text-offset: 10px, -20px;}";
@@ -633,6 +632,46 @@ public class InterfaceFunctions {
 
         Viewer viewer = multiGraph.display();
         viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
+    }
+
+    /**
+     * Checks if file is txt, if so ask the user confirmation and change the
+     * current graph info
+     *
+     * @param file
+     */
+    public static void uploadTxt(File file) {
+        if (file.getAbsolutePath().endsWith(".txt")) {
+
+            int option = JOptionPane.showConfirmDialog(null, "Esta seguro que desea usar el archivo: " + file.getName() , "Confimción", JOptionPane.YES_NO_OPTION);
+
+            if (option == 0) {
+                Application.initializeAppWithNewInfo(file.getAbsolutePath());
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Alerta, solo se pueden ingresar archivos de texto (.txt)", "Alerta", 2);
+        }
+    }
+
+    /**
+     * Writes the txt with the current data
+     *
+     * @param message
+     */
+    public static void saveCurrentData(String message) {
+        main.File f = new main.File();
+        int resp = JOptionPane.showConfirmDialog(null, message, "Cofirmación", JOptionPane.YES_NO_OPTION);
+
+        if (resp == 0) {
+
+            try {
+                f.writeFile(GlobalUI.getGraph(), GlobalUI.getDirection());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Hubo un error guardando la información");
+            }
+
+        }
     }
 
 }

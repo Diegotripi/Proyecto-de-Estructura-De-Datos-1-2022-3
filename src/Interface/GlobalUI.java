@@ -5,7 +5,6 @@
  */
 package Interface;
 
-import main.Application;
 import main.Graph;
 
 /**
@@ -18,6 +17,7 @@ public class GlobalUI {
     private static final NewStoragePage newStoragePage = new NewStoragePage();
     private static final ShowInvPage showInvPage = new ShowInvPage();
     private static final NewOrderPage newOrderPage = new NewOrderPage();
+    private static final UploadDataPage uploadDataPage = new UploadDataPage();
     private static Graph graph = new Graph();
     private static String direction;
 
@@ -42,13 +42,13 @@ public class GlobalUI {
 
     /**
      *
-     * opens showInvPage 
+     * opens showInvPage
      */
     public static void openShowInvPage() {
         getShowInvPage().setVisible(true);
 
         InterfaceFunctions.initShowInvPage();
-        
+
         getMainPage().setVisible(false);
     }
 
@@ -64,24 +64,36 @@ public class GlobalUI {
         getNewStoragePage().setVisible(false);
         getShowInvPage().setVisible(false);
         getNewOrderPage().setVisible(false);
+        getUploadDataPage().setVisible(false);
 
     }
+
     /**
      *
-     * opens NewOrderPage 
+     * opens NewOrderPage
      */
     public static void openNewOrderPage() {
         getMainPage().setVisible(false);
         InterfaceFunctions.initNewOrderPage();
         getNewOrderPage().setVisible(true);
     }
+
     
-    
-    /**
-     * Shows the graphic for the main graph 
+      /**
+     *
+     * opens UploadDataPage
      */
-    public static void showGraphMap(){
-       InterfaceFunctions.createGraphMap();
+    public static void openUploadDataPage() {
+        getMainPage().setVisible(false);
+
+        getUploadDataPage().setVisible(true);
+    }
+
+    /**
+     * Shows the graphic for the main graph
+     */
+    public static void showGraphMap() {
+        InterfaceFunctions.createGraphMap();
     }
 
     /**
@@ -138,7 +150,7 @@ public class GlobalUI {
      *
      * Getter for NewOrderPage
      *
-     * @return Graph
+     * @return NewOrderPage
      */
     public static NewOrderPage getNewOrderPage() {
         return newOrderPage;
@@ -151,9 +163,15 @@ public class GlobalUI {
     public static void setDirection(String direction) {
         GlobalUI.direction = direction;
     }
-
-    
-    
+    /**
+     *
+     * Getter for UploadDataPage
+     *
+     * @return UploadDataPage
+     */
+    public static UploadDataPage getUploadDataPage() {
+        return uploadDataPage;
+    }
     
 
 }

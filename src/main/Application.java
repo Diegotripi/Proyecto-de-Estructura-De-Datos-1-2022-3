@@ -5,6 +5,7 @@
 package main;
 
 import Interface.GlobalUI;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,25 +20,18 @@ public class Application {
      */
     public static void main(String[] args) {
         initializeApp();
-//        for (int i = 0; i < GlobalUI.getGraph().getCounter(); i++) {
-//            System.out.println(GlobalUI.getGraph().namenOnAString()[i]);
-//            
-//        }
         GlobalUI.openMainPage();
 
-
     }
-
-
 
     /**
      * Starts the data flow for the proyect
      */
     public static void initializeApp() {
 
-        int v = 0;
+        int v;
         // remember at the end to change the file to their original values 
-        String direccion = "src\\Direccion Archivo\\Almacenes.txt";
+        String direccion = "src\\Direccion Archivo\\amazon.txt";
         GlobalUI.setDirection(direccion);
         File dataFile = new File();
         String arInfo = dataFile.readFile(direccion);
@@ -50,8 +44,11 @@ public class Application {
         Puede hacerse mas eficiente
          */
         Graph g1 = dataFile.getInfo(arInfo, am);
+
         GlobalUI.setGraph(g1);
 
+//        UIManager.put("OptionPane.cancelButtonText", "Cancelar");
+//        UIManager.put("OptionPane.confirmButtonText", "Si");
 //      Probar como se imprime la matriz
 //        g1.getAdjMatrix().printMatrix();
 //        Probar la impresion de los almacenes y sus inventarios
@@ -67,6 +64,44 @@ public class Application {
 //        g1.printInventory(4);
 //        g1.printStorageName(5);
 //        g1.printInventory(5);
+    }
+
+    /**
+     * Sets the graph info using the txt given by user
+     *
+     * @param path
+     */
+    public static void initializeAppWithNewInfo(String path) {
+        int v;
+        String direccion = path;
+
+        File dataFile = new File();
+        String arInfo = dataFile.readFile(direccion);
+
+        if (!(arInfo.contains("Almacenes") && arInfo.contains("Rutas"))) {
+            JOptionPane.showMessageDialog(null, "Alerta, el documento dado no contiene el formato correspondiente, por favor intentar de nuevo", "Alerta", 2);
+        } else {
+            v = dataFile.numVertices(arInfo);
+
+            if (v == -1) {
+                JOptionPane.showMessageDialog(null, "Alerta, el documento dado no contiene el formato correspondiente, por favor intentar de nuevo", "Alerta", 2);
+
+            } else {
+                AdjMatrixGraph am = new AdjMatrixGraph(v);
+
+                Graph g1 = dataFile.getInfo(arInfo, am);
+                if (g1 != null) {
+                    GlobalUI.setDirection(direccion);
+                    GlobalUI.setGraph(g1);
+                    JOptionPane.showMessageDialog(null, "Proceso exitoso, los datos han sido cargados", "Éxito", 1);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Alerta, el documento dado no contiene el formato correspondiente, por favor intentar de nuevo", "Alerta", 2);
+
+                }
+            }
+        }
+
     }
 
 }

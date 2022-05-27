@@ -82,6 +82,12 @@ public class NewStoragePage extends javax.swing.JFrame {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Assets/Amazon-Logo-Transparent-PNG (1).png"))); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
         jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 50, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
@@ -209,6 +215,10 @@ public class NewStoragePage extends javax.swing.JFrame {
     private void transmitterComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transmitterComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_transmitterComboBoxActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        GlobalUI.getBackToMainPage();
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments

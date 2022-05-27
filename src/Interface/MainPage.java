@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Interface;
+
 import javax.swing.JOptionPane;
 import main.File;
 
@@ -150,7 +151,7 @@ public class MainPage extends javax.swing.JFrame {
                 uploadDataButtonActionPerformed(evt);
             }
         });
-        jPanel3.add(uploadDataButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 200, 90));
+        jPanel3.add(uploadDataButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 200, 120));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Assets/output-onlinepngtools.png"))); // NOI18N
         jLabel4.setText("jLabel4");
@@ -162,13 +163,12 @@ public class MainPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     /**
      * Triggers page change to NewStoragePage on press
      */
     private void newStorageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newStorageButtonActionPerformed
         // TODO add your handling code here:
-           GlobalUI.openNewStoragePage();
+        GlobalUI.openNewStoragePage();
     }//GEN-LAST:event_newStorageButtonActionPerformed
 
     private void invManagementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invManagementButtonActionPerformed
@@ -176,19 +176,7 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_invManagementButtonActionPerformed
 
     private void saveDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveDataButtonActionPerformed
-        File f = new File();
-        int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro?", "Alerta!", JOptionPane.YES_NO_OPTION);
-        System.out.println(resp);
-        
-        if (resp == 0) {
-            
-            try{
-                f.writeFile(GlobalUI.getGraph(), GlobalUI.getDirection());
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Hubo un error guardando la información");
-            }
-            
-        }
+        InterfaceFunctions.saveCurrentData("¿Está seguro que desea guardar la información actual?");
     }//GEN-LAST:event_saveDataButtonActionPerformed
 
     private void newOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newOrderButtonActionPerformed
@@ -196,7 +184,8 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_newOrderButtonActionPerformed
 
     private void uploadDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadDataButtonActionPerformed
-        // TODO add your handling code here:
+        InterfaceFunctions.saveCurrentData("Antes de subir un nuevo archivo: ¿Desea guardar la información actual?; de no hacerlo se puede perder");
+        GlobalUI.openUploadDataPage();
     }//GEN-LAST:event_uploadDataButtonActionPerformed
 
     private void invReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invReportButtonActionPerformed
