@@ -241,6 +241,13 @@ public class InterfaceFunctions {
 
     }
 
+      /**
+     *
+     * Creates and show the shortest route
+     * corresponding graph
+     *
+     * @param route
+     */
     public static void createShortestRouteGraph(String route) {
         MultiGraph multiGraph = new MultiGraph("GraphMap");
         Graph originalGraph = GlobalUI.getGraph();
