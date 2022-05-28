@@ -135,6 +135,11 @@ public class Graph {
         return num;
     }
     
+    /**
+     * return the storage index with its name
+     * @param name
+     * @return storage index
+     */
     public int getStorageNumberWithName(String name){
         int num = 0;
         for (int i = 0; i < storageList.getLength(); i++) {

@@ -198,7 +198,7 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_newStorageButtonActionPerformed
 
     private void invManagementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invManagementButtonActionPerformed
-        // TODO add your handling code here:
+        GlobalUI.openStockManagementPage();
     }//GEN-LAST:event_invManagementButtonActionPerformed
 
     private void saveDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveDataButtonActionPerformed

@@ -326,5 +326,21 @@ public class ListInv {
         
         return wantedProduct;
     }
+    
+    /**
+     * Returns a Product array with all products
+     *
+     * @return chain (Product[])
+     */
+    public Product[] getProductStringArray() {
+        Product[] array;
+        array = new Product[getLength()];
+        for (int i = 0; i < getLength(); i++) {
+            array[i] = getElementInIndex(i);
+        }
+
+        return array;
+
+    }
 
 }
