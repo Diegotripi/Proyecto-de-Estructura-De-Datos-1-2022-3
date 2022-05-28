@@ -643,7 +643,7 @@ public class InterfaceFunctions {
     public static void uploadTxt(File file) {
         if (file.getAbsolutePath().endsWith(".txt")) {
 
-            int option = JOptionPane.showConfirmDialog(null, "Esta seguro que desea usar el archivo: " + file.getName() , "Confimción", JOptionPane.YES_NO_OPTION);
+            int option = JOptionPane.showConfirmDialog(null, "Esta seguro que desea usar el archivo: " + file.getName(), "Confimción", JOptionPane.YES_NO_OPTION);
 
             if (option == 0) {
                 Application.initializeAppWithNewInfo(file.getAbsolutePath());
@@ -672,6 +672,42 @@ public class InterfaceFunctions {
             }
 
         }
+    }
+
+    /**
+     * add new Rutes to the Graph
+     *
+     * @param direction
+     * @param from
+     */
+    public static void addNewRutesButton(String direction, String from) {
+        
+        GlobalUI.getGraph().getAdjMatrix().printMatrix();
+        String[] arrayAux = direction.split("  ");
+        for (int i = 0; i < arrayAux.length; i++) {
+            if (!arrayAux[i].equalsIgnoreCase("")) {
+                String[] secondArray = arrayAux[i].split(",");
+                int num = Integer.parseInt(secondArray[1]);
+                String storage = secondArray[0];
+                GlobalUI.getGraph().getAdjMatrix().addEdge(GlobalUI.getGraph().getStorageNumberWithName(from), GlobalUI.getGraph().getStorageNumberWithName(storage), num);
+            }
+
+        }
+
+        GlobalUI.getGraph().getAdjMatrix().printMatrix();
+    }
+    
+    /**
+     * Create an array with String
+     * @param direction
+     * @return 
+     */
+
+    public static String[] fromTexttoArray(String direction) {
+        
+        String[] arrayAux = direction.split("  ");
+
+        return arrayAux;
     }
 
 }

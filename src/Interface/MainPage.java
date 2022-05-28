@@ -45,6 +45,7 @@ public class MainPage extends javax.swing.JFrame {
         invManagementButton = new javax.swing.JButton();
         newOrderButton = new javax.swing.JButton();
         storageMapButton = new javax.swing.JButton();
+        addNewRutesButton = new javax.swing.JButton();
         uploadDataButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
@@ -90,6 +91,8 @@ public class MainPage extends javax.swing.JFrame {
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 70));
 
+        saveDataButton.setBackground(new java.awt.Color(255, 255, 255));
+        saveDataButton.setForeground(new java.awt.Color(0, 0, 0));
         saveDataButton.setText("Guardar Datos");
         saveDataButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         saveDataButton.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +102,8 @@ public class MainPage extends javax.swing.JFrame {
         });
         jPanel3.add(saveDataButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 200, 120));
 
+        newStorageButton.setBackground(new java.awt.Color(255, 255, 255));
+        newStorageButton.setForeground(new java.awt.Color(0, 0, 0));
         newStorageButton.setText("Crear Nuevo Almacén");
         newStorageButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         newStorageButton.addActionListener(new java.awt.event.ActionListener() {
@@ -108,6 +113,8 @@ public class MainPage extends javax.swing.JFrame {
         });
         jPanel3.add(newStorageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 190, 120));
 
+        invReportButton.setBackground(new java.awt.Color(255, 255, 255));
+        invReportButton.setForeground(new java.awt.Color(0, 0, 0));
         invReportButton.setText("Reporte de inventario");
         invReportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         invReportButton.addActionListener(new java.awt.event.ActionListener() {
@@ -117,6 +124,8 @@ public class MainPage extends javax.swing.JFrame {
         });
         jPanel3.add(invReportButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, 200, 120));
 
+        invManagementButton.setBackground(new java.awt.Color(255, 255, 255));
+        invManagementButton.setForeground(new java.awt.Color(0, 0, 0));
         invManagementButton.setText("Gestión de Inventario");
         invManagementButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         invManagementButton.addActionListener(new java.awt.event.ActionListener() {
@@ -126,6 +135,8 @@ public class MainPage extends javax.swing.JFrame {
         });
         jPanel3.add(invManagementButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 190, 120));
 
+        newOrderButton.setBackground(new java.awt.Color(255, 255, 255));
+        newOrderButton.setForeground(new java.awt.Color(0, 0, 0));
         newOrderButton.setText("Nuevo Pedido");
         newOrderButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         newOrderButton.addActionListener(new java.awt.event.ActionListener() {
@@ -135,6 +146,8 @@ public class MainPage extends javax.swing.JFrame {
         });
         jPanel3.add(newOrderButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 200, 120));
 
+        storageMapButton.setBackground(new java.awt.Color(255, 255, 255));
+        storageMapButton.setForeground(new java.awt.Color(0, 0, 0));
         storageMapButton.setText("Mapa de Almacenes");
         storageMapButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         storageMapButton.addActionListener(new java.awt.event.ActionListener() {
@@ -144,6 +157,19 @@ public class MainPage extends javax.swing.JFrame {
         });
         jPanel3.add(storageMapButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 420, 200, 120));
 
+        addNewRutesButton.setBackground(new java.awt.Color(255, 255, 255));
+        addNewRutesButton.setForeground(new java.awt.Color(0, 0, 0));
+        addNewRutesButton.setText("Añadir nuevas rutas");
+        addNewRutesButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addNewRutesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addNewRutesButtonActionPerformed(evt);
+            }
+        });
+        jPanel3.add(addNewRutesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 200, 120));
+
+        uploadDataButton.setBackground(new java.awt.Color(255, 255, 255));
+        uploadDataButton.setForeground(new java.awt.Color(0, 0, 0));
         uploadDataButton.setText("Cargar Datos");
         uploadDataButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         uploadDataButton.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +177,7 @@ public class MainPage extends javax.swing.JFrame {
                 uploadDataButtonActionPerformed(evt);
             }
         });
-        jPanel3.add(uploadDataButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 200, 120));
+        jPanel3.add(uploadDataButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 200, 120));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Assets/output-onlinepngtools.png"))); // NOI18N
         jLabel4.setText("jLabel4");
@@ -197,6 +223,10 @@ public class MainPage extends javax.swing.JFrame {
         GlobalUI.showGraphMap();
     }//GEN-LAST:event_storageMapButtonActionPerformed
 
+    private void addNewRutesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewRutesButtonActionPerformed
+        GlobalUI.openAddNewRutes();
+    }//GEN-LAST:event_addNewRutesButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -233,6 +263,7 @@ public class MainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addNewRutesButton;
     private javax.swing.JButton invManagementButton;
     private javax.swing.JButton invReportButton;
     private javax.swing.JLabel jLabel1;

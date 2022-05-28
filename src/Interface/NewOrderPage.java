@@ -249,6 +249,8 @@ public class NewOrderPage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        backToMenuButton.setBackground(new java.awt.Color(255, 255, 255));
+        backToMenuButton.setForeground(new java.awt.Color(0, 0, 0));
         backToMenuButton.setText("Volver al menú");
         backToMenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -412,6 +414,8 @@ public class NewOrderPage extends javax.swing.JFrame {
         jLabel37.setText("Cantidad:");
         jPanel1.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 70, 30));
 
+        storageComboBox.setBackground(new java.awt.Color(255, 255, 255));
+        storageComboBox.setForeground(new java.awt.Color(0, 0, 0));
         storageComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 storageComboBoxItemStateChanged(evt);
@@ -440,6 +444,9 @@ public class NewOrderPage extends javax.swing.JFrame {
         jLabel40.setForeground(new java.awt.Color(0, 0, 0));
         jLabel40.setText("Seleccione Almacén");
         jPanel1.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 150, 30));
+
+        productComboBox.setBackground(new java.awt.Color(255, 255, 255));
+        productComboBox.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(productComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 90, -1));
 
         jLabel41.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
@@ -452,6 +459,8 @@ public class NewOrderPage extends javax.swing.JFrame {
         jLabel42.setText("Producto:");
         jPanel1.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, 30));
 
+        productQtyTextField.setBackground(new java.awt.Color(255, 255, 255));
+        productQtyTextField.setForeground(new java.awt.Color(0, 0, 0));
         productQtyTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 productQtyTextFieldActionPerformed(evt);
@@ -459,6 +468,8 @@ public class NewOrderPage extends javax.swing.JFrame {
         });
         jPanel1.add(productQtyTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 90, -1));
 
+        addProductButton.setBackground(new java.awt.Color(255, 255, 255));
+        addProductButton.setForeground(new java.awt.Color(0, 0, 0));
         addProductButton.setText("Agregar");
         addProductButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -469,6 +480,8 @@ public class NewOrderPage extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 170, 350));
 
+        restartOrderButton.setBackground(new java.awt.Color(255, 255, 255));
+        restartOrderButton.setForeground(new java.awt.Color(0, 0, 0));
         restartOrderButton.setText("Reiniciar pedido");
         restartOrderButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -477,6 +490,8 @@ public class NewOrderPage extends javax.swing.JFrame {
         });
         getContentPane().add(restartOrderButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, 170, -1));
 
+        completeOrderButton.setBackground(new java.awt.Color(255, 255, 255));
+        completeOrderButton.setForeground(new java.awt.Color(0, 0, 0));
         completeOrderButton.setText("Completar Pedido");
         completeOrderButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

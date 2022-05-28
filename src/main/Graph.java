@@ -123,8 +123,10 @@ public class Graph {
     public int getStorageNumber(String letter) {
         int num = 0;
         for (int i = 0; i < storageList.getLength(); i++) {
-            String ultimaLetra = storageList.getStorageNodeByIndex(i).getStorage().getName().substring(storageList.getStorageNodeByIndex(i).getStorage().getName().length() - 1);
-            if (letter.equalsIgnoreCase(ultimaLetra)) {
+            String storage = storageList.getStorageNodeByIndex(i).getStorage().getName();
+            String[] storageArray = storage.split(" ");
+            
+            if (letter.equalsIgnoreCase(storageArray[1])) {
                 num = i;
                 break;
             }
