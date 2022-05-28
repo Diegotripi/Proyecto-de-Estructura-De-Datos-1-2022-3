@@ -1,8 +1,8 @@
 Almacenes;
 Almacen A:
-Procesador,0
+Procesador,3
 RAM,2
-Pantalla,0;
+Pantalla,4;
 Almacen B:
 Grafica,5
 Procesador,2

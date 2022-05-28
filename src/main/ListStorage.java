@@ -224,6 +224,12 @@ public class ListStorage {
         }
 
     }
+    
+    /**
+     * Return the storage node with the index
+     * @param ind
+     * @return  NodeStorage
+     */
 
     public NodeStorage getStorageNodeByIndex(int ind) {
         NodeStorage aux = getHead();
@@ -232,6 +238,10 @@ public class ListStorage {
         }
         return aux;
     }
+    
+    /**
+     * Print the storage's products
+     */
 
     public void printStorageList() {
         if (!isEmpty()) {
@@ -289,5 +299,8 @@ public class ListStorage {
         }
         return index;
     }
+    
+   
+    
 
 }

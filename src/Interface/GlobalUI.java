@@ -19,6 +19,7 @@ public class GlobalUI {
     private static final ShowInvPage showInvPage = new ShowInvPage();
     private static final NewOrderPage newOrderPage = new NewOrderPage();
     private static final UploadDataPage uploadDataPage = new UploadDataPage();
+    private static final stockManagementPage stockManagementPage = new stockManagementPage();
     private static Graph graph = new Graph();
     private static String direction;
 
@@ -77,6 +78,7 @@ public class GlobalUI {
         getNewOrderPage().setVisible(false);
         getUploadDataPage().setVisible(false);
         getAddNewRutesPage().setVisible(false);
+        getStockManagementPage().setVisible(false);
 
     }
 
@@ -126,6 +128,16 @@ public class GlobalUI {
      */
     public static NewStoragePage getNewStoragePage() {
         return newStoragePage;
+    }
+    
+    /**
+     *
+     * opens StockManagementPage
+     */
+    public static void openStockManagementPage() {
+        getStockManagementPage().setVisible(true);
+        stockManagementPage.setGraph(getGraph());
+        getMainPage().setVisible(false);
     }
 
     /**
@@ -203,6 +215,16 @@ public class GlobalUI {
     public static AddNewRutesPage getAddNewRutesPage() {
         return addNewRutesPage;
     }
+    
+    /**
+     * Getter for stockManagementPage
+     * @return 
+     */
+
+    public static stockManagementPage getStockManagementPage() {
+        return stockManagementPage;
+    }
+    
     
     
     
