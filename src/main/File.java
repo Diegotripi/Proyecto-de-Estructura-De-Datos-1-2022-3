@@ -29,12 +29,22 @@ public class File {
             BufferedReader bf = new BufferedReader(new FileReader(direction));
             String temp = "";
             String bfRead;
+            int option = 0;
             while ((bfRead = bf.readLine()) != null) {
+                
+                if (bfRead.equalsIgnoreCase("Rutas;")) {
+                    option = 1;
+                    temp = temp + bfRead+"\n";
+                    
+                }else if(option ==0){
+                    temp = temp + bfRead;
+                }else{
+                    temp = temp + bfRead + "\n";
+                }
 
-                temp = temp + bfRead;
+                
 
             }
-
             text = temp;
         } catch (Exception e) {
             text = "";
@@ -100,51 +110,18 @@ public class File {
             }
 
             if (arrayInfo[i].equalsIgnoreCase("Rutas")) {
-                String chain = arrayInfo[i + 1];
-                int kar = 0;
-                String from = "";
-                String to = "";
-                int ll = 0;
-                for (int j = 0; j < chain.length(); j++) {
-                    if (chain.charAt(j) == ',') {
-                        from = chain.substring(0, j);
+                String chain = arrayInfo[i+1];
+                String[] chain2 = chain.split("\n");
+                System.out.println(chain2.length);
+                for (int j = 1; j < chain2.length; j++) {
+                    String[] chain3 = chain2[j].split(",");
 
-                        for (int l = j + 1; l < chain.length(); l++) {
-
-                            if (chain.charAt(l) == ',') {
-                                to = chain.substring(j + 1, l);
-
-                                ll = l;
-                                break;
-                            }
-                        }
-
-                        for (int k = ll; k < chain.length() - j; k++) {
-
-                            try {
-                                Integer.parseInt(Character.toString(chain.charAt(j + k + 1)));
-                            } catch (Exception e) {
-                                kar = ll + k;
-                                break;
-
-                            }
-
-                        }
-                        int coste = Integer.parseInt(chain.substring(ll + 1, kar - 1));
-
-                        chain = chain.substring(kar - 1);
-
-                        j = 0;
-                        kar = 0;
-                        ll = 0;
-//                        System.out.println(from + " " + to + " " + coste);
-                        int numerofrom = g1.getStorageNumber(from);
-                        int numeroto = g1.getStorageNumber(to);
-                        am.addEdge(numerofrom, numeroto, coste);
-                    }
-
+                    
+                    int numeroFrom = g1.getStorageNumber(chain3[0]);
+                    int numeroTo = g1.getStorageNumber(chain3[1]);
+                    am.addEdge(numeroFrom, numeroTo, Integer.parseInt(chain3[2]));
                 }
-                break;
+                
             } else if (arrayInfo[i].equalsIgnoreCase("Almacenes")) {
 
             } else if (auxiliar.equalsIgnoreCase("Almacen")) {

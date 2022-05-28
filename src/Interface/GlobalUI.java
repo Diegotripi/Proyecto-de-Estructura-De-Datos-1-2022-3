@@ -14,6 +14,7 @@ import main.Graph;
 public class GlobalUI {
 
     private static final MainPage mainPage = new MainPage();
+    private static final AddNewRutesPage addNewRutesPage = new AddNewRutesPage();
     private static final NewStoragePage newStoragePage = new NewStoragePage();
     private static final ShowInvPage showInvPage = new ShowInvPage();
     private static final NewOrderPage newOrderPage = new NewOrderPage();
@@ -37,7 +38,6 @@ public class GlobalUI {
         getNewStoragePage().setVisible(true);
         getMainPage().setVisible(false);
         getNewStoragePage().createGprah(graph);
-
     }
 
     /**
@@ -50,6 +50,17 @@ public class GlobalUI {
         InterfaceFunctions.initShowInvPage();
 
         getMainPage().setVisible(false);
+    }
+    
+    /**
+     *
+     * opens show AddNewRutes
+     */
+    public static void openAddNewRutes() {
+        getAddNewRutesPage().setVisible(true);
+        
+        getMainPage().setVisible(false);
+        getAddNewRutesPage().createGprah(getGraph());
     }
 
     /**
@@ -65,6 +76,7 @@ public class GlobalUI {
         getShowInvPage().setVisible(false);
         getNewOrderPage().setVisible(false);
         getUploadDataPage().setVisible(false);
+        getAddNewRutesPage().setVisible(false);
 
     }
 
@@ -74,6 +86,7 @@ public class GlobalUI {
      */
     public static void openNewOrderPage() {
         getMainPage().setVisible(false);
+        
         InterfaceFunctions.initNewOrderPage();
         getNewOrderPage().setVisible(true);
     }
@@ -85,7 +98,6 @@ public class GlobalUI {
      */
     public static void openUploadDataPage() {
         getMainPage().setVisible(false);
-
         getUploadDataPage().setVisible(true);
     }
 
@@ -155,10 +167,20 @@ public class GlobalUI {
     public static NewOrderPage getNewOrderPage() {
         return newOrderPage;
     }
+    
+    /**
+     * Getter for direction
+     * @return 
+     */
 
     public static String getDirection() {
         return direction;
     }
+    
+    /**
+     * setter for Direction
+     * @param direction 
+     */
 
     public static void setDirection(String direction) {
         GlobalUI.direction = direction;
@@ -172,6 +194,17 @@ public class GlobalUI {
     public static UploadDataPage getUploadDataPage() {
         return uploadDataPage;
     }
+    
+    /**
+     * Getter for AddNewRutesPage
+     * @return 
+     */
+
+    public static AddNewRutesPage getAddNewRutesPage() {
+        return addNewRutesPage;
+    }
+    
+    
     
 
 }
