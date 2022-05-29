@@ -28,25 +28,42 @@ public class stockManagementPage extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-        productChooserCombo1.setEnabled(false);
-        selectProductButton.setEnabled(false);
-        unitsExistingProductTextField.setEnabled(false);
-        selectUnitsButton.setEnabled(false);
-        addQuantityButton.setEnabled(false);
+        defaultValues();
 
     }
-
+    /**
+     * Reboot all the page
+     */
     private void defaultValues() {
+        storageChooserCombo.setEnabled(true);
+        selectStorageButton.setEnabled(true);
         productChooserCombo1.setEnabled(false);
         selectProductButton.setEnabled(false);
         unitsExistingProductTextField.setEnabled(false);
         selectUnitsButton.setEnabled(false);
         addQuantityButton.setEnabled(false);
+        newProductNameTextField1.setEnabled(false);
+        selectNewProductNameButton.setEnabled(false);
+        unitsNewProductTextField.setEnabled(false);
+        selectNewUnitsButton.setEnabled(false);
+        addQuantityNewProductButton.setEnabled(false);
         productChooserCombo1.removeAllItems();
         unitsExistingProductTextField.setText("");
         actualQuantityLabel.setText("");
         newQuantityLabel.setText("");
+        unitsNewProductTextField.setText("");
+        newProductNameTextField1.setText("");
+        newQuantityNumberTitleLabel.setText((""));
+        storage = "";
+        inv = null;
+        product = "";
+        quantity = 0;
+
     }
+    
+    /**
+     * Fill products combo with names
+     */
 
     public void fillProductsCombo() {
         productChooserCombo1.removeAllItems();
@@ -57,6 +74,11 @@ public class stockManagementPage extends javax.swing.JFrame {
         }
 
     }
+    
+    /**
+     * fill TransmitterChooserCombo with the information
+     * @param  g1
+     */
 
     public void fillTransmitterChooserCombo(Graph g1) {
         storageChooserCombo.removeAllItems();
@@ -65,6 +87,11 @@ public class stockManagementPage extends javax.swing.JFrame {
             storageChooserCombo.addItem(storages[i]);
         }
     }
+    
+    /**
+     * Graph Constructor
+     * @param  graph
+     */
 
     public void setGraph(Graph graph) {
         g1 = graph;
@@ -81,21 +108,20 @@ public class stockManagementPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        babkToTheMain = new javax.swing.JButton();
         deleteButton1 = new javax.swing.JButton();
-        addQuantityButton1 = new javax.swing.JButton();
+        addQuantityNewProductButton = new javax.swing.JButton();
         newQuantityNumberTitleLabel = new javax.swing.JLabel();
-        newQuantityTitleLabel2 = new javax.swing.JLabel();
-        selectQuantityTitleLabel1 = new javax.swing.JLabel();
-        unitsNewProductTextField = new javax.swing.JTextField();
-        selectNewUnitsButton = new javax.swing.JButton();
+        newQuantityProductTitleLabel = new javax.swing.JLabel();
         newQuantityTitleLabel = new javax.swing.JLabel();
         newQuantityLabel = new javax.swing.JLabel();
         selectProductButton = new javax.swing.JButton();
         productChooserCombo1 = new javax.swing.JComboBox<>();
-        storageChooserCombo = new javax.swing.JComboBox<>();
         selectProductQuantityLabel3 = new javax.swing.JLabel();
-        selectStorageButton = new javax.swing.JButton();
         unitsExistingProductTextField = new javax.swing.JTextField();
         selectUnitsButton = new javax.swing.JButton();
         addQuantityButton = new javax.swing.JButton();
@@ -103,147 +129,245 @@ public class stockManagementPage extends javax.swing.JFrame {
         actualQuantityTitleLabel = new javax.swing.JLabel();
         actualQuantityLabel = new javax.swing.JLabel();
         selectQuantityTitleLabel = new javax.swing.JLabel();
-        selectStorageTitleLabel = new javax.swing.JLabel();
         selectProductQuantityLabel = new javax.swing.JLabel();
         selectProductQuantityLabel1 = new javax.swing.JLabel();
         selectProductQuantityLabel2 = new javax.swing.JLabel();
         selectNewProductNameButton = new javax.swing.JButton();
         newProductNameTextField1 = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        selectStorageButton = new javax.swing.JButton();
+        storageChooserCombo = new javax.swing.JComboBox<>();
+        selectStorageTitleLabel = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        selectNewUnitsButton = new javax.swing.JButton();
+        unitsNewProductTextField = new javax.swing.JTextField();
+        selectQuantityTitleLabel1 = new javax.swing.JLabel();
+        backGround = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel4.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Assets/Amazon-Logo-Transparent-PNG (1).png"))); // NOI18N
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Manejo de inventario");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 900, 40));
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 70));
+
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        babkToTheMain.setBackground(new java.awt.Color(255, 255, 255));
+        babkToTheMain.setForeground(new java.awt.Color(0, 0, 0));
+        babkToTheMain.setText("Regresar al menú");
+        babkToTheMain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                babkToTheMainActionPerformed(evt);
+            }
+        });
+        jPanel1.add(babkToTheMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 180, 50));
+
+        deleteButton1.setBackground(new java.awt.Color(255, 255, 255));
+        deleteButton1.setForeground(new java.awt.Color(0, 0, 0));
         deleteButton1.setText("Borrar");
         deleteButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(deleteButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 410, 90, 40));
+        jPanel1.add(deleteButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 440, 90, 40));
 
-        addQuantityButton1.setText("Agregar");
-        addQuantityButton1.addActionListener(new java.awt.event.ActionListener() {
+        addQuantityNewProductButton.setBackground(new java.awt.Color(255, 255, 255));
+        addQuantityNewProductButton.setForeground(new java.awt.Color(0, 0, 0));
+        addQuantityNewProductButton.setText("Agregar");
+        addQuantityNewProductButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addQuantityButton1ActionPerformed(evt);
+                addQuantityNewProductButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(addQuantityButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 410, 90, 40));
+        jPanel1.add(addQuantityNewProductButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 440, 90, 40));
 
         newQuantityNumberTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jPanel1.add(newQuantityNumberTitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 380, 120, -1));
+        newQuantityNumberTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(newQuantityNumberTitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 410, 120, -1));
 
-        newQuantityTitleLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        newQuantityTitleLabel2.setText("Cantidad:");
-        jPanel1.add(newQuantityTitleLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 380, -1, -1));
-
-        selectQuantityTitleLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        selectQuantityTitleLabel1.setText("Seleccione cantidad:");
-        jPanel1.add(selectQuantityTitleLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, -1, -1));
-        jPanel1.add(unitsNewProductTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 310, 200, -1));
-
-        selectNewUnitsButton.setText("Seleccionar");
-        selectNewUnitsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectNewUnitsButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(selectNewUnitsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 340, 200, -1));
+        newQuantityProductTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        newQuantityProductTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
+        newQuantityProductTitleLabel.setText("Cantidad:");
+        jPanel1.add(newQuantityProductTitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 410, -1, -1));
 
         newQuantityTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        newQuantityTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
         newQuantityTitleLabel.setText("Cantidad nueva:");
-        jPanel1.add(newQuantityTitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, -1, -1));
+        jPanel1.add(newQuantityTitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 410, -1, -1));
 
+        newQuantityLabel.setBackground(new java.awt.Color(255, 255, 255));
         newQuantityLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jPanel1.add(newQuantityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, 80, -1));
+        jPanel1.add(newQuantityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 80, -1));
 
+        selectProductButton.setBackground(new java.awt.Color(255, 255, 255));
+        selectProductButton.setForeground(new java.awt.Color(0, 0, 0));
         selectProductButton.setText("Seleccionar");
         selectProductButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectProductButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(selectProductButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 220, -1));
+        jPanel1.add(selectProductButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 220, -1));
 
-        jPanel1.add(productChooserCombo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 220, -1));
-
-        jPanel1.add(storageChooserCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 200, -1));
+        productChooserCombo1.setBackground(new java.awt.Color(255, 255, 255));
+        productChooserCombo1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(productChooserCombo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 220, -1));
 
         selectProductQuantityLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        selectProductQuantityLabel3.setForeground(new java.awt.Color(255, 255, 255));
         selectProductQuantityLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         selectProductQuantityLabel3.setText("Agregar nuevo producto al inventario");
-        jPanel1.add(selectProductQuantityLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, 380, -1));
+        jPanel1.add(selectProductQuantityLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 220, 400, -1));
 
-        selectStorageButton.setText("Seleccionar");
-        selectStorageButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectStorageButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(selectStorageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 200, -1));
-        jPanel1.add(unitsExistingProductTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 220, -1));
+        unitsExistingProductTextField.setBackground(new java.awt.Color(255, 255, 255));
+        unitsExistingProductTextField.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(unitsExistingProductTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 220, -1));
 
+        selectUnitsButton.setBackground(new java.awt.Color(255, 255, 255));
+        selectUnitsButton.setForeground(new java.awt.Color(0, 0, 0));
         selectUnitsButton.setText("Seleccionar");
         selectUnitsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectUnitsButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(selectUnitsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 220, -1));
+        jPanel1.add(selectUnitsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 220, -1));
 
+        addQuantityButton.setBackground(new java.awt.Color(255, 255, 255));
+        addQuantityButton.setForeground(new java.awt.Color(0, 0, 0));
         addQuantityButton.setText("Agregar");
         addQuantityButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addQuantityButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(addQuantityButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 90, 40));
+        jPanel1.add(addQuantityButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 90, 40));
 
+        deleteButton.setBackground(new java.awt.Color(255, 255, 255));
+        deleteButton.setForeground(new java.awt.Color(0, 0, 0));
         deleteButton.setText("Borrar");
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 410, 90, 40));
+        jPanel1.add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 440, 90, 40));
 
         actualQuantityTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        actualQuantityTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
         actualQuantityTitleLabel.setText("Cantidad actual:");
-        jPanel1.add(actualQuantityTitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, -1, -1));
+        jPanel1.add(actualQuantityTitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, -1, -1));
 
+        actualQuantityLabel.setBackground(new java.awt.Color(255, 255, 255));
         actualQuantityLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jPanel1.add(actualQuantityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 80, -1));
+        jPanel1.add(actualQuantityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 80, -1));
 
         selectQuantityTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        selectQuantityTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
         selectQuantityTitleLabel.setText("Seleccione cantidad:");
-        jPanel1.add(selectQuantityTitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
-
-        selectStorageTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        selectStorageTitleLabel.setText("Seleccione el almacén");
-        jPanel1.add(selectStorageTitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+        jPanel1.add(selectQuantityTitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
 
         selectProductQuantityLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        selectProductQuantityLabel.setForeground(new java.awt.Color(255, 255, 255));
         selectProductQuantityLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         selectProductQuantityLabel.setText("Agregar unidades a producto ya existente");
-        jPanel1.add(selectProductQuantityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 380, -1));
+        jPanel1.add(selectProductQuantityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 380, -1));
 
         selectProductQuantityLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        selectProductQuantityLabel1.setForeground(new java.awt.Color(255, 255, 255));
         selectProductQuantityLabel1.setText("Seleccione el producto");
-        jPanel1.add(selectProductQuantityLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
+        jPanel1.add(selectProductQuantityLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
 
         selectProductQuantityLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        selectProductQuantityLabel2.setForeground(new java.awt.Color(255, 255, 255));
         selectProductQuantityLabel2.setText("Nombre producto nuevo");
-        jPanel1.add(selectProductQuantityLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, -1, -1));
+        jPanel1.add(selectProductQuantityLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, -1, -1));
 
+        selectNewProductNameButton.setBackground(new java.awt.Color(255, 255, 255));
+        selectNewProductNameButton.setForeground(new java.awt.Color(0, 0, 0));
         selectNewProductNameButton.setText("Seleccionar");
         selectNewProductNameButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectNewProductNameButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(selectNewProductNameButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, 200, -1));
-        jPanel1.add(newProductNameTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, 200, -1));
+        jPanel1.add(selectNewProductNameButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 290, 220, -1));
+
+        newProductNameTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        newProductNameTextField1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(newProductNameTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 260, 220, -1));
+
+        jPanel2.setBackground(new java.awt.Color(21, 110, 180));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        selectStorageButton.setBackground(new java.awt.Color(255, 255, 255));
+        selectStorageButton.setForeground(new java.awt.Color(0, 0, 0));
+        selectStorageButton.setText("Seleccionar");
+        selectStorageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectStorageButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(selectStorageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 280, -1));
+
+        storageChooserCombo.setBackground(new java.awt.Color(255, 255, 255));
+        storageChooserCombo.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(storageChooserCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 280, -1));
+
+        selectStorageTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        selectStorageTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
+        selectStorageTitleLabel.setText("Seleccione el almacén");
+        jPanel2.add(selectStorageTitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 460, 110));
+
+        jPanel5.setBackground(new java.awt.Color(21, 110, 180));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 880, 110));
+
+        jPanel3.setBackground(new java.awt.Color(21, 110, 180));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        selectNewUnitsButton.setBackground(new java.awt.Color(255, 255, 255));
+        selectNewUnitsButton.setForeground(new java.awt.Color(0, 0, 0));
+        selectNewUnitsButton.setText("Seleccionar");
+        selectNewUnitsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectNewUnitsButtonActionPerformed(evt);
+            }
+        });
+        jPanel3.add(selectNewUnitsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, 220, -1));
+
+        unitsNewProductTextField.setBackground(new java.awt.Color(255, 255, 255));
+        unitsNewProductTextField.setForeground(new java.awt.Color(0, 0, 0));
+        unitsNewProductTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                unitsNewProductTextFieldActionPerformed(evt);
+            }
+        });
+        jPanel3.add(unitsNewProductTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, 220, -1));
+
+        selectQuantityTitleLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        selectQuantityTitleLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        selectQuantityTitleLabel1.setText("Seleccione cantidad:");
+        jPanel3.add(selectQuantityTitleLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, -1, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 880, 300));
+
+        backGround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Assets/output-onlinepngtools.png"))); // NOI18N
+        jPanel1.add(backGround, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 600));
 
@@ -258,6 +382,9 @@ public class stockManagementPage extends javax.swing.JFrame {
         unitsExistingProductTextField.setEnabled(true);
         selectUnitsButton.setEnabled(true);
 
+        newProductNameTextField1.setEnabled(true);
+        selectNewProductNameButton.setEnabled(true);
+
 
     }//GEN-LAST:event_selectStorageButtonActionPerformed
 
@@ -266,6 +393,12 @@ public class stockManagementPage extends javax.swing.JFrame {
         quantity = g1.getStorageList().getStorageByName(storage).getInventory().getProductByName(product).getQuantity();
         actualQuantityLabel.setText(String.valueOf(quantity));
         newQuantityLabel.setText(String.valueOf(quantity));
+        newProductNameTextField1.setEnabled(false);
+        selectNewProductNameButton.setEnabled(false);
+        unitsNewProductTextField.setEnabled(false);
+        selectNewUnitsButton.setEnabled(false);
+        storageChooserCombo.setEnabled(false);
+        selectStorageButton.setEnabled(false);
 
 
     }//GEN-LAST:event_selectProductButtonActionPerformed
@@ -293,6 +426,7 @@ public class stockManagementPage extends javax.swing.JFrame {
 
     private void addQuantityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addQuantityButtonActionPerformed
         g1.getStorageList().getStorageByName(storage).getInventory().getProductByName(product).setQuantity(quantity);
+        GlobalUI.setGraph(g1);
         defaultValues();
 
     }//GEN-LAST:event_addQuantityButtonActionPerformed
@@ -307,47 +441,75 @@ public class stockManagementPage extends javax.swing.JFrame {
         product = product.replace(";", "");
         product = product.replace(":", "");
         product = product.replace(",", "");
-        boolean aux= true;
-        
+        boolean aux = true;
+
         for (int i = 0; i < inv.length; i++) {
             if (inv[i].getName().equals(product)) {
                 aux = false;
                 JOptionPane.showMessageDialog(null, "El producto ya existe");
             }
-            
+
         }
-        
-        if(aux){
+
+        if (product.equals("")) {
+            aux = false;
+            JOptionPane.showMessageDialog(null, "El producto no es válido");
+        }
+
+        if (aux) {
             unitsNewProductTextField.setEnabled(true);
             selectNewUnitsButton.setEnabled(true);
-            
+            productChooserCombo1.setEnabled(false);
+            newProductNameTextField1.setEnabled(false);
+            selectNewProductNameButton.setEnabled(false);
+            selectProductButton.setEnabled(false);
+            unitsExistingProductTextField.setEnabled(false);
+            unitsExistingProductTextField.setEnabled(false);
+            unitsExistingProductTextField.setEnabled(false);
+            selectUnitsButton.setEnabled(false);
+            storageChooserCombo.setEnabled(false);
+            selectStorageButton.setEnabled(false);
+
         }
-        
-        
+
+
     }//GEN-LAST:event_selectNewProductNameButtonActionPerformed
 
     private void selectNewUnitsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectNewUnitsButtonActionPerformed
         String quant = unitsNewProductTextField.getText();
         if (InterfaceFunctions.isANumber(quant)) {
-            if (Integer.parseInt(quant)>0) {
+            if (Integer.parseInt(quant) > 0) {
                 quantity = Integer.parseInt(quant);
                 newQuantityNumberTitleLabel.setText(quant);
+                addQuantityNewProductButton.setEnabled(true);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un numero valido");
+
             }
-            
-            
-            
-        }else{
+
+        } else {
             JOptionPane.showMessageDialog(null, "Seleccione un numero valido");
         }
     }//GEN-LAST:event_selectNewUnitsButtonActionPerformed
 
     private void deleteButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButton1ActionPerformed
-        // TODO add your handling code here:
+        defaultValues();
     }//GEN-LAST:event_deleteButton1ActionPerformed
 
-    private void addQuantityButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addQuantityButton1ActionPerformed
+    private void addQuantityNewProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addQuantityNewProductButtonActionPerformed
+        g1.getStorageList().getStorageByName(storage).getInventory().addNewProductWithQuantity(product, quantity);
+        GlobalUI.setGraph(g1);
+        defaultValues();
+    }//GEN-LAST:event_addQuantityNewProductButtonActionPerformed
+
+    private void babkToTheMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_babkToTheMainActionPerformed
+        GlobalUI.getBackToMainPage();
+    }//GEN-LAST:event_babkToTheMainActionPerformed
+
+    private void unitsNewProductTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unitsNewProductTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addQuantityButton1ActionPerformed
+    }//GEN-LAST:event_unitsNewProductTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -388,15 +550,23 @@ public class stockManagementPage extends javax.swing.JFrame {
     private javax.swing.JLabel actualQuantityLabel;
     private javax.swing.JLabel actualQuantityTitleLabel;
     private javax.swing.JButton addQuantityButton;
-    private javax.swing.JButton addQuantityButton1;
+    private javax.swing.JButton addQuantityNewProductButton;
+    private javax.swing.JButton babkToTheMain;
+    private javax.swing.JLabel backGround;
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton deleteButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JTextField newProductNameTextField1;
     private javax.swing.JLabel newQuantityLabel;
     private javax.swing.JLabel newQuantityNumberTitleLabel;
+    private javax.swing.JLabel newQuantityProductTitleLabel;
     private javax.swing.JLabel newQuantityTitleLabel;
-    private javax.swing.JLabel newQuantityTitleLabel2;
     private javax.swing.JComboBox<String> productChooserCombo1;
     private javax.swing.JButton selectNewProductNameButton;
     private javax.swing.JButton selectNewUnitsButton;
