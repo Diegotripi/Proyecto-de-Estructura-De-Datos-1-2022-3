@@ -342,5 +342,11 @@ public class ListInv {
         return array;
 
     }
+    
+    public void addNewProductWithQuantity(String name, int quantity){
+        Product p = new Product(quantity,name);
+        addEnd(p);
+        
+    }
 
 }
