@@ -44,23 +44,6 @@ public class Application {
 
         GlobalUI.setGraph(g1);
 
-//        UIManager.put("OptionPane.cancelButtonText", "Cancelar");
-//        UIManager.put("OptionPane.confirmButtonText", "Si");
-//      Probar como se imprime la matriz
-//        g1.getAdjMatrix().printMatrix();
-//        Probar la impresion de los almacenes y sus inventarios
-//        g1.printStorageName(0);
-//        g1.printInventory(0);
-//        g1.printStorageName(1);
-//        g1.printInventory(1);
-//        g1.printStorageName(2);
-//        g1.printInventory(2);
-//        g1.printStorageName(3);
-//        g1.printInventory(3);
-//        g1.printStorageName(4);
-//        g1.printInventory(4);
-//        g1.printStorageName(5);
-//        g1.printInventory(5);
     }
 
     /**
