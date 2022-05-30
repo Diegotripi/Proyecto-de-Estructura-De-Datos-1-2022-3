@@ -675,14 +675,14 @@ public class InterfaceFunctions {
     }
 
     /**
-     * add new Rutes to the Graph
+     * add new receiver Rutes to the Graph
      *
      * @param direction
      * @param from
      */
     public static void addNewRutesButton(String direction, String from) {
+
         
-        GlobalUI.getGraph().getAdjMatrix().printMatrix();
         String[] arrayAux = direction.split("  ");
         for (int i = 0; i < arrayAux.length; i++) {
             if (!arrayAux[i].equalsIgnoreCase("")) {
@@ -694,20 +694,78 @@ public class InterfaceFunctions {
 
         }
 
-        GlobalUI.getGraph().getAdjMatrix().printMatrix();
+        //GlobalUI.getGraph().getAdjMatrix().printMatrix();
     }
     
+    public static void addNewTransmitterRutesButton(String direction, String to) {
+
+        
+        String[] arrayAux = direction.split("  ");
+        for (int i = 0; i < arrayAux.length; i++) {
+            if (!arrayAux[i].equalsIgnoreCase("")) {
+                String[] secondArray = arrayAux[i].split(",");
+                int num = Integer.parseInt(secondArray[1]);
+                String storage = secondArray[0];
+                GlobalUI.getGraph().getAdjMatrix().addEdge(GlobalUI.getGraph().getStorageNumberWithName(storage), GlobalUI.getGraph().getStorageNumberWithName(to), num);
+            }
+
+        }
+
+        GlobalUI.getGraph().getAdjMatrix().printMatrix();
+    }
+
     /**
      * Create an array with String
+     *
      * @param direction
-     * @return 
+     * @return
      */
-
     public static String[] fromTexttoArray(String direction) {
-        
+
         String[] arrayAux = direction.split("  ");
 
         return arrayAux;
     }
+    /**
+     * Validates the storage name selection
+     * @param name
+     * @return 
+     */
 
+    public static boolean selectStorageName(String name) {
+
+        String[] nameArray = name.split(" ");
+
+        if (!InterfaceFunctions.isAStorage(nameArray)) {
+            JOptionPane.showMessageDialog(null, "El nombre del almacén debe de empezar con 'Almacen'");
+        } else {
+            if (InterfaceFunctions.alreadyExistStorage(name)) {
+                JOptionPane.showMessageDialog(null, "Ya existe el almacén");
+            }else{
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    /**
+     * create the new storage with the rutes
+     * @param name
+     * @param directionTo
+     * @param directionFrom 
+     */
+    
+    public static void createNewStorage(String name, String directionTo, String directionFrom){
+        GlobalUI.getGraph().insertNewStorage(name);
+        Product element = new Product(0, "Placa");
+        ListInv inventory = new ListInv();
+        inventory.addHead(element);
+        GlobalUI.getGraph().getStorageList().getStorageNodeByIndex(GlobalUI.getGraph().getStorageList().getLength() - 1).getStorage().setInventory(inventory);
+        createNewMatrixWithAnother(GlobalUI.getGraph().getAdjMatrix(), GlobalUI.getGraph().getCounter());
+        addNewRutesButton(directionTo,name);
+        addNewTransmitterRutesButton(directionFrom, name);
+        
+        
+    }
 }

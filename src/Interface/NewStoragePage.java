@@ -5,7 +5,7 @@
  */
 package Interface;
 
-
+import javax.swing.JOptionPane;
 import main.Graph;
 
 /**
@@ -15,11 +15,112 @@ import main.Graph;
 public class NewStoragePage extends javax.swing.JFrame {
 
     public static Graph g1 = new Graph();
-
+    String name = "";
+    String from = "";
+    String to = "";
+    String directionFrom = "";
+    String directionTo = "";
+    String direction = "";
+    int counterTransmitter = 0;
+    /**
+     * 
+     */
     public NewStoragePage() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+
+    }
+    /**
+     * Get the default values of the page
+     */
+    public void defaultValues() {
+
+        nameField.setEnabled(true);
+        selectStorageNameButton.setEnabled(true);
+        transmitterComboBox.setEnabled(false);
+        transmitterCostField.setEnabled(false);
+        selectTransmitterStorageButton.setEnabled(false);
+        transmitterRutesTextArea.setText("");
+        applyTransmitterStorageButton.setEnabled(false);
+        receiverComboBox.setEnabled(false);
+        receiverCostField.setEnabled(false);
+        selectReceiverStorageButton.setEnabled(false);
+        ReceiverRutesTextArea.setText("");
+        applyTransmitterStorageButton1.setEnabled(false);
+        createStorageButton.setEnabled(false);
+        name = "";
+        from = "";
+        to = "";
+        directionFrom = "";
+        directionTo = "";
+        direction = "";
+        counterTransmitter = 0;
+        nameField.setText("");
+        transmitterComboBox.removeAllItems();
+        receiverComboBox.removeAllItems();
+    }
+    
+    /**
+     * fill the transmitter chooser storage
+     * @param g1 
+     */
+
+    public void fillTransmitterChooserCombo(Graph g1) {
+
+//        System.out.println(direction);
+        transmitterComboBox.removeAllItems();
+        String[] storage = g1.namenOnAString();
+        String[] arrayAux = InterfaceFunctions.fromTexttoArray(direction);
+        System.out.println(arrayAux.length);
+        System.out.println(storage.length);
+
+        for (int i = 0; i < storage.length; i++) {
+
+            if (!storage[i].equalsIgnoreCase(from)) {
+                boolean validator = true;
+                for (int j = 0; j < arrayAux.length; j++) {
+                    String[] aux = arrayAux[j].split(",");
+                    if (aux[0].equalsIgnoreCase(storage[i])) {
+                        validator = false;
+
+                    }
+                }
+                if (validator) {
+                    transmitterComboBox.addItem(storage[i]);
+
+                }
+            }
+        }
+
+    }
+    
+    /**
+     * fill the receiver chooser storage
+     * @param g1 
+     */
+
+    public void fillReceiverChooserCombo(Graph g1) {
+
+        receiverComboBox.removeAllItems();
+        String[] storage = g1.namenOnAString();
+        String[] arrayAux = InterfaceFunctions.fromTexttoArray(direction);
+        for (int i = 0; i < storage.length; i++) {
+            if (!storage[i].equalsIgnoreCase(to)) {
+                boolean validator = true;
+                for (int j = 0; j < arrayAux.length; j++) {
+                    String[] aux = arrayAux[j].split(",");
+                    if (aux[0].equalsIgnoreCase(storage[i])) {
+                        validator = false;
+
+                    }
+                }
+                if (validator) {
+                    receiverComboBox.addItem(storage[i]);
+
+                }
+            }
+        }
 
     }
 
@@ -38,11 +139,16 @@ public class NewStoragePage extends javax.swing.JFrame {
             receiverComboBox.addItem(storage[i]);
         }
     }
-
+    /**
+     * get the graph information from GlobalUI
+     * @param graph 
+     */
     public void createGprah(Graph graph) {
         g1 = graph;
-        fillReceiverCombo(g1);
-        fillTransmitterCombo(g1);
+        transmitterRutesTextArea.setEditable(false);
+        ReceiverRutesTextArea.setEditable(false);
+        defaultValues();
+
     }
 
     /**
@@ -58,11 +164,20 @@ public class NewStoragePage extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        selectReceiverStorageButton = new javax.swing.JButton();
+        applyTransmitterStorageButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        ReceiverRutesTextArea = new javax.swing.JTextArea();
+        createStorageButton1 = new javax.swing.JToggleButton();
+        applyTransmitterStorageButton = new javax.swing.JButton();
+        selectTransmitterStorageButton = new javax.swing.JButton();
         receiverCostLabel = new javax.swing.JLabel();
         writeNameLabel = new javax.swing.JLabel();
         chooseTransmitterLabel = new javax.swing.JLabel();
         transmitterCostLabel = new javax.swing.JLabel();
         chooseReceiverLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        transmitterRutesTextArea = new javax.swing.JTextArea();
         nameField = new javax.swing.JTextField();
         transmitterComboBox = new javax.swing.JComboBox<>();
         receiverCostField = new javax.swing.JTextField();
@@ -70,7 +185,8 @@ public class NewStoragePage extends javax.swing.JFrame {
         transmitterCostField = new javax.swing.JTextField();
         createStorageButton = new javax.swing.JToggleButton();
         BackToTheMenuButton = new javax.swing.JToggleButton();
-        blueBackground = new javax.swing.JPanel();
+        selectStorageNameButton = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -97,10 +213,68 @@ public class NewStoragePage extends javax.swing.JFrame {
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 70));
 
+        selectReceiverStorageButton.setBackground(new java.awt.Color(255, 255, 255));
+        selectReceiverStorageButton.setForeground(new java.awt.Color(0, 0, 0));
+        selectReceiverStorageButton.setText("Seleccionar");
+        selectReceiverStorageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectReceiverStorageButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(selectReceiverStorageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 160, -1));
+
+        applyTransmitterStorageButton1.setBackground(new java.awt.Color(255, 255, 255));
+        applyTransmitterStorageButton1.setForeground(new java.awt.Color(0, 0, 0));
+        applyTransmitterStorageButton1.setText("Aplicar");
+        applyTransmitterStorageButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                applyTransmitterStorageButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(applyTransmitterStorageButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 520, 160, -1));
+
+        ReceiverRutesTextArea.setBackground(new java.awt.Color(255, 255, 255));
+        ReceiverRutesTextArea.setColumns(20);
+        ReceiverRutesTextArea.setForeground(new java.awt.Color(0, 0, 0));
+        ReceiverRutesTextArea.setRows(5);
+        jScrollPane2.setViewportView(ReceiverRutesTextArea);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 160, 70));
+
+        createStorageButton1.setBackground(new java.awt.Color(255, 255, 255));
+        createStorageButton1.setForeground(new java.awt.Color(0, 0, 0));
+        createStorageButton1.setText("Reiniciar");
+        createStorageButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createStorageButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(createStorageButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 580, 160, -1));
+
+        applyTransmitterStorageButton.setBackground(new java.awt.Color(255, 255, 255));
+        applyTransmitterStorageButton.setForeground(new java.awt.Color(0, 0, 0));
+        applyTransmitterStorageButton.setText("Aplicar");
+        applyTransmitterStorageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                applyTransmitterStorageButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(applyTransmitterStorageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 160, -1));
+
+        selectTransmitterStorageButton.setBackground(new java.awt.Color(255, 255, 255));
+        selectTransmitterStorageButton.setForeground(new java.awt.Color(0, 0, 0));
+        selectTransmitterStorageButton.setText("Seleccionar");
+        selectTransmitterStorageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectTransmitterStorageButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(selectTransmitterStorageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 160, -1));
+
         receiverCostLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         receiverCostLabel.setForeground(new java.awt.Color(255, 255, 255));
         receiverCostLabel.setText("Indique distancia en Km:");
-        jPanel2.add(receiverCostLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, -1));
+        jPanel2.add(receiverCostLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, -1, -1));
 
         writeNameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         writeNameLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -110,17 +284,25 @@ public class NewStoragePage extends javax.swing.JFrame {
         chooseTransmitterLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         chooseTransmitterLabel.setForeground(new java.awt.Color(255, 255, 255));
         chooseTransmitterLabel.setText("Seleccione almacen emisor:");
-        jPanel2.add(chooseTransmitterLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
+        jPanel2.add(chooseTransmitterLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
 
         transmitterCostLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         transmitterCostLabel.setForeground(new java.awt.Color(255, 255, 255));
         transmitterCostLabel.setText("Indique distancia en Km:");
-        jPanel2.add(transmitterCostLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
+        jPanel2.add(transmitterCostLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, -1));
 
         chooseReceiverLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         chooseReceiverLabel.setForeground(new java.awt.Color(255, 255, 255));
         chooseReceiverLabel.setText("Seleccione almacen receptor:");
-        jPanel2.add(chooseReceiverLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, -1));
+        jPanel2.add(chooseReceiverLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, -1, -1));
+
+        transmitterRutesTextArea.setBackground(new java.awt.Color(255, 255, 255));
+        transmitterRutesTextArea.setColumns(20);
+        transmitterRutesTextArea.setForeground(new java.awt.Color(0, 0, 0));
+        transmitterRutesTextArea.setRows(5);
+        jScrollPane1.setViewportView(transmitterRutesTextArea);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 160, 70));
 
         nameField.setBackground(new java.awt.Color(255, 255, 255));
         nameField.setForeground(new java.awt.Color(0, 0, 0));
@@ -133,19 +315,24 @@ public class NewStoragePage extends javax.swing.JFrame {
                 transmitterComboBoxActionPerformed(evt);
             }
         });
-        jPanel2.add(transmitterComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 160, -1));
+        jPanel2.add(transmitterComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 160, -1));
 
         receiverCostField.setBackground(new java.awt.Color(255, 255, 255));
         receiverCostField.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(receiverCostField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 160, -1));
+        receiverCostField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                receiverCostFieldActionPerformed(evt);
+            }
+        });
+        jPanel2.add(receiverCostField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, 160, -1));
 
         receiverComboBox.setBackground(new java.awt.Color(255, 255, 255));
         receiverComboBox.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(receiverComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 160, -1));
+        jPanel2.add(receiverComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, 160, -1));
 
         transmitterCostField.setBackground(new java.awt.Color(255, 255, 255));
         transmitterCostField.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(transmitterCostField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, 160, -1));
+        jPanel2.add(transmitterCostField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 160, -1));
 
         createStorageButton.setBackground(new java.awt.Color(255, 255, 255));
         createStorageButton.setForeground(new java.awt.Color(0, 0, 0));
@@ -155,7 +342,7 @@ public class NewStoragePage extends javax.swing.JFrame {
                 createStorageButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(createStorageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 160, 50));
+        jPanel2.add(createStorageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 550, 160, 20));
 
         BackToTheMenuButton.setBackground(new java.awt.Color(255, 255, 255));
         BackToTheMenuButton.setForeground(new java.awt.Color(0, 0, 0));
@@ -165,46 +352,33 @@ public class NewStoragePage extends javax.swing.JFrame {
                 BackToTheMenuButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(BackToTheMenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 160, 50));
+        jPanel2.add(BackToTheMenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 550, 160, 50));
 
-        blueBackground.setBackground(new java.awt.Color(21, 110, 180));
-        blueBackground.setForeground(new java.awt.Color(8, 43, 71));
-        jPanel2.add(blueBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 250, 190));
+        selectStorageNameButton.setBackground(new java.awt.Color(255, 255, 255));
+        selectStorageNameButton.setForeground(new java.awt.Color(0, 0, 0));
+        selectStorageNameButton.setText("Seleccionar");
+        selectStorageNameButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectStorageNameButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(selectStorageNameButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, 160, -1));
+
+        jPanel1.setBackground(new java.awt.Color(21, 110, 180));
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 260, 450));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Assets/output-onlinepngtools.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 550, 290));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 550, 560));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 360));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 630));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void createStorageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createStorageButtonActionPerformed
-        
-        String name = nameField.getText();
-        String transmitter = transmitterComboBox.getSelectedItem().toString();
-        String transmitterCost = transmitterCostField.getText();
-        String receiver = receiverComboBox.getSelectedItem().toString();
-        String receiverCost = receiverCostField.getText();
-        String[] nameArray = name.split(" ");
-        
-        InterfaceFunctions.createStorageButton( transmitter,  receiver,  receiverCost,  transmitterCost, nameArray,  name );
-        
-        //Print matrix
-//        System.out.println("\n");
-//        GlobalUI.getGraph().getAdjMatrix().printMatrix();
-
-
-        nameField.setText("");
-        transmitterCostField.setText("");
-        receiverCostField.setText("");
-        
-        
-        
-        
-
-        fillReceiverCombo(GlobalUI.getGraph());
-        fillTransmitterCombo(GlobalUI.getGraph());
+        InterfaceFunctions.createNewStorage(name, directionTo, directionFrom);
+        JOptionPane.showMessageDialog(null, "Almacén creado con éxito");
+        defaultValues();
 
     }//GEN-LAST:event_createStorageButtonActionPerformed
 
@@ -219,6 +393,122 @@ public class NewStoragePage extends javax.swing.JFrame {
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         GlobalUI.getBackToMainPage();
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void selectStorageNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectStorageNameButtonActionPerformed
+        name = nameField.getText();
+        name = name.replace(",", "");
+        name = name.replace(";", "");
+        name = name.replace(":", "");
+
+        if (InterfaceFunctions.selectStorageName(name)) {
+            transmitterComboBox.setEnabled(true);
+            transmitterCostField.setEnabled(true);
+            selectTransmitterStorageButton.setEnabled(true);
+            nameField.setEnabled(false);
+            selectStorageNameButton.setEnabled(false);
+            fillTransmitterCombo(g1);
+
+        }
+
+
+    }//GEN-LAST:event_selectStorageNameButtonActionPerformed
+
+    private void selectTransmitterStorageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectTransmitterStorageButtonActionPerformed
+        applyTransmitterStorageButton.setEnabled(true);
+        if (transmitterComboBox.getSelectedItem() != null && counterTransmitter + 1 < GlobalUI.getGraph().getCounter()) {
+            String cost = transmitterCostField.getText();
+            String storage = transmitterComboBox.getSelectedItem().toString();
+            System.out.println(storage);
+            if (InterfaceFunctions.isANumber(cost)) {
+                int distance = Integer.parseInt(cost);
+                String output = "";
+                directionFrom += storage + "," + distance + "  ";
+                direction += storage + "," + distance + "  ";
+                fillTransmitterChooserCombo(GlobalUI.getGraph());
+                transmitterRutesTextArea.setText("");
+                String[] directionArray = directionFrom.split("  ");
+                for (int i = 0; i < directionArray.length; i++) {
+                    output += directionArray[i] + "\n";
+
+                }
+                transmitterRutesTextArea.setText(output);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese un numero válido en la distancia");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe quedar al menos un almacén disponible como receptor");
+            transmitterComboBox.setEnabled(false);
+            transmitterCostField.setEnabled(false);
+            selectTransmitterStorageButton.setEnabled(false);
+
+        }
+        counterTransmitter++;
+        transmitterCostField.setText("");
+
+
+    }//GEN-LAST:event_selectTransmitterStorageButtonActionPerformed
+
+    private void applyTransmitterStorageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyTransmitterStorageButtonActionPerformed
+        fillReceiverChooserCombo(GlobalUI.getGraph());
+        transmitterComboBox.setEnabled(false);
+        transmitterCostField.setEnabled(false);
+        selectTransmitterStorageButton.setEnabled(false);
+        applyTransmitterStorageButton.setEnabled(false);
+        receiverComboBox.setEnabled(true);
+
+        receiverCostField.setEnabled(true);
+        selectReceiverStorageButton.setEnabled(true);
+        applyTransmitterStorageButton1.setEnabled(true);
+
+    }//GEN-LAST:event_applyTransmitterStorageButtonActionPerformed
+
+    private void selectReceiverStorageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectReceiverStorageButtonActionPerformed
+
+        if (receiverComboBox.getSelectedItem() != null) {
+            String cost = receiverCostField.getText();
+            String storage = receiverComboBox.getSelectedItem().toString();
+            System.out.println(storage);
+            if (InterfaceFunctions.isANumber(cost)) {
+                int distance = Integer.parseInt(cost);
+                String output = "";
+                directionTo += storage + "," + distance + "  ";
+                direction += storage + "," + distance + "  ";
+                fillReceiverChooserCombo(GlobalUI.getGraph());
+                ReceiverRutesTextArea.setText("");
+                String[] directionArray = directionTo.split("  ");
+                for (int i = 0; i < directionArray.length; i++) {
+                    output += directionArray[i] + "\n";
+                }
+                ReceiverRutesTextArea.setText(output);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese un numero válido en la distancia");
+            }
+        } else {
+            receiverComboBox.setEnabled(false);
+            receiverCostField.setEnabled(false);
+            selectReceiverStorageButton.setEnabled(false);
+        }
+        receiverCostField.setText("");
+    }//GEN-LAST:event_selectReceiverStorageButtonActionPerformed
+
+    private void applyTransmitterStorageButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyTransmitterStorageButton1ActionPerformed
+        receiverComboBox.setEnabled(false);
+        receiverCostField.setEnabled(false);
+        selectReceiverStorageButton.setEnabled(false);
+        applyTransmitterStorageButton1.setEnabled(false);
+        createStorageButton.setEnabled(true);
+
+    }//GEN-LAST:event_applyTransmitterStorageButton1ActionPerformed
+
+    private void receiverCostFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receiverCostFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_receiverCostFieldActionPerformed
+
+    private void createStorageButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createStorageButton1ActionPerformed
+        defaultValues();
+    }//GEN-LAST:event_createStorageButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,22 +548,32 @@ public class NewStoragePage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton BackToTheMenuButton;
-    private javax.swing.JPanel blueBackground;
+    private javax.swing.JTextArea ReceiverRutesTextArea;
+    private javax.swing.JButton applyTransmitterStorageButton;
+    private javax.swing.JButton applyTransmitterStorageButton1;
     private javax.swing.JLabel chooseReceiverLabel;
     private javax.swing.JLabel chooseTransmitterLabel;
     private javax.swing.JToggleButton createStorageButton;
+    private javax.swing.JToggleButton createStorageButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField nameField;
     private javax.swing.JComboBox<String> receiverComboBox;
     private javax.swing.JTextField receiverCostField;
     private javax.swing.JLabel receiverCostLabel;
+    private javax.swing.JButton selectReceiverStorageButton;
+    private javax.swing.JButton selectStorageNameButton;
+    private javax.swing.JButton selectTransmitterStorageButton;
     private javax.swing.JComboBox<String> transmitterComboBox;
     private javax.swing.JTextField transmitterCostField;
     private javax.swing.JLabel transmitterCostLabel;
+    private javax.swing.JTextArea transmitterRutesTextArea;
     private javax.swing.JLabel writeNameLabel;
     // End of variables declaration//GEN-END:variables
 }

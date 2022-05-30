@@ -14,11 +14,12 @@ import main.Graph;
  */
 public class AddNewRutesPage extends javax.swing.JFrame {
 
+    String from = "";
+    String direction = "";
+
     /**
      * Creates new form AddNewRutesPage
      */
-    String from = "";
-    String direction = "";
 
     public AddNewRutesPage() {
         initComponents();
@@ -30,7 +31,10 @@ public class AddNewRutesPage extends javax.swing.JFrame {
         addNewRutesButton.setEnabled(false);
 
     }
-
+    /**
+     * fill the transmitter chooser combo box with the storages
+     * @param g1 
+     */
     public void fillTransmitterChooserCombo(Graph g1) {
         transmitterChooserComboBox.removeAllItems();
         String[] storage = g1.namenOnAString();
@@ -38,10 +42,14 @@ public class AddNewRutesPage extends javax.swing.JFrame {
             transmitterChooserComboBox.addItem(storage[i]);
         }
     }
+    
+    /**
+     * fill the receiver chooser combo box with the storages
+     * @param g1 
+     */
 
     public void fillReceiverChooserCombo(Graph g1) {
 
-        System.out.println(direction);
         receiverChooserComboBox.removeAllItems();
         String[] storage = g1.namenOnAString();
         String[] arrayAux = InterfaceFunctions.fromTexttoArray(direction);
@@ -63,9 +71,15 @@ public class AddNewRutesPage extends javax.swing.JFrame {
         }
 
     }
+    
+    /**
+     * Get the graph information from GlobalUI
+     * @param graph 
+     */
 
     public void createGprah(Graph graph) {
         Graph g1 = graph;
+        rutesTextArea.setEditable(false);
         fillTransmitterChooserCombo(g1);
 
     }
@@ -164,7 +178,7 @@ public class AddNewRutesPage extends javax.swing.JFrame {
 
         selectDistanceLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         selectDistanceLabel.setForeground(new java.awt.Color(255, 255, 255));
-        selectDistanceLabel.setText("Indique la distancia:");
+        selectDistanceLabel.setText("Indique la distancia en Km:");
         jPanel1.add(selectDistanceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 180, -1));
 
         selectedRutesLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -272,6 +286,7 @@ public class AddNewRutesPage extends javax.swing.JFrame {
     }//GEN-LAST:event_selectParamButtonActionPerformed
 
     private void selectFromButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectFromButtonActionPerformed
+
         from = transmitterChooserComboBox.getSelectedItem().toString();
         fillReceiverChooserCombo(GlobalUI.getGraph());
         receiverChooserComboBox.setEnabled(true);
@@ -324,7 +339,7 @@ public class AddNewRutesPage extends javax.swing.JFrame {
         costTextField.setText("");
         rutesTextArea.setText("");
         showStorageTransmitterLabel.setText("Seleccione un almacén primero");
-        
+
     }//GEN-LAST:event_deleteAllButtonActionPerformed
 
     /**

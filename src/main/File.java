@@ -167,6 +167,12 @@ public class File {
         return g1;
 
     }
+    
+    /**
+     * Saves the graph information on the txt
+     * @param g
+     * @param direction 
+     */
 
     public void writeFile(Graph g, String direction) {
         String info = "Almacenes;";

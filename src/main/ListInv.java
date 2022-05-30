@@ -343,6 +343,12 @@ public class ListInv {
 
     }
     
+    /**
+     * Add a new product with the quantity on a inventory list
+     * @param name
+     * @param quantity 
+     */
+    
     public void addNewProductWithQuantity(String name, int quantity){
         Product p = new Product(quantity,name);
         addEnd(p);

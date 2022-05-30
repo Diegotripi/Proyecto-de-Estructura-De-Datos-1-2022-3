@@ -39,10 +39,7 @@ public class Application {
         v = dataFile.numVertices(arInfo);
         AdjMatrixGraph am = new AdjMatrixGraph(v);
 
-        /*
-        La funcion extraer se configuro tal que si son mas o menos almacenes esta lo detecte
-        Puede hacerse mas eficiente
-         */
+        
         Graph g1 = dataFile.getInfo(arInfo, am);
 
         GlobalUI.setGraph(g1);
