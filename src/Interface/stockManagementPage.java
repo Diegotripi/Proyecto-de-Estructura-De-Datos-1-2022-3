@@ -379,11 +379,11 @@ public class stockManagementPage extends javax.swing.JFrame {
         fillProductsCombo();
         productChooserCombo1.setEnabled(true);
         selectProductButton.setEnabled(true);
-        unitsExistingProductTextField.setEnabled(true);
-        selectUnitsButton.setEnabled(true);
+        
 
         newProductNameTextField1.setEnabled(true);
         selectNewProductNameButton.setEnabled(true);
+        
 
 
     }//GEN-LAST:event_selectStorageButtonActionPerformed
@@ -399,6 +399,8 @@ public class stockManagementPage extends javax.swing.JFrame {
         selectNewUnitsButton.setEnabled(false);
         storageChooserCombo.setEnabled(false);
         selectStorageButton.setEnabled(false);
+        unitsExistingProductTextField.setEnabled(true);
+        selectUnitsButton.setEnabled(true);
 
 
     }//GEN-LAST:event_selectProductButtonActionPerformed
@@ -425,6 +427,7 @@ public class stockManagementPage extends javax.swing.JFrame {
     }//GEN-LAST:event_selectUnitsButtonActionPerformed
 
     private void addQuantityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addQuantityButtonActionPerformed
+        
         g1.getStorageList().getStorageByName(storage).getInventory().getProductByName(product).setQuantity(quantity);
         GlobalUI.setGraph(g1);
         defaultValues();
