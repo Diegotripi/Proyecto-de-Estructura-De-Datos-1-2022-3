@@ -469,7 +469,7 @@ public class NewStoragePage extends javax.swing.JFrame {
 
         receiverCostField.setEnabled(true);
         selectReceiverStorageButton.setEnabled(true);
-        applyTransmitterStorageButton1.setEnabled(true);
+        
 
     }//GEN-LAST:event_applyTransmitterStorageButtonActionPerformed
 
@@ -491,6 +491,7 @@ public class NewStoragePage extends javax.swing.JFrame {
                     output += directionArray[i] + "\n";
                 }
                 ReceiverRutesTextArea.setText(output);
+                applyTransmitterStorageButton1.setEnabled(true);
 
             } else {
                 JOptionPane.showMessageDialog(null, "Ingrese un numero válido en la distancia");
