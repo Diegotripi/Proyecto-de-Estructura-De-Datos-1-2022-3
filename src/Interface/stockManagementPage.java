@@ -42,7 +42,7 @@ public class stockManagementPage extends javax.swing.JFrame {
         unitsExistingProductTextField.setEnabled(false);
         selectUnitsButton.setEnabled(false);
         addQuantityButton.setEnabled(false);
-        newProductNameTextField1.setEnabled(false);
+        newProductNameTextField.setEnabled(false);
         selectNewProductNameButton.setEnabled(false);
         unitsNewProductTextField.setEnabled(false);
         selectNewUnitsButton.setEnabled(false);
@@ -52,7 +52,7 @@ public class stockManagementPage extends javax.swing.JFrame {
         actualQuantityLabel.setText("");
         newQuantityLabel.setText("");
         unitsNewProductTextField.setText("");
-        newProductNameTextField1.setText("");
+        newProductNameTextField.setText("");
         newQuantityNumberTitleLabel.setText((""));
         storage = "";
         inv = null;
@@ -109,8 +109,8 @@ public class stockManagementPage extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         babkToTheMain = new javax.swing.JButton();
         deleteButton1 = new javax.swing.JButton();
@@ -130,10 +130,10 @@ public class stockManagementPage extends javax.swing.JFrame {
         actualQuantityLabel = new javax.swing.JLabel();
         selectQuantityTitleLabel = new javax.swing.JLabel();
         selectProductQuantityLabel = new javax.swing.JLabel();
-        selectProductQuantityLabel1 = new javax.swing.JLabel();
-        selectProductQuantityLabel2 = new javax.swing.JLabel();
+        selectProductName = new javax.swing.JLabel();
+        selectNewProductNameLabel = new javax.swing.JLabel();
         selectNewProductNameButton = new javax.swing.JButton();
-        newProductNameTextField1 = new javax.swing.JTextField();
+        newProductNameTextField = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         selectStorageButton = new javax.swing.JButton();
         storageChooserCombo = new javax.swing.JComboBox<>();
@@ -151,14 +151,14 @@ public class stockManagementPage extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(204, 204, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Assets/Amazon-Logo-Transparent-PNG (1).png"))); // NOI18N
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, -1, -1));
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Assets/Amazon-Logo-Transparent-PNG (1).png"))); // NOI18N
+        jPanel4.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Manejo de inventario");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 900, 40));
+        title.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
+        title.setForeground(new java.awt.Color(0, 0, 0));
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title.setText("Manejo de inventario");
+        jPanel4.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 900, 40));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 70));
 
@@ -286,15 +286,15 @@ public class stockManagementPage extends javax.swing.JFrame {
         selectProductQuantityLabel.setText("Agregar unidades a producto ya existente");
         jPanel1.add(selectProductQuantityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 380, -1));
 
-        selectProductQuantityLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        selectProductQuantityLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        selectProductQuantityLabel1.setText("Seleccione el producto");
-        jPanel1.add(selectProductQuantityLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
+        selectProductName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        selectProductName.setForeground(new java.awt.Color(255, 255, 255));
+        selectProductName.setText("Seleccione el producto");
+        jPanel1.add(selectProductName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
 
-        selectProductQuantityLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        selectProductQuantityLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        selectProductQuantityLabel2.setText("Nombre producto nuevo");
-        jPanel1.add(selectProductQuantityLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, -1, -1));
+        selectNewProductNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        selectNewProductNameLabel.setForeground(new java.awt.Color(255, 255, 255));
+        selectNewProductNameLabel.setText("Nombre producto nuevo");
+        jPanel1.add(selectNewProductNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, -1, -1));
 
         selectNewProductNameButton.setBackground(new java.awt.Color(255, 255, 255));
         selectNewProductNameButton.setForeground(new java.awt.Color(0, 0, 0));
@@ -306,9 +306,9 @@ public class stockManagementPage extends javax.swing.JFrame {
         });
         jPanel1.add(selectNewProductNameButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 290, 220, -1));
 
-        newProductNameTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        newProductNameTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(newProductNameTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 260, 220, -1));
+        newProductNameTextField.setBackground(new java.awt.Color(255, 255, 255));
+        newProductNameTextField.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(newProductNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 260, 220, -1));
 
         jPanel2.setBackground(new java.awt.Color(21, 110, 180));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -381,7 +381,7 @@ public class stockManagementPage extends javax.swing.JFrame {
         selectProductButton.setEnabled(true);
         
 
-        newProductNameTextField1.setEnabled(true);
+        newProductNameTextField.setEnabled(true);
         selectNewProductNameButton.setEnabled(true);
         
 
@@ -393,7 +393,7 @@ public class stockManagementPage extends javax.swing.JFrame {
         quantity = g1.getStorageList().getStorageByName(storage).getInventory().getProductByName(product).getQuantity();
         actualQuantityLabel.setText(String.valueOf(quantity));
         newQuantityLabel.setText(String.valueOf(quantity));
-        newProductNameTextField1.setEnabled(false);
+        newProductNameTextField.setEnabled(false);
         selectNewProductNameButton.setEnabled(false);
         unitsNewProductTextField.setEnabled(false);
         selectNewUnitsButton.setEnabled(false);
@@ -439,7 +439,7 @@ public class stockManagementPage extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void selectNewProductNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectNewProductNameButtonActionPerformed
-        product = newProductNameTextField1.getText();
+        product = newProductNameTextField.getText();
         product = product.replace(" ", "");
         product = product.replace(";", "");
         product = product.replace(":", "");
@@ -463,7 +463,7 @@ public class stockManagementPage extends javax.swing.JFrame {
             unitsNewProductTextField.setEnabled(true);
             selectNewUnitsButton.setEnabled(true);
             productChooserCombo1.setEnabled(false);
-            newProductNameTextField1.setEnabled(false);
+            newProductNameTextField.setEnabled(false);
             selectNewProductNameButton.setEnabled(false);
             selectProductButton.setEnabled(false);
             unitsExistingProductTextField.setEnabled(false);
@@ -558,25 +558,24 @@ public class stockManagementPage extends javax.swing.JFrame {
     private javax.swing.JLabel backGround;
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton deleteButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JTextField newProductNameTextField1;
+    private javax.swing.JLabel logo;
+    private javax.swing.JTextField newProductNameTextField;
     private javax.swing.JLabel newQuantityLabel;
     private javax.swing.JLabel newQuantityNumberTitleLabel;
     private javax.swing.JLabel newQuantityProductTitleLabel;
     private javax.swing.JLabel newQuantityTitleLabel;
     private javax.swing.JComboBox<String> productChooserCombo1;
     private javax.swing.JButton selectNewProductNameButton;
+    private javax.swing.JLabel selectNewProductNameLabel;
     private javax.swing.JButton selectNewUnitsButton;
     private javax.swing.JButton selectProductButton;
+    private javax.swing.JLabel selectProductName;
     private javax.swing.JLabel selectProductQuantityLabel;
-    private javax.swing.JLabel selectProductQuantityLabel1;
-    private javax.swing.JLabel selectProductQuantityLabel2;
     private javax.swing.JLabel selectProductQuantityLabel3;
     private javax.swing.JLabel selectQuantityTitleLabel;
     private javax.swing.JLabel selectQuantityTitleLabel1;
@@ -584,6 +583,7 @@ public class stockManagementPage extends javax.swing.JFrame {
     private javax.swing.JLabel selectStorageTitleLabel;
     private javax.swing.JButton selectUnitsButton;
     private javax.swing.JComboBox<String> storageChooserCombo;
+    private javax.swing.JLabel title;
     private javax.swing.JTextField unitsExistingProductTextField;
     private javax.swing.JTextField unitsNewProductTextField;
     // End of variables declaration//GEN-END:variables

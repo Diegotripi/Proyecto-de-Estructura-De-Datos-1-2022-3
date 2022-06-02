@@ -123,6 +123,11 @@ public class NewStoragePage extends javax.swing.JFrame {
         }
 
     }
+    
+    /**
+     * fill the transmitter chooser storage
+     * @param g1 
+     */
 
     public void fillTransmitterCombo(Graph g1) {
         transmitterComboBox.removeAllItems();
@@ -131,6 +136,11 @@ public class NewStoragePage extends javax.swing.JFrame {
             transmitterComboBox.addItem(storage[i]);
         }
     }
+    
+    /**
+     * fill the receiver chooser storage
+     * @param g1 
+     */
 
     public void fillReceiverCombo(Graph g1) {
         receiverComboBox.removeAllItems();
@@ -162,8 +172,8 @@ public class NewStoragePage extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        logoLabel = new javax.swing.JLabel();
+        titleLabel = new javax.swing.JLabel();
         selectReceiverStorageButton = new javax.swing.JButton();
         applyTransmitterStorageButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -187,7 +197,7 @@ public class NewStoragePage extends javax.swing.JFrame {
         BackToTheMenuButton = new javax.swing.JToggleButton();
         selectStorageNameButton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -197,19 +207,19 @@ public class NewStoragePage extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(204, 204, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Assets/Amazon-Logo-Transparent-PNG (1).png"))); // NOI18N
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Assets/Amazon-Logo-Transparent-PNG (1).png"))); // NOI18N
+        logoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                logoLabelMouseClicked(evt);
             }
         });
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 50, -1));
+        jPanel4.add(logoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 50, -1));
 
-        jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Crear nuevo almacen:");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 280, 40));
+        titleLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
+        titleLabel.setForeground(new java.awt.Color(0, 0, 0));
+        titleLabel.setText("Crear nuevo almacen:");
+        jPanel4.add(titleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 280, 40));
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 70));
 
@@ -367,8 +377,8 @@ public class NewStoragePage extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(21, 110, 180));
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 260, 450));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Assets/output-onlinepngtools.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 550, 560));
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Assets/output-onlinepngtools.png"))); // NOI18N
+        jPanel2.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 550, 560));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 630));
 
@@ -390,9 +400,9 @@ public class NewStoragePage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_transmitterComboBoxActionPerformed
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void logoLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoLabelMouseClicked
         GlobalUI.getBackToMainPage();
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_logoLabelMouseClicked
 
     private void selectStorageNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectStorageNameButtonActionPerformed
         name = nameField.getText();
@@ -551,18 +561,17 @@ public class NewStoragePage extends javax.swing.JFrame {
     private javax.swing.JTextArea ReceiverRutesTextArea;
     private javax.swing.JButton applyTransmitterStorageButton;
     private javax.swing.JButton applyTransmitterStorageButton1;
+    private javax.swing.JLabel background;
     private javax.swing.JLabel chooseReceiverLabel;
     private javax.swing.JLabel chooseTransmitterLabel;
     private javax.swing.JToggleButton createStorageButton;
     private javax.swing.JToggleButton createStorageButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel logoLabel;
     private javax.swing.JTextField nameField;
     private javax.swing.JComboBox<String> receiverComboBox;
     private javax.swing.JTextField receiverCostField;
@@ -570,6 +579,7 @@ public class NewStoragePage extends javax.swing.JFrame {
     private javax.swing.JButton selectReceiverStorageButton;
     private javax.swing.JButton selectStorageNameButton;
     private javax.swing.JButton selectTransmitterStorageButton;
+    private javax.swing.JLabel titleLabel;
     private javax.swing.JComboBox<String> transmitterComboBox;
     private javax.swing.JTextField transmitterCostField;
     private javax.swing.JLabel transmitterCostLabel;
