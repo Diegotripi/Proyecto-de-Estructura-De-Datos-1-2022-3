@@ -20,18 +20,24 @@ Almacen E:
 Audifonos,10
 Microfono,7
 Pantalla,0;
-Almacen AAAA:
-Placa,11;
+Almacen AA:
+Placa,0;
+Almacen 123:
+Placa,2;
+Almacen A12:
+Placa,22;
 Rutas;
 A,B,10
 A,C,20
-A,AAAA,22
+A,AA,22
+A,123,22
+A,A12,2
 B,C,5
 B,D,8
-B,AAAA,22
 C,D,4
 C,E,13
 D,E,3
 E,A,25
-AAAA,C,33
-AAAA,D,33
+AA,B,33
+123,B,33
+A12,C,33

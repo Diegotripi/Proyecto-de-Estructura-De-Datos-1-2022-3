@@ -406,18 +406,15 @@ public class NewStoragePage extends javax.swing.JFrame {
 
     private void selectStorageNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectStorageNameButtonActionPerformed
         name = nameField.getText().toUpperCase();
-       
-        name = name.replace("Almacen", "");
-        name = name.replace("Almacén", "");
-        name = name.replace("almacen", "");
-        name = name.replace("almacén", "");
+        name = name.replace("ALMACEN", "");
+        name = name.replace("ALMACÉN", "");
         name = name.replace(" ", "");
-        
-        name = "Almacen "+ name;
         name = name.replace(",", "");
         name = name.replace(";", "");
         name = name.replace(":", "");
         
+        if(!name.contains("ALMACEN")){
+            name = "Almacen "+ name;
 
         if (InterfaceFunctions.selectStorageName(name)) {
             transmitterComboBox.setEnabled(true);
@@ -428,6 +425,11 @@ public class NewStoragePage extends javax.swing.JFrame {
             fillTransmitterCombo(g1);
 
         }
+        }else{
+            JOptionPane.showMessageDialog(null, "Error al introducir el nombre del almacen. Recuerde utilizar los espacios.");
+        }
+        
+        
 
 
     }//GEN-LAST:event_selectStorageNameButtonActionPerformed
