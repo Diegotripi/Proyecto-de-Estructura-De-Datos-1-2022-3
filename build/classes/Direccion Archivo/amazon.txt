@@ -20,23 +20,18 @@ Almacen E:
 Audifonos,10
 Microfono,7
 Pantalla,0;
-Almacen H:
-Placa,0;
-Almacen 1234:
-Placa,11
-Perros,1;
+Almacen AAAA:
+Placa,11;
 Rutas;
 A,B,10
 A,C,20
-A,H,11
-A,1234,11
+A,AAAA,22
 B,C,5
 B,D,8
+B,AAAA,22
 C,D,4
 C,E,13
 D,E,3
 E,A,25
-H,B,22
-1234,A,22
-1234,B,22
-1234,D,11
+AAAA,C,33
+AAAA,D,33

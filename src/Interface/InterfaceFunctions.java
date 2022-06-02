@@ -682,7 +682,6 @@ public class InterfaceFunctions {
      */
     public static void addNewRutesButton(String direction, String from) {
 
-        
         String[] arrayAux = direction.split("  ");
         for (int i = 0; i < arrayAux.length; i++) {
             if (!arrayAux[i].equalsIgnoreCase("")) {
@@ -696,10 +695,9 @@ public class InterfaceFunctions {
 
         //GlobalUI.getGraph().getAdjMatrix().printMatrix();
     }
-    
+
     public static void addNewTransmitterRutesButton(String direction, String to) {
 
-        
         String[] arrayAux = direction.split("  ");
         for (int i = 0; i < arrayAux.length; i++) {
             if (!arrayAux[i].equalsIgnoreCase("")) {
@@ -726,46 +724,41 @@ public class InterfaceFunctions {
 
         return arrayAux;
     }
+
     /**
      * Validates the storage name selection
+     *
      * @param name
-     * @return 
+     * @return
      */
 
     public static boolean selectStorageName(String name) {
 
-        String[] nameArray = name.split(" ");
-
-        if (!InterfaceFunctions.isAStorage(nameArray)) {
-            JOptionPane.showMessageDialog(null, "El nombre del almacén debe de empezar con 'Almacen'");
+        if (InterfaceFunctions.alreadyExistStorage(name)) {
+            JOptionPane.showMessageDialog(null, "Ya existe el almacén");
         } else {
-            if (InterfaceFunctions.alreadyExistStorage(name)) {
-                JOptionPane.showMessageDialog(null, "Ya existe el almacén");
-            }else{
-                return true;
-            }
+            return true;
         }
-        
+
         return false;
     }
-    
+
     /**
      * create the new storage with the rutes
+     *
      * @param name
      * @param directionTo
-     * @param directionFrom 
+     * @param directionFrom
      */
-    
-    public static void createNewStorage(String name, String directionTo, String directionFrom){
+    public static void createNewStorage(String name, String directionTo, String directionFrom) {
         GlobalUI.getGraph().insertNewStorage(name);
         Product element = new Product(0, "Placa");
         ListInv inventory = new ListInv();
         inventory.addHead(element);
         GlobalUI.getGraph().getStorageList().getStorageNodeByIndex(GlobalUI.getGraph().getStorageList().getLength() - 1).getStorage().setInventory(inventory);
         createNewMatrixWithAnother(GlobalUI.getGraph().getAdjMatrix(), GlobalUI.getGraph().getCounter());
-        addNewRutesButton(directionTo,name);
+        addNewRutesButton(directionTo, name);
         addNewTransmitterRutesButton(directionFrom, name);
-        
-        
+
     }
 }

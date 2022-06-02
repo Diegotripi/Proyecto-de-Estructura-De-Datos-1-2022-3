@@ -362,7 +362,7 @@ public class NewStoragePage extends javax.swing.JFrame {
                 BackToTheMenuButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(BackToTheMenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 550, 160, 50));
+        jPanel2.add(BackToTheMenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 550, 160, 60));
 
         selectStorageNameButton.setBackground(new java.awt.Color(255, 255, 255));
         selectStorageNameButton.setForeground(new java.awt.Color(0, 0, 0));
@@ -405,10 +405,19 @@ public class NewStoragePage extends javax.swing.JFrame {
     }//GEN-LAST:event_logoLabelMouseClicked
 
     private void selectStorageNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectStorageNameButtonActionPerformed
-        name = nameField.getText();
+        name = nameField.getText().toUpperCase();
+       
+        name = name.replace("Almacen", "");
+        name = name.replace("Almacén", "");
+        name = name.replace("almacen", "");
+        name = name.replace("almacén", "");
+        name = name.replace(" ", "");
+        
+        name = "Almacen "+ name;
         name = name.replace(",", "");
         name = name.replace(";", "");
         name = name.replace(":", "");
+        
 
         if (InterfaceFunctions.selectStorageName(name)) {
             transmitterComboBox.setEnabled(true);
