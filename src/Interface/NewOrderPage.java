@@ -556,7 +556,12 @@ public class NewOrderPage extends javax.swing.JFrame {
     }//GEN-LAST:event_addProductButtonActionPerformed
 
     private void completeOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completeOrderButtonActionPerformed
-        InterfaceFunctions.completeOrder(getOrderTextArea().getText(), getStorageComboBox().getSelectedItem().toString());
+       if (!getOrderTextArea().getText().isEmpty()) {
+            InterfaceFunctions.completeOrder(getOrderTextArea().getText(), getStorageComboBox().getSelectedItem().toString());
+       } else {
+           JOptionPane.showMessageDialog(null, "No se han agregado productos a la orden");
+       }
+       
     }//GEN-LAST:event_completeOrderButtonActionPerformed
 
     /**

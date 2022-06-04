@@ -155,6 +155,8 @@ public class ShowInvPage extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 70));
 
+        backToMenuButton.setBackground(new java.awt.Color(255, 255, 255));
+        backToMenuButton.setForeground(new java.awt.Color(0, 0, 0));
         backToMenuButton.setText("Volver al menú");
         backToMenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

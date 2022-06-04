@@ -6,6 +6,7 @@
 package Interface;
 
 import java.io.File;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 import main.AdjMatrixGraph;
 import main.Application;
@@ -129,6 +130,7 @@ public class InterfaceFunctions {
         for (String productString : orderSplit) {
             String[] productAux = productString.split(":");
             String productName = productAux[0];
+
             int productQty = Integer.parseInt(productAux[1].replace(" ", ""));
             int currentStock = selectedStorage.getInventory().getProductByName(productName).getQuantity();
 
@@ -155,21 +157,30 @@ public class InterfaceFunctions {
             resetOrder();
 
         } else {
+            askStockInOtherStorage(missingStock, storageName, orderSplit, selectedStorage);
+        }
+    }
 
-//            missingStock.printInventory();
-            for (String orderString : orderSplit) {
-                String productName = orderString.split(":")[0];
+    /**
+     *
+     * Reduces the inv for the original storage selected by user once stock has
+     * been validated
+     *
+     * @param orderSplit
+     * @param missingStock
+     * @param selectedStorage
+     */
+    public static void changeOriginalStorageInv(String[] orderSplit, ListInv missingStock, Storage selectedStorage) {
+        for (String orderString : orderSplit) {
+            String productName = orderString.split(":")[0];
 
-                if (missingStock.getProductByName(productName) != null) {
-                    selectedStorage.getInventory().getProductByName(productName).setQuantity(0);
-                } else {
-                    int qtyToReduce = Integer.parseInt(orderString.split(":")[1].replace(" ", ""));
-                    Product productToReduce = selectedStorage.getInventory().getProductByName(productName);
-                    productToReduce.setQuantity(productToReduce.getQuantity() - qtyToReduce);
-                }
+            if (missingStock.getProductByName(productName) != null) {
+                selectedStorage.getInventory().getProductByName(productName).setQuantity(0);
+            } else {
+                int qtyToReduce = Integer.parseInt(orderString.split(":")[1].replace(" ", ""));
+                Product productToReduce = selectedStorage.getInventory().getProductByName(productName);
+                productToReduce.setQuantity(productToReduce.getQuantity() - qtyToReduce);
             }
-
-            askStockInOtherStorage(missingStock, storageName);
         }
     }
 
@@ -180,8 +191,10 @@ public class InterfaceFunctions {
      *
      * @param missingStock
      * @param originalStorage
+     * @param orderSplit
+     * @param selectedStorage
      */
-    public static void askStockInOtherStorage(ListInv missingStock, String originalStorage) {
+    public static void askStockInOtherStorage(ListInv missingStock, String originalStorage, String[] orderSplit, Storage selectedStorage) {
         ListStorage storageWithStock = new ListStorage();
         ListStorage allStorages = GlobalUI.getGraph().getStorageList();
 
@@ -214,7 +227,12 @@ public class InterfaceFunctions {
 
         if (storageWithStock.getLength() <= 0) {
             JOptionPane.showMessageDialog(null, "Alerta no existe la cantidad de stock especificada en ninguno de los almacenes de la red");
+            initNewOrderPage();
+            resetOrder();
         } else {
+
+            changeOriginalStorageInv(orderSplit, missingStock, selectedStorage);
+
             String shortestRoute = getShortestRoute(storageWithStock, originalStorage);
             String[] shortestRouteSplit = shortestRoute.split(";");
             Storage storageToGiveProducts = allStorages.getStorageByName(shortestRouteSplit[1].split(",")[0]);
@@ -731,7 +749,6 @@ public class InterfaceFunctions {
      * @param name
      * @return
      */
-
     public static boolean selectStorageName(String name) {
 
         if (InterfaceFunctions.alreadyExistStorage(name)) {

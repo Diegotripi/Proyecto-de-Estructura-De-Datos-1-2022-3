@@ -62,6 +62,8 @@ public class UploadDataPage extends javax.swing.JFrame {
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 70));
 
+        openFileButton.setBackground(new java.awt.Color(255, 255, 255));
+        openFileButton.setForeground(new java.awt.Color(0, 0, 0));
         openFileButton.setText("Abrir");
         openFileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +83,8 @@ public class UploadDataPage extends javax.swing.JFrame {
         });
         getContentPane().add(fileChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 480, -1));
 
+        backToMenuButton.setBackground(new java.awt.Color(255, 255, 255));
+        backToMenuButton.setForeground(new java.awt.Color(0, 0, 0));
         backToMenuButton.setText("Volver al menú");
         backToMenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

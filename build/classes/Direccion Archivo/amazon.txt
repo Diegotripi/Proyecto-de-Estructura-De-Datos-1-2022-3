@@ -1,43 +1,25 @@
 Almacenes;
 Almacen A:
-Audifonos,22
-Procesador,3
+Pantalla,3
 RAM,2
-Pantalla,4;
+Procesador,1;
 Almacen B:
-Grafica,5
-Procesador,2
-RAM,10
-Pantalla,0;
+Pantalla,3
+Grafica,5;
 Almacen C:
-Teclado,8
-Pantalla,10
-Placa,7;
+Placa,7
+Teclado,8;
 Almacen D:
-Mouse,2
-Pantalla,11;
+Mouse,2;
 Almacen E:
-Audifonos,10
 Microfono,7
-Pantalla,0;
-Almacen AA:
-Placa,0;
-Almacen 123:
-Placa,2;
-Almacen A12:
-Placa,22;
+Audifonos,10;
 Rutas;
 A,B,10
 A,C,20
-A,AA,22
-A,123,22
-A,A12,2
 B,C,5
 B,D,8
 C,D,4
 C,E,13
 D,E,3
 E,A,25
-AA,B,33
-123,B,33
-A12,C,33
